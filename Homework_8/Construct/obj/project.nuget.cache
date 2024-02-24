@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "mmVl/OpeTMqXqJpdyO4M5RTcuVs6ZHrzPXQY77qdMFiG7A5MgLZtazFgWxnpwhP7jNbCxe5rWM8tuGv7Rpq/Sg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bryus\\source\\repos\\Homework_8\\Construct\\Construct.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bryus\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\bryus\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\bryus\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

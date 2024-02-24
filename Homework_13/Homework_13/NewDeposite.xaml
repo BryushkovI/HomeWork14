@@ -1,0 +1,39 @@
+﻿<Window x:Class="Homework_13.NewDeposite"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Homework_13"
+        mc:Ignorable="d"
+        Title="NewDeposite" Height="200" Width="350" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Открытие депозита"
+               FontSize="20"
+               FontFamily="Times New Roman"
+               HorizontalAlignment="Left" 
+               Margin="10,10,0,0" VerticalAlignment="Top"
+               Height="40" Width="200"/>
+        <TextBox HorizontalAlignment="Left"
+                 Height="24" Margin="10,71,0,0"
+                 x:Name="Sum"
+                 FontSize="16"
+                 Foreground="Gray"
+                 TextWrapping="Wrap" Text="Введите сумму вклада" 
+                 VerticalAlignment="Top" Width="200" PreviewTextInput="Sum_PreviewTextInput" GotFocus="Sum_GotFocus" TextChanged="Sum_TextChanged"
+                 />
+        <Button Content="Отмена"
+                HorizontalAlignment="Left" 
+                Margin="10,123,0,0" 
+                x:Name="Cancel_Btn"
+                VerticalAlignment="Top"
+                Width="140" Height="48" Click="Cancel_Btn_Click"/>
+        <Button Content="Подтвердить"
+                HorizontalAlignment="Left"
+                IsEnabled="False"
+                x:Name="Confirm_Btn"
+                Margin="180,123,0,0" 
+                VerticalAlignment="Top" 
+                Width="140" Height="48" Click="Confirm_Btn_Click"/>
+
+    </Grid>
+</Window>

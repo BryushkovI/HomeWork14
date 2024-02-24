@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Construct", "Construct\Construct.csproj", "{3D498ED7-B190-4F1C-B382-A38B317D7F06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Methods", "Methods\Methods.csproj", "{D2E5A34A-B841-48B9-8365-D6989963A4FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewMainApp", "NewMainApp\NewMainApp.csproj", "{4BB53C22-D06C-4BD3-9105-38E30F5C0654}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D498ED7-B190-4F1C-B382-A38B317D7F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D498ED7-B190-4F1C-B382-A38B317D7F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D498ED7-B190-4F1C-B382-A38B317D7F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D498ED7-B190-4F1C-B382-A38B317D7F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E5A34A-B841-48B9-8365-D6989963A4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E5A34A-B841-48B9-8365-D6989963A4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E5A34A-B841-48B9-8365-D6989963A4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E5A34A-B841-48B9-8365-D6989963A4FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB53C22-D06C-4BD3-9105-38E30F5C0654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB53C22-D06C-4BD3-9105-38E30F5C0654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB53C22-D06C-4BD3-9105-38E30F5C0654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB53C22-D06C-4BD3-9105-38E30F5C0654}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85A311C7-D37C-449A-B2BC-314E33AD937D}
+	EndGlobalSection
+EndGlobal

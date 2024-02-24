@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "tXRHAv0qDJjnB9VMStkeXDenXkmTRLEBgwmDj0BtGyiE8Y1IUBGDHEdGOcWZHgR+BLMf6nmQoFBlmL8+WJ3DoA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bryus\\source\\repos\\Homework_8\\Methods\\Methods.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bryus\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\bryus\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\bryus\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

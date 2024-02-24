@@ -1,0 +1,105 @@
+{
+  "Отделы": [
+    {
+      "Nameing": "PR",
+      "Create": "2020-12-01T00:00:00",
+      "Employees": 4,
+      "Chief": "Романов",
+      "Сотрудники": [
+        {
+          "Number": 3,
+          "Name": "Василий",
+          "Surname": "Романов",
+          "Age": 45,
+          "Department": "PR",
+          "Salery": 120000,
+          "Projects": 11,
+          "Chief": "Романов"
+        },
+        {
+          "Number": 1,
+          "Name": "Роман",
+          "Surname": "Васильев",
+          "Age": 45,
+          "Department": "PR",
+          "Salery": 120000,
+          "Projects": 11,
+          "Chief": "Романов"
+        },
+        {
+          "Number": 2,
+          "Name": "Bill",
+          "Surname": "Gates",
+          "Age": 56,
+          "Department": "PR",
+          "Salery": 4294967295,
+          "Projects": 100,
+          "Chief": "Романов"
+        },
+        {
+          "Number": 6,
+          "Name": "Григорий",
+          "Surname": "Гошин",
+          "Age": 67,
+          "Department": "PR",
+          "Salery": 120000,
+          "Projects": 4,
+          "Chief": "Романов"
+        }
+      ]
+    },
+    {
+      "Nameing": "Продажи",
+      "Create": "2020-12-04T00:00:00",
+      "Employees": 2,
+      "Chief": "Смирнов",
+      "Сотрудники": [
+        {
+          "Number": 9,
+          "Name": "Олег",
+          "Surname": "Смирнов",
+          "Age": 33,
+          "Department": "Продажи",
+          "Salery": 300000,
+          "Projects": 8,
+          "Chief": "Смирнов"
+        },
+        {
+          "Number": 8,
+          "Name": "Владимир",
+          "Surname": "Петров",
+          "Age": 51,
+          "Department": "Продажи",
+          "Salery": 70000,
+          "Projects": 5,
+          "Chief": "Смирнов"
+        }
+      ]
+    },
+    {
+      "Nameing": "IT",
+      "Create": "2020-12-16T00:00:00+03:00",
+      "Employees": 0,
+      "Chief": "Брюшков",
+      "Сотрудники": []
+    },
+    {
+      "Nameing": "Бухгалтерия",
+      "Create": "2020-12-03T00:00:00",
+      "Employees": 1,
+      "Chief": "Морозов",
+      "Сотрудники": [
+        {
+          "Number": 7,
+          "Name": "Николай",
+          "Surname": "Морозов",
+          "Age": 76,
+          "Department": "Бухгалтерия",
+          "Salery": 30000,
+          "Projects": 1,
+          "Chief": "Морозов"
+        }
+      ]
+    }
+  ]
+}

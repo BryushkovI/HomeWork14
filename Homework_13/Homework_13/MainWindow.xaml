@@ -1,0 +1,545 @@
+﻿<Window x:Class="Homework_13.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Homework_13"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="620" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" 
+                    Height="auto"
+                    MinHeight="571"
+                    Margin="10,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="Auto"
+                    MinWidth="1253"
+                    x:Name="Tab_control">
+            <TabItem Background="#F5FFFA"
+                     Height="22" VerticalAlignment="Stretch">
+                <TabItem.Header>
+                    <TextBlock Text="Юр. лица"                     
+                               MouseLeftButtonDown="TabItem_MouseLeftButtonDown"
+                               FontSize="12"
+                               HorizontalAlignment="Stretch"
+                               Margin="0"/>
+                </TabItem.Header>
+                <Grid Background="#F5FFFA">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="740*"/>
+                        <ColumnDefinition Width="508*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Left" 
+                            Height="42" 
+                            Margin="10,10,0,0" 
+                            Grid.Column="0"
+                            VerticalAlignment="Top" 
+                            Width="292">
+                        <Label Content="Список клиентов" 
+                           FontSize="20"
+                           VerticalAlignment="Top"
+                           Height="40"/>
+                    </Border>
+                    <ListView Grid.Column="0" 
+                              x:Name="Entity_List"
+                              HorizontalAlignment="Left"
+                              Height="210" Margin="10,57,0,0" 
+                              VerticalAlignment="Top"
+                              Background="#F5FFFA"
+                              Width="720"
+                              MinWidth="720"
+                              SelectionChanged="Individual_VIP_List_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="ColName1" Width="100">
+                                    <GridViewColumn.Header>
+                                        Имя клиента
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Name,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColNumber1">
+                                    <GridViewColumn.Header>
+                                        Номер счета
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Number}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="70" x:Name="ColBalance1">
+                                    <GridViewColumn.Header>
+                                        Баланс
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Bank_Account, Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColDeposite1">
+                                    <GridViewColumn.Header>
+                                        Вклад
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Deposite, Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" x:Name="ColDepositePercent1">
+                                    <GridViewColumn.Header>
+                                        Процент по вкладу
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Deposite_percent}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColCredit1">
+                                    <GridViewColumn.Header>
+                                        Кредит
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Credit, Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" x:Name="ColCreditPercent1">
+                                    <GridViewColumn.Header>
+                                        Процент по кредиту
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Credit_percent}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Background="#F0F8FF">
+                <TabItem.Header>
+                    <TextBlock Text="Физ. лица"                     
+                               MouseLeftButtonDown="TabItem_MouseLeftButtonDown"/>
+                </TabItem.Header>
+                <Grid Background="#F0F8FF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="740*"/>
+                        <ColumnDefinition Width="505*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Left" 
+                            Height="42" 
+                            Margin="10,10,0,0" 
+                            Grid.Column="0"
+                            VerticalAlignment="Top" 
+                            Width="292">
+                        <Label Content="Список клиентов" 
+                           FontSize="20"
+                           VerticalAlignment="Top"
+                           Height="40"/>
+                    </Border>
+                    <ListView Grid.Column="0" 
+                              x:Name="Individual_regular_List"
+                              HorizontalAlignment="Left"
+                              Height="210" Margin="10,57,0,0" 
+                              VerticalAlignment="Top"
+                              Background="#F0F8FF"
+                              Width="auto"
+                              MinWidth="720"
+                              SelectionChanged="Individual_VIP_List_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="ColName2" Width="100">
+                                    <GridViewColumn.Header>
+                                        Имя клиента
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Name,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColNumber2">
+                                    <GridViewColumn.Header>
+                                        Номер счета
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Number}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="70" x:Name="ColBalance2">
+                                    <GridViewColumn.Header>
+                                        Баланс
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Bank_Account,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColDeposite2">
+                                    <GridViewColumn.Header>
+                                        Вклад
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Deposite,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" x:Name="ColDepositePercent2">
+                                    <GridViewColumn.Header>
+                                        Процент по вкладу
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Deposite_percent}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColCredit2">
+                                    <GridViewColumn.Header>
+                                        Кредит
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Credit,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" x:Name="ColCreditPercent2">
+                                    <GridViewColumn.Header>
+                                        Процент по кредиту
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Credit_percent}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Background="#FFF0F5">
+                <TabItem.Header>
+                    <TextBlock Text="Физ. лица VIP"                     
+                               MouseLeftButtonDown="TabItem_MouseLeftButtonDown"/>
+                </TabItem.Header>
+                <Grid Background="#FFF0F5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="740*"/>
+                        <ColumnDefinition Width="504*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Left" 
+                            Height="42" 
+                            Margin="10,10,0,0" 
+                            Grid.Column="0"
+                            VerticalAlignment="Top" 
+                            Width="292">
+                        <Label Content="Список клиентов" 
+                           FontSize="20"
+                           VerticalAlignment="Top"
+                           Height="40"/>
+                    </Border>
+                    <ListView Grid.Column="0" 
+                              x:Name="Individual_VIP_List"
+                              HorizontalAlignment="Left"
+                              Height="210" Margin="10,57,0,0" 
+                              VerticalAlignment="Top"
+                              Background="#FFF0F5"
+                              Width="720"
+                              MinWidth="720" SelectionChanged="Individual_VIP_List_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="ColName3" Width="100">
+                                    <GridViewColumn.Header>
+                                        Имя клиента
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Name,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColNumber3">
+                                    <GridViewColumn.Header>
+                                        Номер счета
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Number}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="70" x:Name="ColBalance3">
+                                    <GridViewColumn.Header>
+                                        Баланс
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Bank_Account,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColDeposite3">
+                                    <GridViewColumn.Header>
+                                        Вклад
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Deposite,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" x:Name="ColDepositePercent3">
+                                    <GridViewColumn.Header>
+                                        Процент по вкладу
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Deposite_percent}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" x:Name="ColCredit3">
+                                    <GridViewColumn.Header>
+                                        Кредит
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Credit,Mode=TwoWay}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" x:Name="ColCreditPercent3">
+                                    <GridViewColumn.Header>
+                                        Процент по кредиту
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Credit_percent}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Завершить" 
+                            HorizontalAlignment="Left"
+                            Margin="1095,504,0,0"
+                            VerticalAlignment="Top" 
+                            Width="146" Height="60" Click="Button_Click"/>
+        <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Left"
+                            Height="257" Margin="765,48,0,0" 
+                            VerticalAlignment="Top" Width="487">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="229" Margin="0,0,0,-0.333">
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Название организации"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="209"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Номер клиента"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="209"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Баланс"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="209"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Текущая сумма вклада"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="209"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Текущая сумма кредита"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="209"/>
+                </StackPanel>
+                <StackPanel Width="253" Orientation="Vertical" Margin="0,0,0,-0.333">
+                    <TextBox Height="30" 
+                             TextWrapping="Wrap" 
+                             Margin="10"
+                             x:Name="Name"
+                             Background="#F5FFFA"
+                             TextAlignment="Left"
+                             FontSize="18" TextChanged="TextChanged"/>
+                    <TextBox Height="30" 
+                                         TextWrapping="Wrap" 
+                                         Margin="10"
+                             x:Name="Number"
+                             Background="#F5FFFA"
+                             IsEnabled="False"
+                                         TextAlignment="Left"
+                                         FontSize="18"/>
+                    <TextBox Height="30" 
+                                         TextWrapping="Wrap" 
+                                         Margin="10"
+                             x:Name="Bank_account"
+                             Background="#F5FFFA"
+                                         TextAlignment="Left"
+                                         FontSize="18"
+                             TextChanged="TextChanged"/>
+                    <TextBox Height="30" 
+                                         TextWrapping="Wrap" 
+                                         Margin="10"
+                             IsEnabled="False"
+                             x:Name="Deposite"
+                             Background="#F5FFFA"
+                                         TextAlignment="Left"
+                                         FontSize="18"/>
+                    <TextBox Height="30" 
+                             TextWrapping="Wrap" 
+                             x:Name="Credit"
+                             Margin="10"
+                             IsEnabled="False"
+                                         Background="#F5FFFA"
+                                         TextAlignment="Left"
+                                         FontSize="18"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+        <Border BorderBrush="Black" 
+                            BorderThickness="1"
+                            HorizontalAlignment="Left" 
+                            Height="75"
+                            Margin="27,322,0,0"
+                            VerticalAlignment="Top"
+                            Width="211">
+            <Button Content="Перевод"
+                    IsEnabled="False"
+                                FontSize="30"
+                                x:Name="Remittance1"
+                                FontFamily="Times New Roman" Click="Remittance_Click"/>
+
+
+        </Border>
+        <Border BorderBrush="Black" 
+                Visibility="Collapsed"
+                x:Name="OpenCredit"
+                            BorderThickness="1"
+                            HorizontalAlignment="Left" 
+                            Height="75"
+                            Margin="327,322,0,0"
+                            VerticalAlignment="Top"
+                            Width="211">
+            <Button Content="Открыть кредит"
+                                FontSize="30"
+                                x:Name="OpenCreditBtn"
+                                FontFamily="Times New Roman" Click="OpenCreditBtn_Click"/>
+        </Border>
+        <Border BorderBrush="Black" 
+                Visibility="Collapsed"
+                x:Name="OpenDeposite"
+                            BorderThickness="1"
+                            HorizontalAlignment="Left" 
+                            Height="75"
+                            Margin="572,322,0,0"
+                            VerticalAlignment="Top"
+                            Width="211">
+            <Button Content="Открыть вклад"
+                                FontSize="30"
+                                x:Name="OpenDepositeBtn"
+                                FontFamily="Times New Roman"
+                    Click="OpenDepositeBtn_Click"/>
+        </Border>
+        <Button Height="100"
+                Margin="27,402,1146.333,96.667" 
+                ToolTip="Добавить клиента" 
+                Click="Button_Click_1">
+            <Image HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Height="95" Width="92" 
+                   Source="resources/add.png"/>
+        </Button>
+        <Button Height="90" Width="90" 
+                HorizontalAlignment="Left"
+                Margin="183,404,0,0" 
+                x:Name="Btn_deliteClient"
+                VerticalAlignment="Top"
+                ToolTip="Удалить клиента"
+                IsEnabled="False" Click="Btn_deliteClient_Click">
+            <Image Height="90" Width="90" Source="resources/delite.png"/>
+        </Button>
+        <StackPanel Orientation="Horizontal"
+                    Height="37"
+                    Width="800" Margin="327,404,146.333,149.667"
+                    Visibility="Collapsed"
+                    x:Name="Prediction">
+            <TextBlock HorizontalAlignment="Left" 
+                   TextWrapping="Wrap" 
+                   Text="Спрогнозировать вклад и кредит на"
+                   FontSize="20"
+                   VerticalAlignment="Top"
+                   Height="35" Width="340"/>
+            <TextBox TextWrapping="Wrap" 
+                     Text="0"
+                     FontSize="20"
+                     Margin="10,0" Width="50"
+                     x:Name="Predict_years_text" PreviewTextInput="Predict_years_text_PreviewTextInput"/>
+            <TextBlock TextWrapping="Wrap" 
+                       Text="лет"
+                       FontSize="20"/>
+            <TextBox TextWrapping="Wrap"
+                     Text="0"
+                     FontSize="20"
+                     Width="50"
+                     Margin="10,0"
+                     x:Name="Predict_month_text" PreviewTextInput="Predict_month_text_PreviewTextInput"/>
+            <TextBlock TextWrapping="Wrap" 
+                       Text="месяцев"
+                       FontSize="20"/>
+            <Button x:Name="Predict" 
+                    Content="Спрогнозировать"
+                    Margin="10,0" FontSize="20" Click="Predict_Click"
+                    />
+        </StackPanel>
+
+    </Grid>
+</Window>

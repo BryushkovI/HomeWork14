@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "6gkaStV2kDc2thpuDzEPXvvijoDpjJ+0s87JLTQ8uNf1EZ3Wq1QtI/Kaz7iitiimGGZTC3oY5TFF5Ur9m55S5Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\imac\\source\\repos\\Homework_8\\MainApp\\MainApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\imac\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

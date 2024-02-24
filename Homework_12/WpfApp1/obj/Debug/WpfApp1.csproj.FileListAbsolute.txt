@@ -1,0 +1,75 @@
+C:\Users\imac\source\repos\Homework_11\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\imac\source\repos\Homework_11\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\imac\source\repos\Homework_11\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csprojAssemblyReference.cache
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\App.g.cs
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\imac\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csprojAssemblyReference.cache
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\App.g.cs
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\bryus\source\repos\Homework_11\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.csprojAssemblyReference.cache
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\App.g.cs
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\bryus\source\repos\Homework_11.2\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.csprojAssemblyReference.cache
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\App.g.cs
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\Additional windows\DepartmentCreation.g.cs
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\Additional windows\EmployeeCreation.g.cs
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\Additional windows\DepartmentCreation.baml
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\Additional windows\EmployeeCreation.baml
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\Additional windows\DeliteDepDenied.g.cs
+C:\Users\bryus\source\repos\Homework_12\WpfApp1\obj\Debug\Additional windows\DeliteDepDenied.baml

@@ -1,0 +1,34 @@
+{
+	"Events": [
+		{
+			"Hour": 12,
+			"Minute": 25,
+			"Message": "Good morning, team &#127774 \n\nWhen you start working and sign in to the system, please, <b>write “sign in”</b> in this group chat. \n\n<b>If you do not show up for work, you will not be paid for the day.</b>"
+		},
+		{
+			"Hour": 12,
+			"Minute": 26,
+			"Message": "Before you start working with the new leads: \n\n1. <b>put your status on busy;</b> \n2. <b>call your recalls for the first time;</b> \n3. <b>call all your reminds for today’s date.</b> \n\nAfter you finish, write <b>'done with my recalls and reminds'</b> and <b>an average number of calls you made.</b> \n\nIt’s supposed to take you <b>an hour or an hour and a half.</b>"
+		},
+		{
+			"Hour": 12,
+			"Minute": 27,
+			"Message": "<b>Now it’s time to put your status on busy and call your recalls for the second time.</b> \n\nBy this time you should have processed <b>at least 30 new leads.</b> \n\nAfter you finish, <b>write “done with my recalls and reminds”</b> in this group chat, <b>switch the status to free</b> and <b>continue processing new leads.</b>"
+		},
+		{
+			"Hour": 12,
+			"Minute": 28,
+			"Message": "<b>It's time to put your status on busy, call reminds you couldn’t reach out in the morning and your recalls for the third time.</b> \n\n<b>If you cannot reach out to the remind,</b> you must <b>change the remind date for your next work day.</b> \n\n&#10071 You have little time before the end of the shift, make sure that <b>you don’t have anything left:</b> recalls, reminds for today’s date or new leads &#10071 \n\nBy this time you should have processed <b>at least 60 new leads.</b>"
+		},
+		{
+			"Hour": 12,
+			"Minute": 29,
+			"Message": "After the end of the shift, you need to send <b>your recordings</b> to @lena_badanova. \n\nIf you didn’t, it would seem you only changed statuses and didn’t make calls. We wouldn’t know if you have worked or not."
+		},
+		{
+			"Hour": 12,
+			"Minute": 30,
+			"Message": "<b>If you run out of the airtime, text @bykova17 or here BEFOREHAND.</b> Those who writes later <b>won’t receive money</b> because it takes some time to transfer it. \n\nIf you do not text, you will call the clients at your own expense the whole next day."
+		}
+	]
+}

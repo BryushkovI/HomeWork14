@@ -1,0 +1,9 @@
+C:\Users\imac\source\repos\Homework_8\Department\bin\Debug\netstandard2.0\Department.deps.json
+C:\Users\imac\source\repos\Homework_8\Department\bin\Debug\netstandard2.0\Department.dll
+C:\Users\imac\source\repos\Homework_8\Department\bin\Debug\netstandard2.0\Department.pdb
+C:\Users\imac\source\repos\Homework_8\Department\obj\Debug\netstandard2.0\Department.csprojAssemblyReference.cache
+C:\Users\imac\source\repos\Homework_8\Department\obj\Debug\netstandard2.0\Department.AssemblyInfoInputs.cache
+C:\Users\imac\source\repos\Homework_8\Department\obj\Debug\netstandard2.0\Department.AssemblyInfo.cs
+C:\Users\imac\source\repos\Homework_8\Department\obj\Debug\netstandard2.0\Department.dll
+C:\Users\imac\source\repos\Homework_8\Department\obj\Debug\netstandard2.0\Department.pdb
+C:\Users\imac\source\repos\Homework_8\Department\obj\Debug\netstandard2.0\Department.csproj.CoreCompileInputs.cache

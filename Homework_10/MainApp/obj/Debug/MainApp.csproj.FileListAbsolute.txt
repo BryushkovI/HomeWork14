@@ -1,0 +1,17 @@
+C:\Users\imac\source\repos\Homework_10\MainApp\bin\Debug\MainApp.exe.config
+C:\Users\imac\source\repos\Homework_10\MainApp\bin\Debug\MainApp.exe
+C:\Users\imac\source\repos\Homework_10\MainApp\bin\Debug\MainApp.pdb
+C:\Users\imac\source\repos\Homework_10\MainApp\bin\Debug\MainApp.dll
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.csprojAssemblyReference.cache
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainWindow.g.cs
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\App.g.cs
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp_MarkupCompile.cache
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp_MarkupCompile.lref
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainWindow.baml
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.g.resources
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.Properties.Resources.resources
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.csproj.GenerateResource.cache
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.csproj.CoreCompileInputs.cache
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.csproj.CopyComplete
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.exe
+C:\Users\imac\source\repos\Homework_10\MainApp\obj\Debug\MainApp.pdb

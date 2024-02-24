@@ -1,0 +1,112 @@
+{
+  "Clients": [
+    {
+      "Entity": [
+        {
+          "Name": "ООО \"Ромашка\"",
+          "Number": 10000001,
+          "Bank_Account": 180000,
+          "Deposite": 20000,
+          "Credit": 30000,
+          "Deposite_percent": 5,
+          "Credit_percent": 7,
+          "Deposite_type": "WithCapital",
+          "Date_credit": "2021-01-01T00:00:00",
+          "Date_deposite": "2021-01-01T00:00:00"
+        },
+        {
+          "Name": "ООО \"Лютик\"",
+          "Number": 10000002,
+          "Bank_Account": 160000,
+          "Deposite": 50000,
+          "Credit": 5000,
+          "Deposite_percent": 5,
+          "Credit_percent": 7,
+          "Deposite_type": "WithoutCapital",
+          "Date_credit": "2021-05-21T15:40:15",
+          "Date_deposite": "2021-04-01T00:00:00"
+        },
+        {
+          "Name": "ООО \"Акация\"",
+          "Number": 12410579,
+          "Bank_Account": 180000,
+          "Deposite": 5000,
+          "Credit": 10000,
+          "Deposite_percent": 5,
+          "Credit_percent": 7,
+          "Deposite_type": "WithoutCapital",
+          "Date_credit": "2020-05-19T00:42:45",
+          "Date_deposite": "2021-05-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "Individual_regular": [
+        {
+          "Name": "Еж Ежов",
+          "Number": 20000001,
+          "Bank_Account": 25000,
+          "Deposite": 9000,
+          "Credit": 0,
+          "Deposite_percent": 8,
+          "Credit_percent": 12,
+          "Deposite_type": "WithoutCapital",
+          "Date_credit": "2021-05-01T00:00:00",
+          "Date_deposite": "2020-01-01T00:00:00"
+        },
+        {
+          "Name": "Лиса Лисова",
+          "Number": 26286587,
+          "Bank_Account": 15000,
+          "Deposite": 0,
+          "Credit": 20000,
+          "Deposite_percent": 8,
+          "Credit_percent": 12,
+          "Deposite_type": "WithoutCapital",
+          "Date_credit": "2021-05-19T16:25:12",
+          "Date_deposite": "2021-05-01T00:00:00"
+        },
+        {
+          "Name": "Лось Лосев",
+          "Number": 29041607,
+          "Bank_Account": 20000,
+          "Deposite": 0,
+          "Credit": 1000,
+          "Deposite_percent": 8,
+          "Credit_percent": 12,
+          "Deposite_type": "WithCapital",
+          "Date_credit": "2021-05-21T15:42:42",
+          "Date_deposite": "0001-01-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "Individual_VIP": [
+        {
+          "Name": "Бык Быков",
+          "Number": 30000001,
+          "Bank_Account": 55000,
+          "Deposite": 12000,
+          "Credit": 3000,
+          "Deposite_percent": 10,
+          "Credit_percent": 11,
+          "Deposite_type": "WithCapital",
+          "Date_credit": "2021-05-01T00:00:00",
+          "Date_deposite": "2021-01-01T00:00:00"
+        },
+        {
+          "Name": "Морж Моржов",
+          "Number": 32184102,
+          "Bank_Account": 0,
+          "Deposite": 0,
+          "Credit": 0,
+          "Deposite_percent": 10,
+          "Credit_percent": 11,
+          "Deposite_type": "WithCapital",
+          "Date_credit": "2021-05-19T16:18:37",
+          "Date_deposite": "2021-03-01T00:00:00"
+        }
+      ]
+    }
+  ]
+}

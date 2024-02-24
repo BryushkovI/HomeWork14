@@ -1,0 +1,143 @@
+{
+  "Organization": [
+    {
+      "Departments": [
+        {
+          "Departments": [],
+          "Nameing": "dep",
+          "Manager": {
+            "Name": "test",
+            "Position": "Руководитель dep",
+            "Salary": 1300,
+            "Department": "dep",
+            "Status": "Manager",
+            "Percent": 10
+          },
+          "Employees": []
+        }
+      ],
+      "Nameing": "Лес",
+      "Manager": {
+        "Name": "Медведь Медведев",
+        "Position": "Руководитель леса",
+        "Salary": 1300,
+        "Department": "Лес",
+        "Status": "Manager",
+        "Percent": 13
+      },
+      "Employees": [
+        {
+          "Name": "Заяц Зайцев",
+          "Salary": 4,
+          "Position": "Инженер",
+          "Department": "Лес",
+          "Status": "Worker",
+          "WorkHours": 168
+        },
+        {
+          "Name": "Лис Лисин",
+          "Salary": 170,
+          "Position": "Помощник",
+          "Department": "Лес",
+          "Status": "Intern"
+        },
+        {
+          "Name": "Уж Ужов",
+          "Salary": 170,
+          "Position": "Помощник инженера",
+          "Department": "Лес",
+          "Status": "Intern"
+        },
+        {
+          "Name": "Волк Волков",
+          "Salary": 5,
+          "Position": "Инженер",
+          "Department": "Лес",
+          "Status": "Worker",
+          "WorkHours": 168
+        }
+      ]
+    },
+    {
+      "Departments": [
+        {
+          "Departments": [],
+          "Nameing": "Оазис",
+          "Manager": {
+            "Name": "Каракал Каракалов",
+            "Position": "Руководитель Оазиса",
+            "Salary": 1300,
+            "Department": "Оазис",
+            "Status": "Manager",
+            "Percent": 16
+          },
+          "Employees": [
+            {
+              "Name": "Слепыш Гигантский",
+              "Salary": 5,
+              "Position": "HR-Агент",
+              "Department": "Оазис",
+              "Status": "Worker",
+              "WorkHours": 168
+            },
+            {
+              "Name": "Обезьяна Обезьянова",
+              "Salary": 140,
+              "Position": "Помощник",
+              "Department": "Оазис",
+              "Status": "Intern"
+            }
+          ]
+        }
+      ],
+      "Nameing": "Пустыня",
+      "Manager": {
+        "Name": "Верблюд Верблюдов",
+        "Position": "Руководитель пустыни",
+        "Salary": 1300,
+        "Department": "Пустыня",
+        "Status": "Manager",
+        "Percent": 15
+      },
+      "Employees": [
+        {
+          "Name": "Тушканчик Тушканчикян",
+          "Salary": 3,
+          "Position": "Бухгалтер",
+          "Department": "Пустыня",
+          "Status": "Worker",
+          "WorkHours": 168
+        },
+        {
+          "Name": "Кобра Коброва",
+          "Salary": 13,
+          "Position": "Заведующий",
+          "Department": "Пустыня",
+          "Status": "Worker",
+          "WorkHours": 160
+        }
+      ]
+    },
+    {
+      "Departments": [],
+      "Nameing": "new_dep",
+      "Manager": {
+        "Name": "test",
+        "Position": "Руководитель new_dep",
+        "Salary": 1300,
+        "Department": "new_dep",
+        "Status": "Manager",
+        "Percent": 11
+      },
+      "Employees": []
+    }
+  ],
+  "CEO": {
+    "Name": "Природа природова",
+    "Salary": 5347,
+    "Position": "CEO",
+    "Department": "Organization",
+    "Status": "Manager",
+    "Percent": 75
+  }
+}
