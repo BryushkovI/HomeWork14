@@ -24,6 +24,9 @@
                     
                 </MenuItem>
             </MenuItem>
+            <MenuItem Header="Клиент">
+                
+            </MenuItem>
         </Menu>
     </Grid>
 </Window>
