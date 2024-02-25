@@ -4,9 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork14"
+        xmlns:vm="clr-namespace:HomeWork14.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding Title}" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <Menu Height="24" VerticalAlignment="Top">
+            <MenuItem VerticalAlignment="Center" Height="20" Margin="2"
+                      Header="Файл">
+                <MenuItem Header="Открыть из БД">
+                    
+                </MenuItem>
+                <MenuItem Header="Выход">
+                    
+                </MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
