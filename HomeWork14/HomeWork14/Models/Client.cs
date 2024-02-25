@@ -11,6 +11,7 @@ namespace HomeWork14.Models
     /// </summary>
     abstract class Client
     {
+
         private DateTime _CreateDate;
         /// <summary>
         /// Дата создания УЗ клиента
@@ -23,6 +24,11 @@ namespace HomeWork14.Models
         /// </summary>
         protected string Name { get => _Name; set => _Name = value; }
 
+        private readonly int _AccountNumber;
+        protected int AccountNumber
+        {
+            get => _AccountNumber;
+        }
 
         private double _Deposit;
         /// <summary>
