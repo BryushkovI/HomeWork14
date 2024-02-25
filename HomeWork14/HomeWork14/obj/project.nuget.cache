@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "37PUTHa84iFDrAk2t7hDW3Hz7/0Zq/zwegXWTZPvQmp+XOHYV9k7mah7V1lxouCZ5LLqhC49xoYJa0BuLqxwhg==",
+  "dgSpecHash": "fGIhhnBNEywQkowhrGUtLismIKMy0vSwbQOUZxatzvngJ0Q7Jfx5AQXcQRubAhfQjelMRlld+KVEHqUjJ95/Eg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\HomeWork14.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\bryus\\.nuget\\packages\\fontawesome5\\2.1.11\\fontawesome5.2.1.11.nupkg.sha512"
+  ],
   "logs": []
 }

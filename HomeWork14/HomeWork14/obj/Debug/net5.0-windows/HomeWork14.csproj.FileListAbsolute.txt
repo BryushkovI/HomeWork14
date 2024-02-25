@@ -21,3 +21,6 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeW
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork14.genruntimeconfig.cache
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork14.csprojAssemblyReference.cache
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\FontAwesome5.Net.dll
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\FontAwesome5.dll
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork14.csproj.CopyComplete
