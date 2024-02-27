@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HomeWork14.Command.Base
+namespace HomeWork15.Command.Base
 {
     abstract internal class Command : ICommand
     {

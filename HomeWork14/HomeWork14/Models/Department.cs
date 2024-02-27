@@ -1,17 +1,18 @@
-﻿using System;
+﻿using HomeWork15.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWork14.Models
+namespace HomeWork15.Models
 {
-    class Department
+    internal class Department<T> where T : Client
     {
         private double _KeyRate;
-        
-        
+
+
 
         private int _DepartmentType;
         /// <summary>

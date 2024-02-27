@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HomeWork14.Command.Base;
+using HomeWork15.Command.Base;
 
-namespace HomeWork14.Command
+namespace HomeWork15.Command
 {
     internal class LambdaCommand : Command.Base.Command
     {
