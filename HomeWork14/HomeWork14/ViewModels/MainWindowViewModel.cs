@@ -14,12 +14,44 @@ namespace HomeWork15.ViewModels
 {
     class MainWindowViewModel : ViewModel
     {
+        #region Заголовок
         private string _Title = "Транжирбанк";
         public string Title
         {
             get => _Title;
             set => Set(ref _Title, value);
         }
+        #endregion
+
+        #region Выбранный тип клиентов
+        private int _client_type;
+        public int ClientType
+        {
+            get => _client_type;
+            set => _client_type = value;
+        }
+        #endregion
+
+        #region Поиск клиента
+        private string _clientSearch;
+        public string ClientSearch
+        {
+            get => _clientSearch;
+            set => _clientSearch = value;
+        } 
+        #endregion
+
+        #region Список клиентов
+        private ObservableCollection<Client> _clients;
+        public ObservableCollection<Client> Clients
+        {
+            get
+            {
+                return _clients;
+            }
+        } 
+        #endregion
+
         #region Комманды
         #region CloseAppCommand
         public ICommand CloseAppCommand { get; }
@@ -36,11 +68,13 @@ namespace HomeWork15.ViewModels
         public ICommand OpenDB { get; }
         private void OnOpenDBExecuted(object p)
         {
-            OpenFileDialog openFileDialog = new();
-            openFileDialog.InitialDirectory = "c:\\";
-            openFileDialog.ShowDialog();
-            string filename = openFileDialog.FileName ?? null;
-            
+            //OpenFileDialog openFileDialog = new();
+            //openFileDialog.InitialDirectory = "c:\\";
+            //openFileDialog.ShowDialog();
+            //string filename = openFileDialog.FileName ?? null;
+            // сделать вывод по 20 штук из общей БД, по выбранному отделу
+            // при прокрутке выводить следующие 20 штук
+            // при поиске искать по Имени во всех БД асинхронно
         }
 
         private bool CanOpenDBExecute(object p) => true;

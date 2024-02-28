@@ -11,23 +11,71 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Menu Height="24" VerticalAlignment="Top">
-            <MenuItem VerticalAlignment="Center" Height="20" Margin="2"
+    <Grid ShowGridLines="True">
+        <DockPanel>
+            <Menu Height="24" DockPanel.Dock="Top">
+                <MenuItem VerticalAlignment="Center" Height="20" Margin="2"
                       Header="Файл">
-                <MenuItem Header="Открыть из БД" Command="{Binding OpenDB}">
-                    <MenuItem.Icon>
-                        <fa:ImageAwesome Icon="Solid_Database"/>
-                    </MenuItem.Icon>
+                    <MenuItem Header="Открыть из БД" Command="{Binding OpenDB}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Solid_Database"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Сохранить">
+
+                    </MenuItem>
+                    <MenuItem Header="Выход" Command="{Binding CloseAppCommand}"/>
                 </MenuItem>
-                <MenuItem Header="Сохранить">
-                    
+                <MenuItem Header="Клиент">
+
                 </MenuItem>
-                <MenuItem Header="Выход" Command="{Binding CloseAppCommand}"/>
-            </MenuItem>
-            <MenuItem Header="Клиент">
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <Grid Width="800">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Text="Готово">
+                        
+                    </TextBlock>
+                    <ProgressBar Width="100" Height="10" Grid.Column="1" 
+                                 HorizontalAlignment="Left">
+
+                    </ProgressBar>
+                </Grid>
+            </StatusBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" Grid.RowSpan="3">
+                    <TextBlock Text="Поиск" VerticalAlignment="Top" 
+                           Grid.Column="0" Grid.Row="0"/>
+                    <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding ClientSearch, UpdateSourceTrigger=PropertyChanged}" />
+                    <ListView Grid.RowSpan="3" ItemsSource="{Binding Clients}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Name}" FontSize="12"/>
+                                    <TextBlock Text="{Binding AccountNumber}" FontSize="10" Foreground="Gray"/>
+                                </StackPanel>
+                                
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <GridSplitter Grid.RowSpan="3" Grid.Column="1" Width="3"
+                              HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
                 
-            </MenuItem>
-        </Menu>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
