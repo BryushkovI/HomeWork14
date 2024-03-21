@@ -24,7 +24,38 @@ namespace HomeWork15.ViewModels
             set => Set(ref _Title, value);
         }
         #endregion
+        #region Статус
+        private string _Status = "Готово";
+        /// <summary>
+        /// Статус
+        /// </summary>
+        public string Status
+        {
+            get => _Status;
+            set => _Status = value;
+        }
+        #endregion
+        #region Прогресс
+        private int _ProgressBar = 100;
+        /// <summary>
+        /// Прогресс
+        /// </summary>
+        public int ProgressBar
+        {
+            get => _ProgressBar;
+            set => _ProgressBar = value;
+        }
 
+        private Visibility _ProgressBarVisibility = Visibility.Hidden;
+        /// <summary>
+        /// Видимость прогресса
+        /// </summary>
+        public Visibility ProgressBarVisibility
+        {
+            get => _ProgressBarVisibility;
+            set => _ProgressBarVisibility = value;
+        }
+        #endregion
         #region Выбранный тип клиентов
         public enum ClientTypes
         {
@@ -106,7 +137,8 @@ namespace HomeWork15.ViewModels
         #endregion
         #endregion
         public MainWindowViewModel()
-        {
+        {   
+            
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted, CanCloseAppCommandExecute);
             OpenDB = new LambdaCommand(OnOpenDBExecuted, CanOpenDBExecute);
         }

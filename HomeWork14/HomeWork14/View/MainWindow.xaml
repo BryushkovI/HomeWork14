@@ -45,11 +45,12 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="8*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Text="Готово">
+                    <TextBlock Grid.Column="0"  Text="{Binding Status}">
                         
                     </TextBlock>
                     <ProgressBar Width="100" Height="10" Grid.Column="1" 
-                                 HorizontalAlignment="Left">
+                                 HorizontalAlignment="Left" Value="{Binding ProgressBar}"
+                                 Visibility="{Binding ProgressBarVisibility}">
 
                     </ProgressBar>
                 </Grid>

@@ -12,7 +12,10 @@ namespace HomeWork15.DataProvider
     class DataProvider
     {
         IParser _parser;
-        public DataProvider(IParser Parser) => _parser = Parser;
+        public DataProvider()
+        {
+            //_parser = new Parser();
+        }
 
         public void SaveData<T>(ObservableCollection<T> List)
         {

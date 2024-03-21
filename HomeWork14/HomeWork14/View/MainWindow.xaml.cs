@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HomeWork15.Services;
+using HomeWork15.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,8 @@ namespace HomeWork15
         public MainWindow()
         {
             InitializeComponent();
+            //DataProvider.DataProvider dataProvider = new DataProvider.DataProvider();
+            //DataContext = new MainWindowViewModel(dataProvider);
         }
     }
 }

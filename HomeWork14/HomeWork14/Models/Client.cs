@@ -24,19 +24,20 @@ namespace HomeWork15.Models
         /// </summary>
         public string Name { get => _Name; set => _Name = value; }
 
-        protected readonly int _AccountNumber;
+        protected int _AccountNumber;
         /// <summary>
         /// Аккаунт
         /// </summary>
         public int AccountNumber
         {
             get => _AccountNumber;
+            set => _AccountNumber = value;
         }
 
         /// <summary>
         /// Ключевая ставка
         /// </summary>
-        protected readonly double _KeyRate;
+        protected readonly double _KeyRate = 10;
 
         protected double _Deposit;
         /// <summary>
@@ -67,6 +68,11 @@ namespace HomeWork15.Models
 
         protected double _DepositPercent;
         public virtual double DepositePercent { get => _DepositPercent; set => _DepositPercent = value; }
+
+        public Client()
+        {
+            
+        }
 
     }
 }
