@@ -12,52 +12,60 @@ namespace HomeWork15.Models
     abstract class Client
     {
 
-        private DateTime _CreateDate;
+        protected DateTime _CreateDate;
         /// <summary>
         /// Дата создания УЗ клиента
         /// </summary>
         public DateTime CreateDate { get => _CreateDate; set => _CreateDate = value; }
         
-        private string _Name;
+        protected string _Name;
         /// <summary>
         /// Имя
         /// </summary>
         public string Name { get => _Name; set => _Name = value; }
 
-        private readonly int _AccountNumber;
+        protected readonly int _AccountNumber;
+        /// <summary>
+        /// Аккаунт
+        /// </summary>
         public int AccountNumber
         {
             get => _AccountNumber;
         }
 
-        private double _Deposit;
+        /// <summary>
+        /// Ключевая ставка
+        /// </summary>
+        protected readonly double _KeyRate;
+
+        protected double _Deposit;
         /// <summary>
         /// Вклад
         /// </summary>
         public double Deposit { get => _Deposit; set => _Deposit = value; }
 
 
-        private double _Credit;
+        protected double _Credit;
         /// <summary>
         /// Кредит
         /// </summary>
         public double Credit { get => _Credit; set => _Credit = value; }
 
 
-        private double _Debt;
+        protected double _Debt;
         /// <summary>
         /// Дебит (баланс)
         /// </summary>
         public double Debt { get => _Debt; set => _Debt = value; }
 
-        private double _CreditPercent;
+        protected double _CreditPercent;
         /// <summary>
         /// Процент по кредиту
         /// </summary>
         public virtual double CreditPercent { get => _CreditPercent; set => _CreditPercent = value; }
 
 
-        private double _DepositPercent;
+        protected double _DepositPercent;
         public virtual double DepositePercent { get => _DepositPercent; set => _DepositPercent = value; }
 
     }

@@ -9,5 +9,19 @@ namespace HomeWork15.Models
 {
     class Regular : Client
     {
+
+        public override double CreditPercent
+        {
+            get { return _CreditPercent = _KeyRate + 1.5; }
+            set => _CreditPercent = value;
+        }
+        
+        public override double DepositePercent
+        {
+            get { return _DepositPercent = _KeyRate - 1.5; }
+            set => _DepositPercent = value;
+        }
+
+        
     }
 }
