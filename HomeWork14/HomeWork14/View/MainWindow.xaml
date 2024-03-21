@@ -16,10 +16,19 @@
             <Menu Height="24" DockPanel.Dock="Top">
                 <MenuItem VerticalAlignment="Center" Height="20" Margin="2"
                       Header="Файл">
-                    <MenuItem Header="Открыть из БД" Command="{Binding OpenDB}">
+                    <MenuItem Header="Открыть из БД">
                         <MenuItem.Icon>
                             <fa:ImageAwesome Icon="Solid_Database"/>
                         </MenuItem.Icon>
+                        <RadioButton Content="Физические лица" GroupName="Type" IsChecked="{Binding IsRegular}">
+
+                        </RadioButton>
+                        <RadioButton Content="VIP" GroupName="Type" IsChecked="{Binding IsVIP}">
+
+                        </RadioButton>
+                        <RadioButton Content="Юридические лица" GroupName="Type" IsChecked="{Binding IsEntity}">
+                            
+                        </RadioButton>
                     </MenuItem>
                     <MenuItem Header="Сохранить">
 

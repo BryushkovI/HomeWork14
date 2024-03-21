@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HomeWork15.ViewModels
@@ -24,11 +26,33 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Выбранный тип клиентов
-        private int _client_type;
-        public int ClientType
+        public enum ClientTypes
+        {
+            Regular,
+            VIP,
+            Entity
+        }
+        public bool IsRegular
+        {
+            get { return ClientType == ClientTypes.Regular; }
+            set { ClientType = value ? ClientTypes.Regular : ClientType; }
+        }
+        public bool IsVIP
+        {
+            get { return ClientType == ClientTypes.VIP; }
+            set { ClientType = value ? ClientTypes.VIP : ClientType; }
+        }
+        public bool IsEntity
+        {
+            get { return ClientType == ClientTypes.Entity; }
+            set { ClientType = value ? ClientTypes.Entity : ClientType; }
+        }
+
+        private ClientTypes _client_type;
+        public ClientTypes ClientType
         {
             get => _client_type;
-            set => _client_type = value;
+            set { _client_type = value; } 
         }
         #endregion
 
@@ -63,8 +87,9 @@ namespace HomeWork15.ViewModels
         private bool CanCloseAppCommandExecute(object p) => true;
         #endregion
         public ICommand GetData { get; }
-        
 
+
+        #region OpenDB
         public ICommand OpenDB { get; }
         private void OnOpenDBExecuted(object p)
         {
@@ -77,7 +102,8 @@ namespace HomeWork15.ViewModels
             // при поиске искать по Имени во всех БД асинхронно
         }
 
-        private bool CanOpenDBExecute(object p) => true;
+        private bool CanOpenDBExecute(object p) => true; 
+        #endregion
         #endregion
         public MainWindowViewModel()
         {
