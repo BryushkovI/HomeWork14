@@ -11,7 +11,7 @@ namespace HomeWork15.Models
     /// </summary>
     abstract class Client
     {
-
+        
         protected DateTime _CreateDate;
         /// <summary>
         /// Дата создания УЗ клиента
@@ -69,10 +69,20 @@ namespace HomeWork15.Models
         protected double _DepositPercent;
         public virtual double DepositePercent { get => _DepositPercent; set => _DepositPercent = value; }
 
+        protected double _BankAccount;
+        public double BankAccount { get => _BankAccount; set => _BankAccount = value; }
+        
         public Client()
         {
             
         }
 
+    }
+
+    struct TitleClient
+    {
+        public int AccountType { get; set; }
+        public int AccountNumber { get; set; }
+        public string Name { get; set; }
     }
 }

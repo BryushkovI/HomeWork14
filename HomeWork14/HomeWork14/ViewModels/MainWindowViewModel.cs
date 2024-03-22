@@ -1,6 +1,7 @@
 ﻿using HomeWork15.Command;
 using HomeWork15.DataProvider;
 using HomeWork15.Models;
+using HomeWork15.Services;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -97,13 +98,14 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Список клиентов
-        private ObservableCollection<Client> _clients;
-        public ObservableCollection<Client> Clients
+        private ObservableCollection<TitleClient> _clients;
+        public ObservableCollection<TitleClient> Clients
         {
             get
             {
                 return _clients;
             }
+            set => _clients = value;
         } 
         #endregion
 
@@ -137,8 +139,9 @@ namespace HomeWork15.ViewModels
         #endregion
         #endregion
         public MainWindowViewModel()
-        {   
-            
+        {
+            IParser parser = new Parser();
+            Clients = parser.DeserializeClients<TitleClient>(@"Clients.json");
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted, CanCloseAppCommandExecute);
             OpenDB = new LambdaCommand(OnOpenDBExecuted, CanOpenDBExecute);
         }

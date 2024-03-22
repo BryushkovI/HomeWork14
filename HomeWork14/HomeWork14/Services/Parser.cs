@@ -1,8 +1,8 @@
 ﻿using HomeWork15.Models;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -12,20 +12,18 @@ namespace HomeWork15.Services
 {
     class Parser : IParser
     {
-        public ObservableCollection<T> DeserializeClients<T>(string StringData)
+        public ObservableCollection<T> DeserializeClients<T>(string Path)
         {
-            ObservableCollection<T> departments = new();
-            JToken jToken = JToken.Parse(StringData);
-            JArray jArray = JArray.Parse(jToken["Clients"].ToString()); //парсит все отделы 
-
-
-            return departments;
+            
+            var ClientsList = JsonSerializer.Deserialize<List<T>>(File.ReadAllText(Path));
+            ObservableCollection<T> ClientsCollection = new ObservableCollection<T>(ClientsList);
+            return ClientsCollection;
         }
 
     }
 
     internal interface IParser
     {
-        public ObservableCollection<T> DeserializeClients<T>(string StringData);
+        public ObservableCollection<T> DeserializeClients<T>(string Path);
     }
 }
