@@ -9,7 +9,7 @@
       "Date_deposite_begin": "2021-01-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 20000,
-      "Deposite_type": "C",
+      "Capitalization": true,
       "Name": "ООО \"Ромашка\""
     },
     {
@@ -22,7 +22,7 @@
       "Date_deposite_begin": "2021-04-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 50000,
-      "Deposite_type": "U",
+      "Capitalization": false,
       "Name": "ООО \"Лютик\""
     },
     {
@@ -35,7 +35,7 @@
       "Date_deposite_begin": "2021-05-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 5000,
-      "Deposite_type": "U",
+      "Capitalization": false,
       "Name": "ООО \"Акация\""
     },
     {
@@ -48,7 +48,7 @@
       "Date_deposite_begin": "2024-02-25T22:08:44.6306541+03:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 15000,
-      "Deposite_type": "C",
+      "Capitalization": true,
       "Name": "test"
     },
     {
@@ -61,7 +61,7 @@
       "Date_deposite_begin": "2020-01-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 9000,
-      "Deposite_type": "U",
+      "Capitalization": false,
       "Name": "Еж Ежов"
     },
     {
@@ -74,7 +74,7 @@
       "Date_deposite_begin": "2021-05-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 10000,
-      "Deposite_type": "U",
+      "Capitalization": false,
       "Name": "Лиса Лисова"
     },
     {
@@ -86,7 +86,7 @@
       "Date_deposite_begin": "2021-05-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 0,
-      "Deposite_type": "C",
+      "Capitalization": true,
       "Name": "Лось Лосев"
     },
     {
@@ -99,7 +99,7 @@
       "Date_deposite_begin": "2021-01-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 12000,
-      "Deposite_type": "C",
+      "Capitalization": true,
       "Name": "Бык Быков"
     },
     {
@@ -112,7 +112,7 @@
       "Date_deposite_begin": "2021-03-01T00:00:00",
       "Date_deposite_end": "2026-01-01T00:00:00",
       "Deposite": 2000,
-      "Deposite_type": "C",
+      "Capitalization": true,
       "Name": "Морж Моржов"
     }
   ]

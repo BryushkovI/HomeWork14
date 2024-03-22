@@ -45,6 +45,8 @@ namespace HomeWork15.Models
         /// </summary>
         public double Deposit { get => _Deposit; set => _Deposit = value; }
 
+        protected bool _Capitalization;
+        public bool Capitalization { get => _Capitalization; set => _Capitalization = value; }
 
         protected double _Credit;
         /// <summary>

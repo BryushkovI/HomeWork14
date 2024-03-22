@@ -24,4 +24,3 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\ref\H
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.pdb
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.genruntimeconfig.cache
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.csprojAssemblyReference.cache
