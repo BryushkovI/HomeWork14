@@ -20,4 +20,17 @@ namespace HomeWork15.Command
 
         public override void Execute(object parameter) => _Execute(parameter);
     }
+    internal class LambdaCommandAsync : Command.Base.AsyncCommand
+    {
+        private readonly Func<Task> _Execute;
+        private readonly Func<Task, bool> _CanExecute;
+        public LambdaCommandAsync(Func<Task> Execute, Func<Task, bool> CanExecute = null)
+        {
+            _Execute = Execute ?? throw new ArgumentNullException(nameof(Execute));
+            _CanExecute = CanExecute;
+        }
+        public override bool CanExecute(object parameter) => _CanExecute?.Invoke((Task)parameter) ?? true;
+
+        public override Task ExecuteAsync(object parameter) => _Execute();
+    }
 }

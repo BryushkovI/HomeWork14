@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,7 +88,10 @@ namespace HomeWork15.ViewModels
             set { _client_type = value; } 
         }
         #endregion
-
+        #region Поток
+        private Thread _thread;
+        private Task<ObservableCollection<TitleClient>> _task; 
+        #endregion
         #region Поиск клиента
         private string _clientSearch;
         public string ClientSearch
@@ -105,7 +109,12 @@ namespace HomeWork15.ViewModels
             {
                 return _clients;
             }
-            set => _clients = value;
+            set
+            {
+                if (value == _clients) return;
+                _clients = value;
+                OnPropertyChanged();
+            }
         } 
         #endregion
 
@@ -124,24 +133,22 @@ namespace HomeWork15.ViewModels
 
         #region OpenDB
         public ICommand OpenDB { get; }
-        private void OnOpenDBExecuted(object p)
+        private async void OnOpenDBExecuted(object p)
         {
-            //OpenFileDialog openFileDialog = new();
-            //openFileDialog.InitialDirectory = "c:\\";
-            //openFileDialog.ShowDialog();
-            //string filename = openFileDialog.FileName ?? null;
-            // сделать вывод по 20 штук из общей БД, по выбранному отделу
-            // при прокрутке выводить следующие 20 штук
-            // при поиске искать по Имени во всех БД асинхронно
+            
+            IParser parser = new Parser();
+
+            Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
         }
 
         private bool CanOpenDBExecute(object p) => true; 
         #endregion
+
+
         #endregion
         public MainWindowViewModel()
         {
-            IParser parser = new Parser();
-            Clients = parser.DeserializeClients<TitleClient>(@"Clients.json");
+                      
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted, CanCloseAppCommandExecute);
             OpenDB = new LambdaCommand(OnOpenDBExecuted, CanOpenDBExecute);
         }

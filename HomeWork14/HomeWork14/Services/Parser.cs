@@ -1,11 +1,11 @@
-﻿using HomeWork15.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HomeWork15.Services
@@ -16,7 +16,15 @@ namespace HomeWork15.Services
         {
             
             var ClientsList = JsonSerializer.Deserialize<List<T>>(File.ReadAllText(Path));
-            ObservableCollection<T> ClientsCollection = new ObservableCollection<T>(ClientsList);
+            ObservableCollection<T> ClientsCollection = new(ClientsList);
+            return ClientsCollection;
+        }
+
+        public async Task<ObservableCollection<T>> DeserializeClientsAsync<T>(string Path)
+        {
+            FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
+            var ClientsList = await JsonSerializer.DeserializeAsync<List<T>>(fs).ConfigureAwait(false);
+            ObservableCollection<T> ClientsCollection = new(ClientsList);
             return ClientsCollection;
         }
 
@@ -25,5 +33,7 @@ namespace HomeWork15.Services
     internal interface IParser
     {
         public ObservableCollection<T> DeserializeClients<T>(string Path);
+
+        public Task<ObservableCollection<T>> DeserializeClientsAsync<T>(string Path);
     }
 }
