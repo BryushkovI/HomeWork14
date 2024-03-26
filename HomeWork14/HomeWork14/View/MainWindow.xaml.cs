@@ -28,5 +28,10 @@ namespace HomeWork15
             //DataProvider.DataProvider dataProvider = new DataProvider.DataProvider();
             //DataContext = new MainWindowViewModel(dataProvider);
         }
+
+        private void ListView_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
+        }
     }
 }

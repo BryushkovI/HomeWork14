@@ -48,7 +48,7 @@
                         <ColumnDefinition Width="8*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"  Text="{Binding Status}">
-                        
+
                     </TextBlock>
                     <ProgressBar Width="100" Height="10" Grid.Column="1" 
                                  HorizontalAlignment="Left" Value="{Binding ProgressBar}"
@@ -57,36 +57,53 @@
                     </ProgressBar>
                 </Grid>
             </StatusBar>
-            <Grid>
+            <Grid x:Name="SearchGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="3"/>
                     <ColumnDefinition Width="8*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="8*"/>
                     <RowDefinition Height="3"/>
-                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="27*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Vertical" Grid.RowSpan="3">
-                    <TextBlock Text="Поиск" VerticalAlignment="Top" 
-                           Grid.Column="0" Grid.Row="0"/>
-                    <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding ClientSearch, UpdateSourceTrigger=PropertyChanged}" />
-                    <ListView Grid.RowSpan="3" ItemsSource="{Binding Clients}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Name}" FontSize="12"/>
-                                    <TextBlock Text="{Binding AccountNumber}" FontSize="10" Foreground="Gray"/>
-                                </StackPanel>
-                                
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                <StackPanel Orientation="Vertical" Grid.RowSpan="4"
+                            Name="SearchStackPanel">
+                    <Grid Grid.RowSpan="3"
+                          Height="{Binding ElementName=SearchGrid, Path=ActualHeight}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition x:Name="ListRow" Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Поиск" VerticalAlignment="Top" 
+                                   Grid.Column="0" Grid.Row="0" Height="16"/>
+                        <TextBox Grid.Row="0" 
+                             Height="16"
+                             VerticalAlignment="Bottom"
+                             Text="{Binding ClientSearch, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <ListView Grid.Row="1"
+                                  ItemsSource="{Binding Clients}"
+                                  Height="{Binding ElementName=ListRow, Path=Height}"
+                                  ScrollViewer.CanContentScroll="False">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Name}" FontSize="12"/>
+                                        <TextBlock Text="{Binding AccountNumber}" FontSize="10" Foreground="Gray"/>
+                                    </StackPanel>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    
                 </StackPanel>
-                <GridSplitter Grid.RowSpan="3" Grid.Column="1" Width="3"
-                              HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-                
+
+                <GridSplitter Grid.RowSpan="4" Grid.Column="1" Width="3"
+                              HorizontalAlignment="Center"/>
+
             </Grid>
         </DockPanel>
     </Grid>
