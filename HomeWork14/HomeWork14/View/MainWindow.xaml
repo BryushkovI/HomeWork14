@@ -52,7 +52,8 @@
                     </TextBlock>
                     <ProgressBar Width="100" Height="10" Grid.Column="1" 
                                  HorizontalAlignment="Left" Value="{Binding ProgressBar}"
-                                 Visibility="{Binding ProgressBarVisibility}">
+                                 Visibility="{Binding ProgressBarVisibility}"
+                                 IsIndeterminate="True">
 
                     </ProgressBar>
                 </Grid>

@@ -27,14 +27,29 @@ namespace HomeWork15.ViewModels
         }
         #endregion
         #region Статус
-        private string _Status = "Готово";
+        enum ReadyStatus
+        {
+            Ready,
+            Busy
+        }
+        static readonly Dictionary<ReadyStatus, string> statusPairs = new()
+        {
+            { ReadyStatus.Ready, "Готово"},
+            { ReadyStatus.Busy, "Занят" }
+        };
+        private string _Status = statusPairs[ReadyStatus.Ready];
         /// <summary>
         /// Статус
         /// </summary>
         public string Status
         {
             get => _Status;
-            set => _Status = value;
+            set
+            {
+                if (value == _Status) return;
+                _Status = value;
+                OnPropertyChanged();
+            }
         }
         #endregion
         #region Прогресс
@@ -55,7 +70,12 @@ namespace HomeWork15.ViewModels
         public Visibility ProgressBarVisibility
         {
             get => _ProgressBarVisibility;
-            set => _ProgressBarVisibility = value;
+            set
+            {
+                if (value == _ProgressBarVisibility) return;
+                _ProgressBarVisibility = value;
+                OnPropertyChanged();
+            }
         }
         #endregion
         #region Выбранный тип клиентов
@@ -135,10 +155,14 @@ namespace HomeWork15.ViewModels
         public ICommand OpenDB { get; }
         private async void OnOpenDBExecuted(object p)
         {
-            
+            ProgressBarVisibility = Visibility.Visible;
+            Status = statusPairs[ReadyStatus.Busy];
             IParser parser = new Parser();
 
             Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
+
+            Status = statusPairs[ReadyStatus.Ready];
+            ProgressBarVisibility = Visibility.Hidden;
         }
 
         private bool CanOpenDBExecute(object p) => true; 
