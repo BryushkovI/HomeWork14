@@ -83,8 +83,13 @@ namespace HomeWork15.Models
 
     struct TitleClient
     {
-        public int AccountType { get; set; }
         public int AccountNumber { get; set; }
         public string Name { get; set; }
+
+        public TitleClient(string name, int accountNumber)
+        {
+            AccountNumber = accountNumber;
+            Name = name;
+        }
     }
 }

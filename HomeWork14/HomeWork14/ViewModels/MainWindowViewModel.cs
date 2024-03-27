@@ -88,17 +88,41 @@ namespace HomeWork15.ViewModels
         public bool IsRegular
         {
             get { return ClientType == ClientTypes.Regular; }
-            set { ClientType = value ? ClientTypes.Regular : ClientType; }
+            //set { ClientType = value ? ClientTypes.Regular : ClientType; }
+            set
+            {
+                if (value)
+                {
+                    ClientType = ClientTypes.Regular;
+                    OnOpenDBExecuted(null);
+                }
+            }
         }
         public bool IsVIP
         {
             get { return ClientType == ClientTypes.VIP; }
-            set { ClientType = value ? ClientTypes.VIP : ClientType; }
+            //set { ClientType = value ? ClientTypes.VIP : ClientType; }
+            set
+            {
+                if (value)
+                {
+                    ClientType = ClientTypes.VIP;
+                    OnOpenDBExecuted(null);
+                }
+            }
         }
         public bool IsEntity
         {
             get { return ClientType == ClientTypes.Entity; }
-            set { ClientType = value ? ClientTypes.Entity : ClientType; }
+            //set { ClientType = value ? ClientTypes.Entity : ClientType; }
+            set
+            {
+                if (value)
+                {
+                    ClientType = ClientTypes.Entity;
+                    OnOpenDBExecuted(null);
+                }
+            }
         }
 
         private ClientTypes _client_type;
@@ -159,7 +183,9 @@ namespace HomeWork15.ViewModels
             Status = statusPairs[ReadyStatus.Busy];
             IParser parser = new Parser();
 
-            Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
+            //Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
+
+            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType);
 
             Status = statusPairs[ReadyStatus.Ready];
             ProgressBarVisibility = Visibility.Hidden;
