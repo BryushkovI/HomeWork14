@@ -94,6 +94,7 @@ namespace HomeWork15.ViewModels
                 if (value)
                 {
                     ClientType = ClientTypes.Regular;
+                    _skip = 0;
                     OnOpenDBExecuted(null);
                 }
             }
@@ -107,6 +108,7 @@ namespace HomeWork15.ViewModels
                 if (value)
                 {
                     ClientType = ClientTypes.VIP;
+                    _skip = 0;
                     OnOpenDBExecuted(null);
                 }
             }
@@ -120,6 +122,7 @@ namespace HomeWork15.ViewModels
                 if (value)
                 {
                     ClientType = ClientTypes.Entity;
+                    _skip = 0;
                     OnOpenDBExecuted(null);
                 }
             }
@@ -142,10 +145,11 @@ namespace HomeWork15.ViewModels
         {
             get => _clientSearch;
             set => _clientSearch = value;
-        } 
+        }
         #endregion
 
         #region Список клиентов
+        private int _skip = 0;
         private ObservableCollection<TitleClient> _clients;
         public ObservableCollection<TitleClient> Clients
         {
@@ -185,7 +189,8 @@ namespace HomeWork15.ViewModels
 
             //Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
 
-            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType);
+            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType,_skip);
+            _skip += 20;
 
             Status = statusPairs[ReadyStatus.Ready];
             ProgressBarVisibility = Visibility.Hidden;

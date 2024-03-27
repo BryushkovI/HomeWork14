@@ -30,12 +30,12 @@ namespace HomeWork15.Services
             return ClientsCollection;
         }
 
-        public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType)
+        public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip)
         {
             FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
 
             var parsed = await JArray.LoadAsync(new JsonTextReader(new StreamReader(fs)));
-            var clientsJToken = parsed.SelectTokens($"[ ?( @.AccountType == {AccountType} ) ]").ToList();
+            var clientsJToken = parsed.SelectTokens($"[ ?( @.AccountType == {AccountType} ) ]").Skip(Skip).Take(20).ToList();
             ObservableCollection<T> ClientsCollection = new ObservableCollection<T>();
             foreach (JToken clientToken in clientsJToken)
             { 
@@ -51,6 +51,6 @@ namespace HomeWork15.Services
 
         public Task<ObservableCollection<T>> DeserializeClientsAsync<T>(string Path);
 
-        public Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType);
+        public Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip);
     }
 }
