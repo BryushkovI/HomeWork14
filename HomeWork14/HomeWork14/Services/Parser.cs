@@ -30,18 +30,27 @@ namespace HomeWork15.Services
             return ClientsCollection;
         }
 
-        public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip)
+        public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip, int Take)
         {
             FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
 
             var parsed = await JArray.LoadAsync(new JsonTextReader(new StreamReader(fs)));
-            var clientsJToken = parsed.SelectTokens($"[ ?( @.AccountType == {AccountType} ) ]").Skip(Skip).Take(20).ToList();
+            fs.Close();
+            var clientsJToken = parsed.SelectTokens($"[ ?( @.AccountType == {AccountType} ) ]").Skip(Skip).Take(Take).ToList();
             ObservableCollection<T> ClientsCollection = new ObservableCollection<T>();
             foreach (JToken clientToken in clientsJToken)
             { 
                 ClientsCollection.Add(clientToken.ToObject<T>());
             }
             return ClientsCollection;
+        }
+        public async Task<T> DeserializeClientLinqAsync<T>(string Path, int AccountNumber)
+        {
+            FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
+            var parsed = await JArray.LoadAsync(new JsonTextReader(new StreamReader(fs))).ConfigureAwait(false);
+            fs.Close();
+            var item = parsed.SelectToken($"[ ?( @.AccountNumber == {AccountNumber} ) ]").ToObject<T>();
+            return item;
         }
     }
 
@@ -51,6 +60,8 @@ namespace HomeWork15.Services
 
         public Task<ObservableCollection<T>> DeserializeClientsAsync<T>(string Path);
 
-        public Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip);
+        public Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip, int Take);
+
+        public Task<T> DeserializeClientLinqAsync<T>(string Path, int AccountNumber);
     }
 }

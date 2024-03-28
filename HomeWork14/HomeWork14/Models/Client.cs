@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +18,21 @@ namespace HomeWork15.Models
         /// <summary>
         /// Дата создания УЗ клиента
         /// </summary>
+        [JsonProperty("CreateDate")]
         public DateTime CreateDate { get => _CreateDate; set => _CreateDate = value; }
         
         protected string _Name;
         /// <summary>
         /// Имя
         /// </summary>
+        [JsonProperty("Name")]
         public string Name { get => _Name; set => _Name = value; }
 
         protected int _AccountNumber;
         /// <summary>
         /// Аккаунт
         /// </summary>
+        [JsonProperty("AccountNumber")]
         public int AccountNumber
         {
             get => _AccountNumber;
@@ -43,35 +48,32 @@ namespace HomeWork15.Models
         /// <summary>
         /// Вклад
         /// </summary>
+        [JsonProperty("Deposit")]
         public double Deposit { get => _Deposit; set => _Deposit = value; }
 
         protected bool _Capitalization;
+        [JsonProperty("Capitalization")]
         public bool Capitalization { get => _Capitalization; set => _Capitalization = value; }
 
         protected double _Credit;
         /// <summary>
         /// Кредит
         /// </summary>
+        [JsonProperty("Credit")]
         public double Credit { get => _Credit; set => _Credit = value; }
-
-
-        protected double _Debt;
-        /// <summary>
-        /// Дебит (баланс)
-        /// </summary>
-        public double Debt { get => _Debt; set => _Debt = value; }
 
         protected double _CreditPercent;
         /// <summary>
         /// Процент по кредиту
         /// </summary>
-        public virtual double CreditPercent { get => _CreditPercent; set => _CreditPercent = value; }
+        public abstract double CreditPercent { get; set; }
 
 
         protected double _DepositPercent;
-        public virtual double DepositePercent { get => _DepositPercent; set => _DepositPercent = value; }
+        public abstract double DepositPercent { get; set; }
 
         protected double _BankAccount;
+        [JsonProperty("BankAccount")]
         public double BankAccount { get => _BankAccount; set => _BankAccount = value; }
         
         public Client()
@@ -83,10 +85,10 @@ namespace HomeWork15.Models
 
     struct TitleClient
     {
-        public int AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
         public string Name { get; set; }
 
-        public TitleClient(string name, int accountNumber)
+        public TitleClient(string name, string accountNumber)
         {
             AccountNumber = accountNumber;
             Name = name;

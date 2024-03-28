@@ -16,7 +16,7 @@ namespace HomeWork15.Models
             set => _CreditPercent = value;
         }
         
-        public override double DepositePercent
+        public override double DepositPercent
         {
             get { return _DepositPercent = _KeyRate - 1.5; }
             set => _DepositPercent = value;

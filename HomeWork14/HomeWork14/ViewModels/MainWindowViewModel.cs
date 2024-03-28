@@ -95,6 +95,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.Regular;
                     _skip = 0;
+                    _selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -109,6 +110,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.VIP;
                     _skip = 0;
+                    _selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -123,6 +125,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.Entity;
                     _skip = 0;
+                    _selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -163,9 +166,38 @@ namespace HomeWork15.ViewModels
                 _clients = value;
                 OnPropertyChanged();
             }
-        } 
+        }
         #endregion
-
+        #region Выбранный клиент
+        private TitleClient _selectedTitleClient;
+        /// <summary>
+        /// Выбранный клиент
+        /// </summary>
+        public TitleClient SelectedTitleClient
+        {
+            get => _selectedTitleClient;
+            set
+            {
+                _selectedTitleClient = value;
+                OnPropertyChanged("SelectedClient");
+            }
+        }
+        public Client SelectedClient
+        {
+            get
+            {
+                if (SelectedTitleClient.AccountNumber == null) return null;
+                IParser parser = new Parser();
+                return _client_type switch
+                {
+                    ClientTypes.Regular => parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).Result,
+                    ClientTypes.VIP => parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).Result,
+                    ClientTypes.Entity => parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).Result,
+                    _ => null,
+                };
+            }
+        }
+        #endregion
         #region Комманды
         #region CloseAppCommand
         public ICommand CloseAppCommand { get; }
@@ -189,8 +221,12 @@ namespace HomeWork15.ViewModels
 
             //Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
 
-            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType,_skip);
-            _skip += 20;
+            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType,_skip,10);
+            if (Clients.Count % 10 == 0)
+            {
+                Clients.Add(new TitleClient("","далее"));
+            }
+            _skip += 10;
 
             Status = statusPairs[ReadyStatus.Ready];
             ProgressBarVisibility = Visibility.Hidden;
