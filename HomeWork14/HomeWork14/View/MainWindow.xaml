@@ -69,6 +69,10 @@
                     <RowDefinition Height="3"/>
                     <RowDefinition Height="27*"/>
                 </Grid.RowDefinitions>
+                <GridSplitter Grid.Row="1" Grid.Column="2" Height="3"
+                              VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                <GridSplitter Grid.RowSpan="4" Grid.Column="1" Width="3"
+                              HorizontalAlignment="Stretch"/>
                 <StackPanel Orientation="Vertical" Grid.RowSpan="4"
                             Name="SearchStackPanel">
                     <Grid Grid.RowSpan="3"
@@ -99,15 +103,46 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-                    
+
                 </StackPanel>
+                <Grid x:Name="GridInfo" Grid.Row="0" Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border BorderBrush="LightGray" BorderThickness="1"
+                                CornerRadius="10" Grid.Column="0" Margin="3">
+                        <StackPanel x:Name="SPInfo" Orientation="Vertical">
+                            <TextBlock Text="{Binding SelectedClient.Name}" 
+                                   FontSize="12" Margin="2"/>
+                            <TextBlock Text="{Binding SelectedClient.AccountNumber}"
+                                   FontSize="10" Foreground="Gray" Margin="2"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="LightGray" BorderThickness="1"
+                                CornerRadius="10" Grid.Column="1" Margin="3">
+                        <StackPanel x:Name="SPBankAccount" Orientation="Vertical"
+                                    Grid.Column="1">
 
-                <GridSplitter Grid.RowSpan="4" Grid.Column="1" Width="3"
-                              HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="LightGray" BorderThickness="1"
+                                CornerRadius="10" Grid.Column="2" Margin="3">
+                        <StackPanel x:Name="SPDeposit" Orientation="Vertical"
+                                    Grid.Column="2">
 
-                <TextBlock Grid.Row="0" Grid.Column="2"
-                           Text="{Binding SelectedClient.AccountNumber}"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="LightGray" BorderThickness="1"
+                                CornerRadius="10" Grid.Column="3" Margin="3">
+                        <StackPanel x:Name="SPCredit" Orientation="Vertical"
+                                    Grid.Column="3">
 
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </Grid>
         </DockPanel>
     </Grid>
