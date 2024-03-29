@@ -8,12 +8,96 @@
         xmlns:vm="clr-namespace:HomeWork15.ViewModels"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800">
-    <Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel>
+                            <Grid>
+                                <Border Width="20"
+                                        Height="12"
+                                        Background="lightgray"
+                                        CornerRadius="7.5"
+                                        Margin="5,2">
+
+                                </Border>
+                                <Border x:Name="button"
+                                        Height="15"
+                                        Width="15"
+                                        CornerRadius="7.5"
+                                        HorizontalAlignment="left">
+
+                                </Border>
+                            </Grid>
+                            <ContentPresenter x:Name="Content"
+                                              Margin="10,0,0,0"
+                                              Content="{TemplateBinding Content}"
+                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="right">
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                    Storyboard.TargetName="button"
+                                                    Duration="0:0:0:1"
+                                                    From="0,0,0,0"
+                                                    To="14,0,0,0">
+                                    <ThicknessAnimation.EasingFunction>
+                                        <CircleEase EasingMode="easeout"/>
+                                    </ThicknessAnimation.EasingFunction>
+                                </ThicknessAnimation>
+                            </Storyboard>
+                            <Storyboard x:Key="left">
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                    Storyboard.TargetName="button"
+                                                    Duration="0:0:0:1 "
+                                                    From="14,0,0,0"
+                                                    To="0,0,0,0">
+                                    <ThicknessAnimation.EasingFunction>
+                                        <CircleEase EasingMode="easeout"/>
+                                    </ThicknessAnimation.EasingFunction>
+                                </ThicknessAnimation>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="false">
+                                <Trigger.ExitActions>
+                                    <RemoveStoryboard  BeginStoryboardName="left">
+
+                                    </RemoveStoryboard>
+                                    <BeginStoryboard Storyboard="{StaticResource right}" x:Name="right">
+
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <Setter TargetName="button"
+                                        Property="Background"
+                                        Value="#fff9f4f4"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Trigger.ExitActions>
+                                    <RemoveStoryboard  BeginStoryboardName="right">
+
+                                    </RemoveStoryboard>
+                                    <BeginStoryboard Storyboard="{StaticResource left}" x:Name="left">
+
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <Setter TargetName="button"
+                                        Property="Background"
+                                        Value="#ff1d1d1d"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        </Window.Resources>
+        <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Grid ShowGridLines="True">
         <DockPanel>
-            <Menu Height="24" DockPanel.Dock="Top">
+            <Menu Height="24" DockPanel.Dock="Top" FontFamily="Century">
                 <MenuItem VerticalAlignment="Center" Height="20" Margin="2"
                       Header="Файл">
                     <MenuItem Header="Открыть из БД" Command="{Binding OpenDB}">
@@ -32,7 +116,7 @@
 
                         </RadioButton>
                     </MenuItem>
-                    <MenuItem Header="Сохранить">
+                    <MenuItem Header="Сохранить" FontFamily="Century">
 
                     </MenuItem>
                     <MenuItem Header="Выход" Command="{Binding CloseAppCommand}"/>
@@ -41,15 +125,13 @@
 
                 </MenuItem>
             </Menu>
-            <StatusBar DockPanel.Dock="Bottom">
+            <StatusBar DockPanel.Dock="Bottom" FontFamily="Century">
                 <Grid Width="800">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="8*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Text="{Binding Status}">
-
-                    </TextBlock>
+                    <TextBlock Grid.Column="0"  Text="{Binding Status}"/>
                     <ProgressBar Width="100" Height="10" Grid.Column="1" 
                                  HorizontalAlignment="Left" Value="{Binding ProgressBar}"
                                  Visibility="{Binding ProgressBarVisibility}"
@@ -81,11 +163,12 @@
                             <RowDefinition Height="32"/>
                             <RowDefinition x:Name="ListRow" Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Поиск" VerticalAlignment="Top" 
+                        <TextBlock Text="Поиск" VerticalAlignment="Top" FontFamily="Century"
                                    Grid.Column="0" Grid.Row="0" Height="16"/>
                         <TextBox Grid.Row="0" 
                              Height="16"
                              VerticalAlignment="Bottom"
+                             FontFamily="Century"
                              Text="{Binding ClientSearch, UpdateSourceTrigger=PropertyChanged}" />
                         <ListView Grid.Row="1"
                                   ItemsSource="{Binding Clients}"
@@ -116,23 +199,42 @@
                                 CornerRadius="10" Grid.Column="0" Margin="3">
                         <StackPanel x:Name="SPInfo" Orientation="Vertical">
                             <TextBlock Text="{Binding SelectedClient.Name}" 
-                                   FontSize="12" Margin="2"/>
+                                   FontSize="12" Margin="2" FontFamily="Century"/>
                             <TextBlock Text="{Binding SelectedClient.AccountNumber}"
                                    FontSize="10" Foreground="Gray" Margin="2"/>
+                            <TextBlock Text="Тариф:" FontFamily="Century"
+                                       Margin="2"/>
+                            <TextBlock Text="{Binding ClientTypeDescription}" FontSize="14" FontFamily="Century"
+                                       Margin="2"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="LightGray" BorderThickness="1"
                                 CornerRadius="10" Grid.Column="1" Margin="3">
                         <StackPanel x:Name="SPBankAccount" Orientation="Vertical"
                                     Grid.Column="1">
-
+                            <TextBlock Text="Средства" FontSize="12" 
+                                       Margin="2" FontFamily="Century"/>
+                            <TextBlock Text="{Binding SelectedClient.BankAccount}" FontSize="12" 
+                                       Margin="2" FontFamily="Century"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="LightGray" BorderThickness="1"
                                 CornerRadius="10" Grid.Column="2" Margin="3">
                         <StackPanel x:Name="SPDeposit" Orientation="Vertical"
                                     Grid.Column="2">
+                            <TextBlock Text="Вклад" FontSize="12" 
+                                       Margin="2" FontFamily="Century"/>
+                            <TextBlock Text="{Binding SelectedClient.Deposit}" FontSize="12" 
+                                       Margin="2" FontFamily="Century"/>
+                            <StackPanel Orientation="Horizontal" Margin="2">
+                                <TextBlock Text="Капитализация" FontFamily="Century"/>
+                                <CheckBox x:Name="CHKCapital"
+                                          IsChecked="{Binding SelectedClient.Capitalization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          Margin="10,0,0,0"
+                                          HorizontalAlignment="Center">
 
+                                </CheckBox>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="LightGray" BorderThickness="1"

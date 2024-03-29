@@ -11,7 +11,7 @@ namespace HomeWork15.Models
     /// <summary>
     /// Клинет
     /// </summary>
-    abstract class Client
+    abstract class Client : INotifyPropertyChanged
     {
         
         protected DateTime _CreateDate;
@@ -73,6 +73,9 @@ namespace HomeWork15.Models
         public abstract double DepositPercent { get; set; }
 
         protected double _BankAccount;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         [JsonProperty("BankAccount")]
         public double BankAccount { get => _BankAccount; set => _BankAccount = value; }
         

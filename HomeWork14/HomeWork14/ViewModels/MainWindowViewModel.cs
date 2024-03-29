@@ -26,6 +26,7 @@ namespace HomeWork15.ViewModels
             set => Set(ref _Title, value);
         }
         #endregion
+
         #region Статус
         enum ReadyStatus
         {
@@ -52,6 +53,7 @@ namespace HomeWork15.ViewModels
             }
         }
         #endregion
+
         #region Прогресс
         private int _ProgressBar = 100;
         /// <summary>
@@ -78,6 +80,37 @@ namespace HomeWork15.ViewModels
             }
         }
         #endregion
+
+        #region Карточки с инфо о клиенте
+        /// <summary>
+        /// Видимость карточек с информацией о клиенте
+        /// </summary>
+        public Visibility GridInfoVisibility
+        {
+            get
+            {
+                return SelectedClient == null ? Visibility.Hidden : Visibility.Visible;
+            }
+        }
+        #region Карточка инфо
+        public Dictionary<ClientTypes, string> ClientTypeDictionary = new()
+        {
+            { ClientTypes.Regular, "Базовый" },
+            { ClientTypes.VIP, "VIP" },
+            { ClientTypes.Entity, "Для Бизнеса" }
+        };
+        public string ClientTypeDescription
+        {
+            get
+            {
+                return SelectedClient == null ? "" : ClientTypeDictionary[ClientType];
+            }
+        } 
+        #endregion
+
+
+        #endregion
+
         #region Выбранный тип клиентов
         public enum ClientTypes
         {
@@ -95,7 +128,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.Regular;
                     _skip = 0;
-                    _selectedTitleClient = new TitleClient();
+                    //_selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -110,7 +143,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.VIP;
                     _skip = 0;
-                    _selectedTitleClient = new TitleClient();
+                    //_selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -125,7 +158,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.Entity;
                     _skip = 0;
-                    _selectedTitleClient = new TitleClient();
+                    //_selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -138,10 +171,12 @@ namespace HomeWork15.ViewModels
             set { _client_type = value; } 
         }
         #endregion
+
         #region Поток
         private Thread _thread;
         private Task<ObservableCollection<TitleClient>> _task; 
         #endregion
+
         #region Поиск клиента
         private string _clientSearch;
         public string ClientSearch
@@ -168,6 +203,7 @@ namespace HomeWork15.ViewModels
             }
         }
         #endregion
+
         #region Выбранный клиент
         private TitleClient _selectedTitleClient;
         /// <summary>
@@ -180,13 +216,17 @@ namespace HomeWork15.ViewModels
             {
                 _selectedTitleClient = value;
                 OnPropertyChanged("SelectedClient");
+                OnPropertyChanged("GridInfoVisibility");
+                OnPropertyChanged("ClientTypeDescription");
             }
         }
+        private Client _selectedClient;
         public Client SelectedClient
         {
             get
             {
                 if (SelectedTitleClient.AccountNumber == null) return null;
+                if (_selectedClient != null) return _selectedClient;
                 IParser parser = new Parser();
                 return _client_type switch
                 {
@@ -196,8 +236,10 @@ namespace HomeWork15.ViewModels
                     _ => null,
                 };
             }
+            set => Set(ref _selectedClient, value);
         }
         #endregion
+
         #region Комманды
         #region CloseAppCommand
         public ICommand CloseAppCommand { get; }
@@ -237,6 +279,7 @@ namespace HomeWork15.ViewModels
 
 
         #endregion
+
         public MainWindowViewModel()
         {
                       
