@@ -105,9 +105,53 @@ namespace HomeWork15.ViewModels
             {
                 return SelectedClient == null ? "" : ClientTypeDictionary[ClientType];
             }
-        } 
+        }
         #endregion
 
+        #region Карточка Вклад
+        /// <summary>
+        /// Видимость карточки Вклад
+        /// </summary>
+        public Visibility GridDepositVisibility
+        {
+            get
+            {
+                if (SelectedClient != null)
+                {
+                    return SelectedClient.Deposit == 0 ? Visibility.Collapsed : Visibility.Visible;
+                }
+                return Visibility.Collapsed;
+            }
+        }
+        #endregion
+
+        #region Карточка Кредит
+        /// <summary>
+        /// Видимость карточки Кредит
+        /// </summary>
+        public Visibility GridCreditVisibility
+        {
+            get
+            {
+                if (SelectedClient != null)
+                {
+                    return SelectedClient.Credit == 0 ? Visibility.Collapsed : Visibility.Visible;
+                }
+                return Visibility.Collapsed;
+            }
+        }
+        public int GridColumnCredit
+        {
+            get
+            {
+                if (SelectedClient != null)
+                {
+                    return SelectedClient.Deposit == 0 ? 2 : 3;
+                }
+                return 3;
+            }
+        }
+        #endregion
 
         #endregion
 
@@ -218,6 +262,9 @@ namespace HomeWork15.ViewModels
                 OnPropertyChanged("SelectedClient");
                 OnPropertyChanged("GridInfoVisibility");
                 OnPropertyChanged("ClientTypeDescription");
+                OnPropertyChanged("GridDepositVisibility");
+                OnPropertyChanged("GridCreditVisibility");
+                OnPropertyChanged("GridColumnCredit");
             }
         }
         private Client _selectedClient;

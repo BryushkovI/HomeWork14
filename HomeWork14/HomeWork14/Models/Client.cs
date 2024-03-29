@@ -51,6 +51,18 @@ namespace HomeWork15.Models
         [JsonProperty("Deposit")]
         public double Deposit { get => _Deposit; set => _Deposit = value; }
 
+        protected DateTime _DateDepositBegin;
+        /// <summary>
+        /// Дата открытия вклада
+        /// </summary>
+        public DateTime DateDepositBegin { get => _DateDepositBegin; set => _DateDepositBegin = value; }
+
+        protected DateTime _DateDepositEnd;
+        /// <summary>
+        /// Дата погашения вклада
+        /// </summary>
+        public DateTime DateDepositEnd { get => _DateDepositEnd; set => _DateDepositEnd = value; }
+
         protected bool _Capitalization;
         [JsonProperty("Capitalization")]
         public bool Capitalization { get => _Capitalization; set => _Capitalization = value; }
@@ -61,6 +73,18 @@ namespace HomeWork15.Models
         /// </summary>
         [JsonProperty("Credit")]
         public double Credit { get => _Credit; set => _Credit = value; }
+
+        protected DateTime _DateCreditBegin;
+        /// <summary>
+        /// Дата начала кредита
+        /// </summary>
+        public DateTime DateCreditBegin { get => _DateCreditBegin; set => _DateCreditBegin = value; }
+
+        protected DateTime _DateCreditEnd;
+        /// <summary>
+        /// Дата погашения кредита
+        /// </summary>
+        public DateTime DateCreditEnd { get => _DateCreditEnd; set => _DateCreditEnd = value; }
 
         protected double _CreditPercent;
         /// <summary>
