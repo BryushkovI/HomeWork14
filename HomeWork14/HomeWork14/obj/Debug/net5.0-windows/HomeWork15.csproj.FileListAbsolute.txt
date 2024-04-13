@@ -7,7 +7,6 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\HomeW
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\HomeWork15.runtimeconfig.json
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\HomeWork15.runtimeconfig.dev.json
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\HomeWork15.dll
-C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\ref\HomeWork15.dll
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\HomeWork15.pdb
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\FontAwesome5.Net.dll
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\FontAwesome5.dll
@@ -18,10 +17,12 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeW
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.AssemblyInfoInputs.cache
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.AssemblyInfo.cs
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.csproj.CoreCompileInputs.cache
-C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.csproj.CopyComplete
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.dll
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\ref\HomeWork15.dll
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.pdb
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.genruntimeconfig.cache
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.csprojAssemblyReference.cache
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.csproj.AssemblyReference.cache
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.sourcelink.json
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\HomeWork15.csproj.Up2Date
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\refint\HomeWork15.dll

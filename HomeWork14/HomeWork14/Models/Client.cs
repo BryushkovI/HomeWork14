@@ -19,7 +19,7 @@ namespace HomeWork15.Models
         /// Дата создания УЗ клиента
         /// </summary>
         [JsonProperty("CreateDate")]
-        public DateTime CreateDate { get => _CreateDate; set => _CreateDate = value; }
+        protected DateTime CreateDate { get => _CreateDate; set => _CreateDate = value; }
         
         protected string _Name;
         /// <summary>

@@ -91,8 +91,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        </Window.Resources>
-        <Window.DataContext>
+    </Window.Resources>
+    <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Grid ShowGridLines="True">
@@ -178,6 +178,11 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
+                                        <StackPanel.InputBindings>
+                                            <MouseBinding Gesture="LeftDoubleClick" 
+                                                          Command="{Binding DataContext.SelectClient,
+                                                                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                                        </StackPanel.InputBindings>
                                         <TextBlock Text="{Binding Name}" FontSize="12"/>
                                         <TextBlock Text="{Binding AccountNumber}" FontSize="10" Foreground="Gray"/>
                                     </StackPanel>

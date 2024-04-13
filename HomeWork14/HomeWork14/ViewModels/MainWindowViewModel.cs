@@ -3,6 +3,7 @@ using HomeWork15.DataProvider;
 using HomeWork15.Models;
 using HomeWork15.Services;
 using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -89,7 +90,7 @@ namespace HomeWork15.ViewModels
         {
             get
             {
-                return SelectedClient == null ? Visibility.Hidden : Visibility.Visible;
+                return _selectedClient == null ? Visibility.Hidden : Visibility.Visible;
             }
         }
         #region Карточка инфо
@@ -103,7 +104,7 @@ namespace HomeWork15.ViewModels
         {
             get
             {
-                return SelectedClient == null ? "" : ClientTypeDictionary[ClientType];
+                return _selectedClient == null ? "" : ClientTypeDictionary[ClientType];
             }
         }
         #endregion
@@ -116,9 +117,9 @@ namespace HomeWork15.ViewModels
         {
             get
             {
-                if (SelectedClient != null)
+                if (_selectedClient != null)
                 {
-                    return SelectedClient.Deposit == 0 ? Visibility.Collapsed : Visibility.Visible;
+                    return _selectedClient.Deposit == 0 ? Visibility.Collapsed : Visibility.Visible;
                 }
                 return Visibility.Collapsed;
             }
@@ -133,9 +134,9 @@ namespace HomeWork15.ViewModels
         {
             get
             {
-                if (SelectedClient != null)
+                if (_selectedClient != null)
                 {
-                    return SelectedClient.Credit == 0 ? Visibility.Collapsed : Visibility.Visible;
+                    return _selectedClient.Credit == 0 ? Visibility.Collapsed : Visibility.Visible;
                 }
                 return Visibility.Collapsed;
             }
@@ -144,9 +145,9 @@ namespace HomeWork15.ViewModels
         {
             get
             {
-                if (SelectedClient != null)
+                if (_selectedClient != null)
                 {
-                    return SelectedClient.Deposit == 0 ? 2 : 3;
+                    return _selectedClient.Deposit == 0 ? 2 : 3;
                 }
                 return 3;
             }
@@ -165,14 +166,12 @@ namespace HomeWork15.ViewModels
         public bool IsRegular
         {
             get { return ClientType == ClientTypes.Regular; }
-            //set { ClientType = value ? ClientTypes.Regular : ClientType; }
             set
             {
                 if (value)
                 {
                     ClientType = ClientTypes.Regular;
                     _skip = 0;
-                    //_selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -180,14 +179,12 @@ namespace HomeWork15.ViewModels
         public bool IsVIP
         {
             get { return ClientType == ClientTypes.VIP; }
-            //set { ClientType = value ? ClientTypes.VIP : ClientType; }
             set
             {
                 if (value)
                 {
                     ClientType = ClientTypes.VIP;
                     _skip = 0;
-                    //_selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -195,14 +192,12 @@ namespace HomeWork15.ViewModels
         public bool IsEntity
         {
             get { return ClientType == ClientTypes.Entity; }
-            //set { ClientType = value ? ClientTypes.Entity : ClientType; }
             set
             {
                 if (value)
                 {
                     ClientType = ClientTypes.Entity;
                     _skip = 0;
-                    //_selectedTitleClient = new TitleClient();
                     OnOpenDBExecuted(null);
                 }
             }
@@ -258,33 +253,31 @@ namespace HomeWork15.ViewModels
             get => _selectedTitleClient;
             set
             {
+
                 _selectedTitleClient = value;
-                OnPropertyChanged("SelectedClient");
-                OnPropertyChanged("GridInfoVisibility");
-                OnPropertyChanged("ClientTypeDescription");
-                OnPropertyChanged("GridDepositVisibility");
-                OnPropertyChanged("GridCreditVisibility");
-                OnPropertyChanged("GridColumnCredit");
+                
+                
             }
         }
+
         private Client _selectedClient;
         public Client SelectedClient
         {
-            get
-            {
-                if (SelectedTitleClient.AccountNumber == null) return null;
-                if (_selectedClient != null) return _selectedClient;
-                IParser parser = new Parser();
-                return _client_type switch
-                {
-                    ClientTypes.Regular => parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).Result,
-                    ClientTypes.VIP => parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).Result,
-                    ClientTypes.Entity => parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).Result,
-                    _ => null,
-                };
-            }
-            set => Set(ref _selectedClient, value);
+            get => _selectedClient;
+            set => Set(ref _selectedClient, value );
         }
+        private async Task<Client> OnOpenSelectedClientAsync()
+        {
+            IParser parser = new Parser();
+            return _client_type switch
+            {
+                ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.VIP => await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.Entity => await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                _ => null,
+            };
+        }
+
         #endregion
 
         #region Комманды
@@ -297,8 +290,29 @@ namespace HomeWork15.ViewModels
 
         private bool CanCloseAppCommandExecute(object p) => true;
         #endregion
-        public ICommand GetData { get; }
+        public ICommand SelectClient { get; }
 
+        private async void OnSelectClient(object p)
+        {
+            if (_selectedClient != null)
+            {
+                if (_selectedTitleClient.AccountNumber != _selectedClient.AccountNumber.ToString())
+                {
+                    _selectedClient = await OnOpenSelectedClientAsync();
+                }
+            }
+            else
+            {
+                _selectedClient = await OnOpenSelectedClientAsync();
+            }
+            OnPropertyChanged("SelectedClient");
+            OnPropertyChanged("GridInfoVisibility");
+            OnPropertyChanged("ClientTypeDescription");
+            OnPropertyChanged("GridDepositVisibility");
+            OnPropertyChanged("GridCreditVisibility");
+            OnPropertyChanged("GridColumnCredit");
+        }
+        private bool CanSelectClient(object p) => SelectedTitleClient.AccountNumber == null ? false : true;
 
         #region OpenDB
         public ICommand OpenDB { get; }
@@ -307,8 +321,6 @@ namespace HomeWork15.ViewModels
             ProgressBarVisibility = Visibility.Visible;
             Status = statusPairs[ReadyStatus.Busy];
             IParser parser = new Parser();
-
-            //Clients = await parser.DeserializeClientsAsync<TitleClient>(@"Clients.json");
 
             Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType,_skip,10);
             if (Clients.Count % 10 == 0)
@@ -329,9 +341,9 @@ namespace HomeWork15.ViewModels
 
         public MainWindowViewModel()
         {
-                      
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted, CanCloseAppCommandExecute);
             OpenDB = new LambdaCommand(OnOpenDBExecuted, CanOpenDBExecute);
+            SelectClient = new LambdaCommand(OnSelectClient, CanSelectClient);
         }
     }
 }

@@ -5,21 +5,33 @@
       "FontAwesome5/2.1.11": {
         "type": "package",
         "compile": {
-          "lib/net5.0-windows7.0/FontAwesome5.Net.dll": {},
-          "lib/net5.0-windows7.0/FontAwesome5.dll": {}
+          "lib/net5.0-windows7.0/FontAwesome5.Net.dll": {
+            "related": ".xml"
+          },
+          "lib/net5.0-windows7.0/FontAwesome5.dll": {
+            "related": ".Net.xml;.xml"
+          }
         },
         "runtime": {
-          "lib/net5.0-windows7.0/FontAwesome5.Net.dll": {},
-          "lib/net5.0-windows7.0/FontAwesome5.dll": {}
+          "lib/net5.0-windows7.0/FontAwesome5.Net.dll": {
+            "related": ".xml"
+          },
+          "lib/net5.0-windows7.0/FontAwesome5.dll": {
+            "related": ".Net.xml;.xml"
+          }
         }
       },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
         }
       }
     }
@@ -131,7 +143,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0-windows7.0"
+        "net5.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -147,6 +159,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -168,10 +185,17 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.17, 5.0.17]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -180,7 +204,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
