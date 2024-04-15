@@ -93,77 +93,6 @@ namespace HomeWork15.ViewModels
             set => _clientInfo = value;
         }
 
-        /// <summary>
-        /// Видимость карточек с информацией о клиенте
-        /// </summary>
-        public Visibility GridInfoVisibility
-        {
-            get
-            {
-                return _selectedClient == null ? Visibility.Hidden : Visibility.Visible;
-            }
-        }
-        #region Карточка инфо
-        public Dictionary<ClientTypes, string> ClientTypeDictionary = new()
-        {
-            { ClientTypes.Regular, "Базовый" },
-            { ClientTypes.VIP, "VIP" },
-            { ClientTypes.Entity, "Для Бизнеса" }
-        };
-        public string ClientTypeDescription
-        {
-            get
-            {
-                return _selectedClient == null ? "" : ClientTypeDictionary[ClientType];
-            }
-        }
-        #endregion
-
-        #region Карточка Вклад
-        /// <summary>
-        /// Видимость карточки Вклад
-        /// </summary>
-        public Visibility GridDepositVisibility
-        {
-            get
-            {
-                if (_selectedClient != null)
-                {
-                    return _selectedClient.Deposit == 0 ? Visibility.Collapsed : Visibility.Visible;
-                }
-                return Visibility.Collapsed;
-            }
-        }
-        #endregion
-
-        #region Карточка Кредит
-        /// <summary>
-        /// Видимость карточки Кредит
-        /// </summary>
-        public Visibility GridCreditVisibility
-        {
-            get
-            {
-                if (_selectedClient != null)
-                {
-                    return _selectedClient.Credit == 0 ? Visibility.Collapsed : Visibility.Visible;
-                }
-                return Visibility.Collapsed;
-            }
-        }
-        public int GridColumnCredit
-        {
-            get
-            {
-                if (_selectedClient != null)
-                {
-                    return _selectedClient.Deposit == 0 ? 2 : 3;
-                }
-                return 3;
-            }
-        }
-        #endregion
-
         #endregion
 
         #region Выбранный тип клиентов
@@ -349,11 +278,6 @@ namespace HomeWork15.ViewModels
             _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
             OnPropertyChanged("ClientInfo");
-            //OnPropertyChanged("GridInfoVisibility");
-            //OnPropertyChanged("ClientTypeDescription");
-            //OnPropertyChanged("GridDepositVisibility");
-            //OnPropertyChanged("GridCreditVisibility");
-            //OnPropertyChanged("GridColumnCredit");
         }
         private bool CanSelectClient(object p) => _selectedTitleClient.AccountNumber != null; 
         #endregion
