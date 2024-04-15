@@ -396,6 +396,44 @@ namespace HomeWork15.ViewModels
         bool CanAddClientsAsyncExecute(object p) => _clients?.Count % 10 == 0;
         #endregion
 
+        #region CreateNewClient
+        public ICommand AddClient { get; }
+        void OnCreateNewClientExecuted(object p)
+        {
+            _workSpaceVM = new AddClientViewModel();
+            OnPropertyChanged("WorkSpaceVM");
+        }
+        bool CanCreateNewClientExecute(object p) => true;
+        #endregion
+
+        #region DeleteSelectedClient
+        public IAsyncCommand DeleteClient { get; }
+        async Task OnDeleteSelectedClientAsyncExecuted(object p)
+        {
+
+        }
+        bool CanDeleteSelectedClientAsyncExecute(object p) => _selectedClient != null;
+        #endregion
+
+        #region EditSelectedClient
+        public ICommand EditClient { get; }
+        void OnEditSelectedClientExecute(object p)
+        {
+            _workSpaceVM = new EditClientViewModel();
+            OnPropertyChanged("WorkSpaceVM");
+        }
+        bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
+        #endregion
+
+        #endregion
+
+        #region Рабочая область
+        ViewModel _workSpaceVM;
+        public ViewModel WorkSpaceVM
+        {
+            get => _workSpaceVM;
+            set => _workSpaceVM = value;
+        }
         #endregion
 
         public MainWindowViewModel()
@@ -404,6 +442,9 @@ namespace HomeWork15.ViewModels
             OpenDB = new LambdaCommandAsync(OnOpenDBExecuted, CanOpenDBExecute);
             SelectClient = new LambdaCommandAsync(OnSelectClientExecuted, CanSelectClient);
             AddClientsAsync = new LambdaCommandAsync(OnAddClientsAsyncExecuted, CanAddClientsAsyncExecute);
+            AddClient = new LambdaCommand(OnCreateNewClientExecuted, CanCreateNewClientExecute);
+            EditClient = new LambdaCommand(OnEditSelectedClientExecute, CanEditSelectedClientExecute);
+            DeleteClient = new LambdaCommandAsync(OnDeleteSelectedClientAsyncExecuted, CanDeleteSelectedClientAsyncExecute);
         }
     }
 }

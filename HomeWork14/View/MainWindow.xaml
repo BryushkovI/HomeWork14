@@ -6,6 +6,7 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:HomeWork15"
         xmlns:vm="clr-namespace:HomeWork15.ViewModels"
+        xmlns:views="clr-namespace:HomeWork15.View"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800">
     <Window.Resources>
@@ -91,6 +92,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <DataTemplate x:Name="AddClientView" DataType="{x:Type vm:AddClientViewModel}">
+            <views:AddClientView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="EditClientView" DataType="{x:Type vm:EditClientViewModel}">
+            <views:EditClientView DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -106,15 +113,9 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="Выбрать отдел">
-                        <RadioButton Content="Физические лица" GroupName="Type" IsChecked="{Binding IsRegular}">
-
-                        </RadioButton>
-                        <RadioButton Content="VIP" GroupName="Type" IsChecked="{Binding IsVIP}">
-
-                        </RadioButton>
-                        <RadioButton Content="Юридические лица" GroupName="Type" IsChecked="{Binding IsEntity}">
-
-                        </RadioButton>
+                        <RadioButton Content="Физические лица" GroupName="Type" IsChecked="{Binding IsRegular}"/>
+                        <RadioButton Content="VIP" GroupName="Type" IsChecked="{Binding IsVIP}"/>
+                        <RadioButton Content="Юридические лица" GroupName="Type" IsChecked="{Binding IsEntity}"/>
                     </MenuItem>
                     <MenuItem Header="Сохранить" FontFamily="Century">
 
@@ -122,7 +123,21 @@
                     <MenuItem Header="Выход" Command="{Binding CloseAppCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Клиент">
-
+                    <MenuItem Header="Создать нового клиента" Command="{Binding AddClient}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Regular_PlusSquare"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Удалить выбранного клиента" Command="{Binding DeleteClient}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Regular_MinusSquare"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Редактировать выбранного клиента" Command="{Binding EditClient}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Solid_PencilAlt"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom" FontFamily="Century">
@@ -199,7 +214,7 @@
                                 Visibility="{Binding AddClientsButtonVisibility}">
                             <TextBlock Text="Показать ещё"/>
                         </Button>
-                        
+
                     </Grid>
 
                 </StackPanel>
@@ -214,13 +229,13 @@
                                 CornerRadius="10" Grid.Column="0" Margin="3">
                         <StackPanel x:Name="SPInfo" Orientation="Vertical">
                             <TextBlock Text="{Binding SelectedClient.Name}" 
-                                   FontSize="12" Margin="5" FontFamily="Century"/>
+                                   FontSize="12" Margin="5,2" FontFamily="Century"/>
                             <TextBlock Text="{Binding SelectedClient.AccountNumber}"
-                                   FontSize="10" Foreground="Gray" Margin="2"/>
+                                   FontSize="10" Foreground="Gray" Margin="5,2"/>
                             <TextBlock Text="Тариф:" FontFamily="Century"
-                                       Margin="2"/>
+                                       Margin="5,2"/>
                             <TextBlock Text="{Binding ClientTypeDescription}" FontSize="14" FontFamily="Century"
-                                       Margin="2"/>
+                                       Margin="5,2"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="LightGray" BorderThickness="1"
@@ -228,9 +243,9 @@
                         <StackPanel x:Name="SPBankAccount" Orientation="Vertical"
                                     Grid.Column="1">
                             <TextBlock Text="Средства" FontSize="12" 
-                                       Margin="5" FontFamily="Century"/>
+                                       Margin="5,2" FontFamily="Century"/>
                             <TextBlock Text="{Binding SelectedClient.BankAccount}" FontSize="12" 
-                                       Margin="2" FontFamily="Century"/>
+                                       Margin="5,2" FontFamily="Century"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="LightGray" BorderThickness="1"
@@ -239,10 +254,10 @@
                         <StackPanel x:Name="SPDeposit" Orientation="Vertical"
                                     Grid.Column="2">
                             <TextBlock Text="Вклад" FontSize="12" 
-                                       Margin="5" FontFamily="Century"/>
+                                       Margin="5,2" FontFamily="Century"/>
                             <TextBlock Text="{Binding SelectedClient.Deposit}" FontSize="12" 
-                                       Margin="2" FontFamily="Century"/>
-                            <StackPanel Orientation="Horizontal" Margin="2">
+                                       Margin="5,2" FontFamily="Century"/>
+                            <StackPanel Orientation="Horizontal" Margin="5,2">
                                 <TextBlock Text="Капитализация" FontFamily="Century"/>
                                 <CheckBox x:Name="CHKCapital"
                                           IsChecked="{Binding SelectedClient.Capitalization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -250,7 +265,7 @@
                                           HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="До:" Margin="2" FontFamily="Century"/>
+                                <TextBlock Text="До:" Margin="5,2" FontFamily="Century"/>
                                 <TextBlock Text="{Binding SelectedClient.DateDepositEnd.Date}" />
                             </StackPanel>
                         </StackPanel>
@@ -261,16 +276,18 @@
                         <StackPanel x:Name="SPCredit" Orientation="Vertical"
                                     Grid.Column="3">
                             <TextBlock Text="Кредит" FontSize="12" 
-                                       Margin="5" FontFamily="Century"/>
+                                       Margin="5,2" FontFamily="Century"/>
                             <TextBlock Text="{Binding SelectedClient.Credit}" FontSize="12" 
-                                       Margin="2" FontFamily="Century"/>
+                                       Margin="5,2" FontFamily="Century"/>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="До:" Margin="2" FontFamily="Century"/>
+                                <TextBlock Text="До:" Margin="5,2" FontFamily="Century"/>
                                 <TextBlock Text="{Binding SelectedClient.DateCreditEnd.Date}" />
                             </StackPanel>
                         </StackPanel>
                     </Border>
                 </Grid>
+                <ContentControl Grid.Row="2" Grid.Column="2"
+                                Content="{Binding WorkSpaceVM}"/>
             </Grid>
         </DockPanel>
     </Grid>

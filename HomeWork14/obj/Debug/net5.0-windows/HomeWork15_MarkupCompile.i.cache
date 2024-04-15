@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\App.xaml
-1-487866684
+3111748114
 
-15-45335254
+19449259761
 196-909031695
-View\MainWindow.xaml;
+View\AddClientView.xaml;View\EditClientView.xaml;View\MainWindow.xaml;
 
 True
 
