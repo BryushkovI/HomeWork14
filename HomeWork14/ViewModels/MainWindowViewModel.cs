@@ -1,4 +1,5 @@
 ﻿using HomeWork15.Command;
+using HomeWork15.Command.Base;
 using HomeWork15.DataProvider;
 using HomeWork15.Models;
 using HomeWork15.Services;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace HomeWork15.ViewModels
 {
@@ -172,7 +174,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.Regular;
                     _skip = 0;
-                    OnOpenDBExecuted(null);
+                    //OnOpenDBExecuted(null).ConfigureAwait(false);
                 }
             }
         }
@@ -185,7 +187,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.VIP;
                     _skip = 0;
-                    OnOpenDBExecuted(null);
+                    //OnOpenDBExecuted(null).ConfigureAwait(false);
                 }
             }
         }
@@ -198,7 +200,7 @@ namespace HomeWork15.ViewModels
                 {
                     ClientType = ClientTypes.Entity;
                     _skip = 0;
-                    OnOpenDBExecuted(null);
+                    //OnOpenDBExecuted(null).ConfigureAwait(false);
                 }
             }
         }
@@ -207,7 +209,12 @@ namespace HomeWork15.ViewModels
         public ClientTypes ClientType
         {
             get => _client_type;
-            set { _client_type = value; } 
+            set
+            {
+                _client_type = value;
+                _clients?.Clear();
+                
+            } 
         }
         #endregion
 
@@ -226,6 +233,31 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Список клиентов
+
+        public int ListRowSpan
+        {
+            get
+            {
+                if (_clients != null)
+                {
+                    return _clients.Count % 10 == 0 ? 1 : 2;
+                }
+                return 2;
+            }
+        }
+
+        public Visibility AddClientsButtonVisibility
+        {
+            get
+            {
+                if (_clients != null)
+                {
+                    return _clients.Count % 10 == 0 ? Visibility.Visible : Visibility.Collapsed;
+                }
+                return Visibility.Collapsed;
+            }
+        }
+
         private int _skip = 0;
         private ObservableCollection<TitleClient> _clients;
         public ObservableCollection<TitleClient> Clients
@@ -271,9 +303,9 @@ namespace HomeWork15.ViewModels
             IParser parser = new Parser();
             return _client_type switch
             {
-                ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                ClientTypes.VIP => await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                ClientTypes.Entity => await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(SelectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.VIP => await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.Entity => await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
                 _ => null,
             };
         }
@@ -290,9 +322,10 @@ namespace HomeWork15.ViewModels
 
         private bool CanCloseAppCommandExecute(object p) => true;
         #endregion
-        public ICommand SelectClient { get; }
 
-        private async void OnSelectClient(object p)
+        #region Выбрать клиента
+        public ICommand SelectClient { get; }
+        private async Task OnSelectClientExecuted(object p)
         {
             if (_selectedClient != null)
             {
@@ -312,38 +345,65 @@ namespace HomeWork15.ViewModels
             OnPropertyChanged("GridCreditVisibility");
             OnPropertyChanged("GridColumnCredit");
         }
-        private bool CanSelectClient(object p) => SelectedTitleClient.AccountNumber == null ? false : true;
+        private bool CanSelectClient(object p) => _selectedTitleClient.AccountNumber != null; 
+        #endregion
 
         #region OpenDB
         public ICommand OpenDB { get; }
-        private async void OnOpenDBExecuted(object p)
+        private async Task OnOpenDBExecuted(object p)
         {
             ProgressBarVisibility = Visibility.Visible;
             Status = statusPairs[ReadyStatus.Busy];
             IParser parser = new Parser();
-
-            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json",(int)ClientType,_skip,10);
-            if (Clients.Count % 10 == 0)
+            if (_clients?.Count % 10 != 0)
             {
-                Clients.Add(new TitleClient("","далее"));
+                _skip = 0;
             }
+            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json", (int)ClientType, _skip, 10);
+            OnPropertyChanged("ListRowSpan");
+            OnPropertyChanged("AddClientsButtonVisibility");
             _skip += 10;
-
             Status = statusPairs[ReadyStatus.Ready];
             ProgressBarVisibility = Visibility.Hidden;
         }
 
-        private bool CanOpenDBExecute(object p) => true; 
+        private bool CanOpenDBExecute(object p) => true;
         #endregion
 
+        #region AddClients
+        public IAsyncCommand AddClientsAsync { get; }
+        async Task OnAddClientsAsyncExecuted(object p)
+        {
+            ProgressBarVisibility = Visibility.Visible;
+            Status = statusPairs[ReadyStatus.Busy];
+            IParser parser = new Parser();
+            ObservableCollection<TitleClient> newTitleClient = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json", (int)ClientType, _skip, 10);
+            foreach (var item in newTitleClient)
+            {
+                Clients.Add(item);
+            }
+
+            //if (Clients.Count % 10 == 0)
+            //{
+            //    Clients.Add(new TitleClient("", "далее"));
+            //}
+            _skip += 10;
+            OnPropertyChanged("ListRowSpan");
+            OnPropertyChanged("AddClientsButtonVisibility");
+            Status = statusPairs[ReadyStatus.Ready];
+            ProgressBarVisibility = Visibility.Hidden;
+        }
+        bool CanAddClientsAsyncExecute(object p) => _clients?.Count % 10 == 0;
+        #endregion
 
         #endregion
 
         public MainWindowViewModel()
         {
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted, CanCloseAppCommandExecute);
-            OpenDB = new LambdaCommand(OnOpenDBExecuted, CanOpenDBExecute);
-            SelectClient = new LambdaCommand(OnSelectClient, CanSelectClient);
+            OpenDB = new LambdaCommandAsync(OnOpenDBExecuted, CanOpenDBExecute);
+            SelectClient = new LambdaCommandAsync(OnSelectClientExecuted, CanSelectClient);
+            AddClientsAsync = new LambdaCommandAsync(OnAddClientsAsyncExecuted, CanAddClientsAsyncExecute);
         }
     }
 }

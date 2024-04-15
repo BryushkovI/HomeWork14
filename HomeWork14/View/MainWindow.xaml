@@ -162,6 +162,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="32"/>
                             <RowDefinition x:Name="ListRow" Height="*"/>
+                            <RowDefinition x:Name="AddButton" Height="20"/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Поиск" VerticalAlignment="Top" FontFamily="Century"
                                    Grid.Column="0" Grid.Row="0" Height="16"/>
@@ -171,6 +172,7 @@
                              FontFamily="Century"
                              Text="{Binding ClientSearch, UpdateSourceTrigger=PropertyChanged}" />
                         <ListView Grid.Row="1"
+                                  Grid.RowSpan="{Binding ListRowSpan}"
                                   ItemsSource="{Binding Clients}"
                                   SelectedItem="{Binding SelectedTitleClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   Height="{Binding ElementName=ListRow, Path=Height}"
@@ -182,6 +184,9 @@
                                             <MouseBinding Gesture="LeftDoubleClick" 
                                                           Command="{Binding DataContext.SelectClient,
                                                                             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                                            <!--<MouseBinding Gesture="LeftClick"
+                                                          Command="{Binding DataContext.OpenDB,
+                                                                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>-->
                                         </StackPanel.InputBindings>
                                         <TextBlock Text="{Binding Name}" FontSize="12"/>
                                         <TextBlock Text="{Binding AccountNumber}" FontSize="10" Foreground="Gray"/>
@@ -190,6 +195,11 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Button Grid.Row="2" Command="{Binding AddClientsAsync}"
+                                Visibility="{Binding AddClientsButtonVisibility}">
+                            <TextBlock Text="Показать ещё"/>
+                        </Button>
+                        
                     </Grid>
 
                 </StackPanel>
