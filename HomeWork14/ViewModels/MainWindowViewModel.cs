@@ -85,6 +85,14 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Карточки с инфо о клиенте
+
+        ViewModel _clientInfo;
+        public ViewModel ClientInfo
+        {
+            get => _clientInfo;
+            set => _clientInfo = value;
+        }
+
         /// <summary>
         /// Видимость карточек с информацией о клиенте
         /// </summary>
@@ -338,12 +346,14 @@ namespace HomeWork15.ViewModels
             {
                 _selectedClient = await OnOpenSelectedClientAsync();
             }
+            _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
-            OnPropertyChanged("GridInfoVisibility");
-            OnPropertyChanged("ClientTypeDescription");
-            OnPropertyChanged("GridDepositVisibility");
-            OnPropertyChanged("GridCreditVisibility");
-            OnPropertyChanged("GridColumnCredit");
+            OnPropertyChanged("ClientInfo");
+            //OnPropertyChanged("GridInfoVisibility");
+            //OnPropertyChanged("ClientTypeDescription");
+            //OnPropertyChanged("GridDepositVisibility");
+            //OnPropertyChanged("GridCreditVisibility");
+            //OnPropertyChanged("GridColumnCredit");
         }
         private bool CanSelectClient(object p) => _selectedTitleClient.AccountNumber != null; 
         #endregion

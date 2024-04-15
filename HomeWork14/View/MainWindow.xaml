@@ -98,6 +98,9 @@
         <DataTemplate x:Name="EditClientView" DataType="{x:Type vm:EditClientViewModel}">
             <views:EditClientView DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="ClientInfoView" DataType="{x:Type vm:ClientInfoViewModel}">
+            <views:ClientInfoView DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -218,7 +221,7 @@
                     </Grid>
 
                 </StackPanel>
-                <Grid x:Name="GridInfo" Grid.Row="0" Grid.Column="2" Visibility="{Binding GridInfoVisibility}">
+                <!--<Grid x:Name="GridInfo" Grid.Row="0" Grid.Column="2" Visibility="{Binding GridInfoVisibility}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -285,7 +288,9 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
-                </Grid>
+                </Grid>-->
+                <ContentControl Grid.Row="0" Grid.Column="2"
+                                Content="{Binding ClientInfo}"/>
                 <ContentControl Grid.Row="2" Grid.Column="2"
                                 Content="{Binding WorkSpaceVM}"/>
             </Grid>

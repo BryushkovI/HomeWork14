@@ -30,3 +30,5 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\AddClientView.baml
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\EditClientView.g.cs
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\EditClientView.baml
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\ClientInfoView.g.cs
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\ClientInfoView.baml
