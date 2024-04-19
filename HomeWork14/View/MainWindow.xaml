@@ -202,9 +202,6 @@
                                             <MouseBinding Gesture="LeftDoubleClick" 
                                                           Command="{Binding DataContext.SelectClient,
                                                                             RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
-                                            <!--<MouseBinding Gesture="LeftClick"
-                                                          Command="{Binding DataContext.OpenDB,
-                                                                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>-->
                                         </StackPanel.InputBindings>
                                         <TextBlock Text="{Binding Name}" FontSize="12"/>
                                         <TextBlock Text="{Binding AccountNumber}" FontSize="10" Foreground="Gray"/>

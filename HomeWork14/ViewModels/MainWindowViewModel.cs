@@ -260,7 +260,7 @@ namespace HomeWork15.ViewModels
         private bool CanCloseAppCommandExecute(object p) => true;
         #endregion
 
-        #region Выбрать клиента
+        #region SelectClient
         public ICommand SelectClient { get; }
         private async Task OnSelectClientExecuted(object p)
         {
@@ -334,8 +334,8 @@ namespace HomeWork15.ViewModels
         public ICommand AddClient { get; }
         void OnCreateNewClientExecuted(object p)
         {
-            _workSpaceVM = new AddClientViewModel();
-            OnPropertyChanged("WorkSpaceVM");
+            _clientInfo = new AddClientViewModel();
+            OnPropertyChanged("ClientInfo");
         }
         bool CanCreateNewClientExecute(object p) => true;
         #endregion
