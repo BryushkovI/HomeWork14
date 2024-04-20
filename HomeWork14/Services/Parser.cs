@@ -37,7 +37,7 @@ namespace HomeWork15.Services
             var parsed = await JArray.LoadAsync(new JsonTextReader(new StreamReader(fs)));
             fs.Close();
             var clientsJToken = parsed.SelectTokens($"[ ?( @.AccountType == {AccountType} ) ]").Skip(Skip).Take(Take).ToList();
-            ObservableCollection<T> ClientsCollection = new ObservableCollection<T>();
+            ObservableCollection<T> ClientsCollection = new();
             foreach (JToken clientToken in clientsJToken)
             { 
                 ClientsCollection.Add(clientToken.ToObject<T>());

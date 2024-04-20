@@ -10,6 +10,12 @@ namespace HomeWork15.Models
 {
     class Entity : Client
     {
+        public Entity(string name, double bankAccout = 0) : base(name, bankAccout)
+        {
+            Random rnd = new();
+            AccountNumber = rnd.Next(30000000, 39999999);
+        }
+
         public override double CreditPercent
         {
             get { return _CreditPercent = _KeyRate + 0.5; }

@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\bin\\Debug\\net5.0-windows\\Clients.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HomeWork14\\bin\\Debug\\net5.0-windows\\Clients.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\services\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\services\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\addclientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\addclientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -39,19 +43,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Clients.json",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\bin\\Debug\\net5.0-windows\\Clients.json",
+              "RelativeDocumentMoniker": "HomeWork14\\bin\\Debug\\net5.0-windows\\Clients.json",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\bin\\Debug\\net5.0-windows\\Clients.json*",
+              "RelativeToolTip": "HomeWork14\\bin\\Debug\\net5.0-windows\\Clients.json*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAA0BgAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-20T13:16:21.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Parser.cs",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\Parser.cs",
               "RelativeDocumentMoniker": "HomeWork14\\Services\\Parser.cs",
               "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\Parser.cs",
               "RelativeToolTip": "HomeWork14\\Services\\Parser.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAwwEIAAAAFAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAswCcAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-19T06:32:20.383Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
@@ -70,14 +87,14 @@
               "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\AddClientViewModel.cs",
               "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddClientViewModel.cs",
               "RelativeToolTip": "HomeWork14\\ViewModels\\AddClientViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAA7AAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAowFkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T20:52:11.455Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AddClientView.xaml",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\AddClientView.xaml",
               "RelativeDocumentMoniker": "HomeWork14\\View\\AddClientView.xaml",
@@ -88,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\MainWindow.xaml",
               "RelativeDocumentMoniker": "HomeWork14\\View\\MainWindow.xaml",

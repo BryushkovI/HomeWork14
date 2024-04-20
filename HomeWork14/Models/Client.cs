@@ -108,9 +108,10 @@ namespace HomeWork15.Models
         [JsonProperty("BankAccount")]
         public double BankAccount { get => _BankAccount; set => _BankAccount = value; }
         
-        public Client()
+        public Client(string name, double bankAccout = 0)
         {
-            
+            Name = name;
+            BankAccount = bankAccout;
         }
 
     }

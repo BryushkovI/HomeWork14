@@ -9,6 +9,11 @@ namespace HomeWork15.Models
 {
     class Regular : Client
     {
+        public Regular(string name, double bankAccout = 0) : base(name, bankAccout)
+        {
+            Random rnd = new();
+            AccountNumber = rnd.Next(10000000, 19999999);
+        }
 
         public override double CreditPercent
         {

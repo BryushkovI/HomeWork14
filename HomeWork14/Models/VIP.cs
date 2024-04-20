@@ -9,6 +9,12 @@ namespace HomeWork15.Models
 {
     class VIP : Client
     {
+        public VIP(string name, double bankAccout = 0) : base(name, bankAccout)
+        {
+            Random rnd = new();
+            AccountNumber = rnd.Next(20000000, 29999999);
+        }
+
         public override double CreditPercent
         {
             get { return _CreditPercent = _KeyRate + 1; }

@@ -76,26 +76,21 @@ namespace HomeWork15.ViewModels
 
         async Task OnCreateClientAsyncExecuted(object p)
         {
+            IParser parser = new Parser();
+            Client client;
             if (ClientType.ClientType == typeof(Regular))
             {
-                Client client = new Regular()
-                {
-                    Name = _clientName,
-                    AccountNumber = 12312341,
-                    BankAccount = _bankAccount,
-
-                };
-                IParser parser = new Parser();
-                await parser.SerializeClientAsync(@"Clients.json", client);
+                 client = new Regular(_clientName,_bankAccount);
             }
             else if(ClientType.ClientType == typeof(VIP))
             {
-
+                client = new VIP(_clientName, _bankAccount);
             }
-            else if (ClientType.ClientType == typeof(Entity))
+            else
             {
-
+                client = new Entity(_clientName, _bankAccount);
             }
+            await parser.SerializeClientAsync(@"Clients.json", client);
         }
         bool CanCreateClientAsyncExecute(object p) => _clientType.ClientType != null && _clientName != null;
 
