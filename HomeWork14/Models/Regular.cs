@@ -22,6 +22,6 @@ namespace HomeWork15.Models
             set => _DepositPercent = value;
         }
 
-        
+        public override int AccountType { get => 0; }
     }
 }

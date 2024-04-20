@@ -20,5 +20,6 @@ namespace HomeWork15.Models
             get { return _DepositPercent = _KeyRate - 1; }
             set => _DepositPercent = value;
         }
+        public override int AccountType { get => 1; }
     }
 }

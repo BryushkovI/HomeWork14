@@ -9,28 +9,28 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using HomeWork15.Models;
 
 namespace HomeWork15.Services
 {
     class Parser : IParser
     {
-        public ObservableCollection<T> DeserializeClients<T>(string Path)
+        public async Task<ObservableCollection<T>> DeserializeAllClientsAsync<T>(string path)
         {
+            ObservableCollection<T> clientsCollection = new();
+            FileStream fs = new(path, FileMode.OpenOrCreate, FileAccess.Read);
+            var parsed = await JArray.LoadAsync(new JsonTextReader(new StreamReader(fs)));
+            fs.Close();
+            var clientsJToken = parsed.ToList();
             
-            var ClientsList = System.Text.Json.JsonSerializer.Deserialize<List<T>>(File.ReadAllText(Path));
-            ObservableCollection<T> ClientsCollection = new(ClientsList);
-            return ClientsCollection;
+            foreach (JToken item in clientsJToken)
+            {
+                clientsCollection.Add(item.ToObject<T>());
+            }
+            return clientsCollection;
         }
 
-        public async Task<ObservableCollection<T>> DeserializeClientsAsync<T>(string Path)
-        {
-            FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
-            var ClientsList = await System.Text.Json.JsonSerializer.DeserializeAsync<List<T>>(fs).ConfigureAwait(false);
-            ObservableCollection<T> ClientsCollection = new(ClientsList);
-            return ClientsCollection;
-        }
-
-        public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip, int Take)
+        public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip = 0, int Take = int.MaxValue )
         {
             FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
 
@@ -52,16 +52,25 @@ namespace HomeWork15.Services
             var item = parsed.SelectToken($"[ ?( @.AccountNumber == {AccountNumber} ) ]").ToObject<T>();
             return item;
         }
+        public async Task SerializeClientAsync(string path, Client client)
+        {
+            ObservableCollection<Client> clients = await DeserializeAllClientsAsync<Client>(path);
+            FileStream fs = new(path, FileMode.Create);
+            clients.Add(client);
+            await System.Text.Json.JsonSerializer.SerializeAsync(fs, clients);
+            fs.Close();
+            
+        }
     }
 
     internal interface IParser
-    {
-        public ObservableCollection<T> DeserializeClients<T>(string Path);
-
-        public Task<ObservableCollection<T>> DeserializeClientsAsync<T>(string Path);
+    {  
+        public Task<ObservableCollection<T>> DeserializeAllClientsAsync<T>(string path);
 
         public Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip, int Take);
 
         public Task<T> DeserializeClientLinqAsync<T>(string Path, int AccountNumber);
+
+        public Task SerializeClientAsync(string path, Client client);
     }
 }

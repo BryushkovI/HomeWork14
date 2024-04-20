@@ -1,6 +1,7 @@
 ﻿using HomeWork15.Command;
 using HomeWork15.Command.Base;
 using HomeWork15.Models;
+using HomeWork15.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.CodeDom;
@@ -77,7 +78,15 @@ namespace HomeWork15.ViewModels
         {
             if (ClientType.ClientType == typeof(Regular))
             {
+                Client client = new Regular()
+                {
+                    Name = _clientName,
+                    AccountNumber = 12312341,
+                    BankAccount = _bankAccount,
 
+                };
+                IParser parser = new Parser();
+                await parser.SerializeClientAsync(@"Clients.json", client);
             }
             else if(ClientType.ClientType == typeof(VIP))
             {

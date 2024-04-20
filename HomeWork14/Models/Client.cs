@@ -11,9 +11,14 @@ namespace HomeWork15.Models
     /// <summary>
     /// Клинет
     /// </summary>
-    abstract class Client : INotifyPropertyChanged
+    class Client : INotifyPropertyChanged
     {
-        
+        /// <summary>
+        /// Тип клиента
+        /// </summary>
+        [JsonProperty("AccountType")]
+        public virtual int AccountType { get; set; }
+
         protected DateTime _CreateDate;
         /// <summary>
         /// Дата создания УЗ клиента
@@ -90,11 +95,11 @@ namespace HomeWork15.Models
         /// <summary>
         /// Процент по кредиту
         /// </summary>
-        public abstract double CreditPercent { get; set; }
+        virtual public double CreditPercent { get; set; }
 
 
         protected double _DepositPercent;
-        public abstract double DepositPercent { get; set; }
+        virtual public double DepositPercent { get; set; }
 
         protected double _BankAccount;
 
