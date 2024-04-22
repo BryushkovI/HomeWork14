@@ -84,6 +84,8 @@ namespace HomeWork15.ViewModels
             }
         }
         #endregion
+
+
         public ClientInfoViewModel(Client selectedClient)
         {
             SelectedClient = selectedClient;

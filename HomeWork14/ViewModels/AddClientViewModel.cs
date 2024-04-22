@@ -95,6 +95,8 @@ namespace HomeWork15.ViewModels
         bool CanCreateClientAsyncExecute(object p) => _clientType.ClientType != null && _clientName != null;
 
         #endregion
+
+
         public AddClientViewModel()
         {
             CreateClientAsync = new LambdaCommandAsync(OnCreateClientAsyncExecuted, CanCreateClientAsyncExecute);

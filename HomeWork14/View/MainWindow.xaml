@@ -141,6 +141,28 @@
                             <fa:ImageAwesome Icon="Solid_PencilAlt"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Header="Открыть вклад" Command="{Binding CreateCreditAsync}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Solid_MoneyBill" Foreground="Green"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Выдать кредит" Command="{Binding CreateDepositAsync}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Solid_MoneyCheck" Foreground="DarkViolet"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="График" Visibility="{Binding MenuItemPlots}">
+                    <MenuItem Header="График выплаты кредита" Command="{Binding BuildCreditPlot}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Solid_ChartLine"  Foreground="DarkViolet"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="График выплат вклада" Command="{Binding BuildDepositPlot}">
+                        <MenuItem.Icon>
+                            <fa:ImageAwesome Icon="Solid_ChartLine" Foreground="Green"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
             <StatusBar DockPanel.Dock="Bottom" FontFamily="Century">

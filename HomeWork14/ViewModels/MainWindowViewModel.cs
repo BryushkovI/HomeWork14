@@ -249,6 +249,13 @@ namespace HomeWork15.ViewModels
 
         #endregion
 
+        #region Видимость "График"
+        public Visibility MenuItemPlots
+        {
+            get => _selectedClient != null ? Visibility.Visible : Visibility.Collapsed;
+        } 
+        #endregion
+
         #region Комманды
         #region CloseAppCommand
         public ICommand CloseAppCommand { get; }
@@ -278,6 +285,7 @@ namespace HomeWork15.ViewModels
             _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
             OnPropertyChanged("ClientInfo");
+            OnPropertyChanged("MenuItemPlots");
         }
         private bool CanSelectClient(object p) => _selectedTitleClient.AccountNumber != null; 
         #endregion
@@ -359,6 +367,49 @@ namespace HomeWork15.ViewModels
         bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
         #endregion
 
+        #region CreateCredit
+        public IAsyncCommand CreateCreditAsync { get; }
+
+        async Task OnCreateCreditAsyncExecuted(object p)
+        {
+
+        }
+
+        bool CanCreateCreditAsyncExecute(object p) => _selectedClient != null && _selectedClient.Credit == 0;
+        #endregion
+
+        #region CreateDeposit
+        public IAsyncCommand CreateDepositAsync { get; }
+
+        async Task OnCreateDepositAsyncExecuted(object p)
+        {
+
+        }
+        bool CanCreateDepositAsyncExecute(object p) => _selectedClient != null && _selectedClient.Deposit == 0;
+        #endregion
+
+        #region BuildCreditPlot
+        public IAsyncCommand BuildCreditPlot { get; }
+
+        async Task OnBuildCreditPlotExecuted(object p)
+        {
+
+        }
+
+        bool CanBuildCreditPlotExecute(object p) => _selectedClient?.Credit != 0;
+        #endregion
+
+        #region BuildDepositPlot
+        public IAsyncCommand BuildDepositPlot { get; }
+
+        async Task OnBuildDepositPlotExecuted(object p)
+        {
+
+        }
+
+        bool CanBuildDepositPlotExecute(object p) => _selectedClient?.Deposit != 0;
+        #endregion
+
         #endregion
 
         #region Рабочая область
@@ -379,6 +430,10 @@ namespace HomeWork15.ViewModels
             AddClient = new LambdaCommand(OnCreateNewClientExecuted, CanCreateNewClientExecute);
             EditClient = new LambdaCommand(OnEditSelectedClientExecute, CanEditSelectedClientExecute);
             DeleteClient = new LambdaCommandAsync(OnDeleteSelectedClientAsyncExecuted, CanDeleteSelectedClientAsyncExecute);
+            CreateCreditAsync = new LambdaCommandAsync(OnCreateCreditAsyncExecuted, CanCreateCreditAsyncExecute);
+            CreateDepositAsync = new LambdaCommandAsync(OnCreateDepositAsyncExecuted, CanCreateDepositAsyncExecute);
+            BuildCreditPlot = new LambdaCommandAsync(OnBuildCreditPlotExecuted, CanBuildCreditPlotExecute);
+            BuildDepositPlot = new LambdaCommandAsync(OnBuildDepositPlotExecuted, CanBuildDepositPlotExecute);
         }
     }
 }
