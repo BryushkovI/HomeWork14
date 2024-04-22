@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:HomeWork15.View"
              xmlns:service="clr-namespace:HomeWork15.Services"
              xmlns:vm="clr-namespace:HomeWork15.ViewModels"
-             d:DataContext="{d:DesignInstance Type=vm:AddClientViewModel}"
+             d:DataContext="{d:DesignInstance Type=vm:EditClientViewModel}"
              xmlns:fa ="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -37,7 +37,7 @@
         <Border BorderBrush="LightGray" BorderThickness="1"
          CornerRadius="10" Grid.Column="0" Margin="3">
             <StackPanel x:Name="SPInfo" Orientation="Vertical">
-                <TextBox Text="{Binding , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                <TextBox Text="{Binding SelectedClient.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                          FontSize="12" Margin="5,2" FontFamily="Century"/>
                 <TextBlock Text="{Binding SelectedClient.AccountNumber}"
                            FontSize="10" Foreground="Gray" Margin="5,2"/>
@@ -75,13 +75,35 @@
             </StackPanel>
         </Border>
         <Border BorderBrush="LightGray" BorderThickness="1"
+    CornerRadius="10" Grid.Column="2" Margin="3"
+    Visibility="{Binding GridDepositVisibility}">
+            <StackPanel x:Name="SPDeposit" Orientation="Vertical"
+            Grid.Column="2">
+                <TextBlock Text="Вклад" FontSize="12" 
+               Margin="5,2" FontFamily="Century"/>
+                <TextBox Text="{Binding Deposit}" FontSize="12" 
+               Margin="5,2" FontFamily="Century"/>
+                <StackPanel Orientation="Horizontal" Margin="5,2">
+                    <TextBlock Text="Капитализация" FontFamily="Century"/>
+                    <CheckBox x:Name="CHKCapital"
+                  IsChecked="{Binding SelectedClient.Capitalization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="10,0,0,0"
+                  HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="До:" Margin="5,2" FontFamily="Century"/>
+                    <TextBlock Text="{Binding SelectedClient.DateDepositEnd.Date}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="LightGray" BorderThickness="1"
                 CornerRadius="10" Grid.Column="{Binding GridColumnCredit}" Margin="3"
                 Visibility="{Binding GridCreditVisibility}">
             <StackPanel x:Name="SPCredit" Orientation="Vertical"
             Grid.Column="3">
                 <TextBlock Text="Кредит" FontSize="12" 
                Margin="5,2" FontFamily="Century"/>
-                <TextBlock Text="{Binding SelectedClient.Credit}" FontSize="12" 
+                <TextBox Text="{Binding Credit}" FontSize="12" 
                Margin="5,2" FontFamily="Century"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="До:" Margin="5,2" FontFamily="Century"/>
