@@ -4,9 +4,90 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HomeWork15.View"
+             xmlns:service="clr-namespace:HomeWork15.Services"
+             xmlns:vm="clr-namespace:HomeWork15.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:AddClientViewModel}"
+             xmlns:fa ="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="LightGray">
-            
+    <UserControl.Resources>
+        <Style TargetType="TextBox" >
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <fa:ImageAwesome Icon="Solid_Exclamation" Width="20" Height="20"/>
+            </StackPanel>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="GridInfo" Grid.Row="0" Grid.Column="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="LightGray" BorderThickness="1"
+         CornerRadius="10" Grid.Column="0" Margin="3">
+            <StackPanel x:Name="SPInfo" Orientation="Vertical">
+                <TextBox Text="{Binding , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                         FontSize="12" Margin="5,2" FontFamily="Century"/>
+                <TextBlock Text="{Binding SelectedClient.AccountNumber}"
+                           FontSize="10" Foreground="Gray" Margin="5,2"/>
+                <TextBlock Text="Тариф:" FontFamily="Century"
+                        Margin="5,2"/>
+                <ComboBox ItemsSource="{Binding ClientTypes}"
+                       SelectedItem="{Binding ClientType, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                       Margin="5,2">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ClientTypeName}" FontSize="12" 
+                                    FontFamily="Century"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="LightGray" BorderThickness="1"
+         CornerRadius="10" Grid.Column="1" Margin="3">
+            <StackPanel x:Name="SPBankAccount" Orientation="Vertical"
+                     Grid.Column="1">
+                <TextBlock Text="Средства" FontSize="12" 
+                        Margin="5,2" FontFamily="Century"/>
+                <TextBox FontSize="12" 
+                      Margin="5,2" FontFamily="Century"
+                      Validation.ErrorTemplate="{StaticResource validationFailed}">
+                    <TextBox.Text>
+                        <Binding Path="BankAccount" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <service:RegexValidationRule Pattern="^\d+$"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="LightGray" BorderThickness="1"
+                CornerRadius="10" Grid.Column="{Binding GridColumnCredit}" Margin="3"
+                Visibility="{Binding GridCreditVisibility}">
+            <StackPanel x:Name="SPCredit" Orientation="Vertical"
+            Grid.Column="3">
+                <TextBlock Text="Кредит" FontSize="12" 
+               Margin="5,2" FontFamily="Century"/>
+                <TextBlock Text="{Binding SelectedClient.Credit}" FontSize="12" 
+               Margin="5,2" FontFamily="Century"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="До:" Margin="5,2" FontFamily="Century"/>
+                    <TextBlock Text="{Binding SelectedClient.DateCreditEnd.Date}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

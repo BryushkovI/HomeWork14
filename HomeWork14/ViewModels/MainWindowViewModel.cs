@@ -361,8 +361,8 @@ namespace HomeWork15.ViewModels
         public ICommand EditClient { get; }
         void OnEditSelectedClientExecute(object p)
         {
-            _workSpaceVM = new EditClientViewModel();
-            OnPropertyChanged("WorkSpaceVM");
+            _clientInfo = new EditClientViewModel(_selectedClient);
+            OnPropertyChanged("ClientInfo");
         }
         bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
         #endregion

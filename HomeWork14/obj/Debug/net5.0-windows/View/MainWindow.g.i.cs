@@ -12,6 +12,7 @@
 using FontAwesome5;
 using FontAwesome5.Converters;
 using HomeWork15;
+using HomeWork15.Services;
 using HomeWork15.View;
 using HomeWork15.ViewModels;
 using System;
@@ -89,7 +90,7 @@ namespace HomeWork15 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HomeWork15;V1.0.0.0;component/view/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/HomeWork15;component/view/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
