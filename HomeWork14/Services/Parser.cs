@@ -59,10 +59,18 @@ namespace HomeWork15.Services
         public async Task EditSerializeClientasync(string path, Client client)
         {
             ObservableCollection<Client> clients = await DeserializeAllClientsAsync<Client>(path);
-            //clients.ToList().RemoveAll(e => e.AccountNumber == client.AccountNumber);
             clients.Remove(clients.Where(e => e.AccountNumber == client.AccountNumber).Single());
             FileStream fs = new(path, FileMode.Create);
             clients.Add(client);
+            await System.Text.Json.JsonSerializer.SerializeAsync(fs, clients);
+            fs.Close();
+        }
+
+        public async Task DeleteSerializeClientAsync(string path, Client client)
+        {
+            ObservableCollection<Client> clients = await DeserializeAllClientsAsync<Client>(path);
+            clients.Remove(clients.Where(e => e.AccountNumber == client.AccountNumber).Single());
+            FileStream fs = new(path, FileMode.Create);
             await System.Text.Json.JsonSerializer.SerializeAsync(fs, clients);
             fs.Close();
         }
@@ -79,5 +87,7 @@ namespace HomeWork15.Services
         public Task CreateSerializeClientAsync(string path, Client client);
 
         public Task EditSerializeClientasync(string path, Client client);
+
+        public Task DeleteSerializeClientAsync(string path, Client client);
     }
 }

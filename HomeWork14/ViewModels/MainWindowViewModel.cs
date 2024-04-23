@@ -370,7 +370,15 @@ namespace HomeWork15.ViewModels
         public IAsyncCommand DeleteClient { get; }
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
-
+            IParser parser = new Parser();
+            await parser.DeleteSerializeClientAsync(@"Clients.json", _selectedClient);
+            
+            _clientInfo = null;
+            _clients.Remove(_clients.Where(e => e.AccountNumber == _selectedClient.AccountNumber.ToString()).Single());
+            _selectedClient = null;
+            OnPropertyChanged("SelectedClient");
+            OnPropertyChanged("ClientInfo");
+            OnPropertyChanged("Clients");
         }
         bool CanDeleteSelectedClientAsyncExecute(object p) => _selectedClient != null;
         #endregion
