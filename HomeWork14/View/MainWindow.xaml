@@ -120,9 +120,7 @@
                         <RadioButton Content="VIP" GroupName="Type" IsChecked="{Binding IsVIP}"/>
                         <RadioButton Content="Юридические лица" GroupName="Type" IsChecked="{Binding IsEntity}"/>
                     </MenuItem>
-                    <MenuItem Header="Сохранить" FontFamily="Century">
-
-                    </MenuItem>
+                    <MenuItem Header="Сохранить" FontFamily="Century" Command="{Binding Save}"/>
                     <MenuItem Header="Выход" Command="{Binding CloseAppCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Клиент">

@@ -90,7 +90,7 @@ namespace HomeWork15.ViewModels
             {
                 client = new Entity(_clientName, _bankAccount);
             }
-            await parser.SerializeClientAsync(@"Clients.json", client);
+            await parser.CreateSerializeClientAsync(@"Clients.json", client);
         }
         bool CanCreateClientAsyncExecute(object p) => _clientType.ClientType != null && _clientName != null;
 

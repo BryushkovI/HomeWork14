@@ -1,4 +1,5 @@
 ﻿using HomeWork15.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,15 @@ namespace HomeWork15.Models
 {
     class Regular : Client
     {
+        [JsonConstructor]
         public Regular(string name, double bankAccout = 0) : base(name, bankAccout)
         {
-            Random rnd = new();
-            AccountNumber = rnd.Next(10000000, 19999999);
+                Random rnd = new();
+                AccountNumber = rnd.Next(10000000, 19999999);
+        }
+        public Regular(string name, int accountNumber, double bankAccout = 0) : base(name, bankAccout)
+        {
+            AccountNumber = accountNumber;
         }
 
         public override double CreditPercent

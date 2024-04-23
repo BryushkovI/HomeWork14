@@ -267,6 +267,24 @@ namespace HomeWork15.ViewModels
         private bool CanCloseAppCommandExecute(object p) => true;
         #endregion
 
+        #region Save
+        public IAsyncCommand Save { get; }
+
+        async Task OnSaveAsyncExecuted(object p)
+        {
+            EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
+            _selectedClient = editClientVM.SelectedClient;
+            IParser parser = new Parser();
+            await parser.EditSerializeClientasync(@"Clients.json", _selectedClient);
+            _clientInfo = new ClientInfoViewModel(_selectedClient);
+            OnPropertyChanged("SelectedClient");
+            OnPropertyChanged("ClientInfo");
+            await OnOpenDBExecuted(p);
+            await OnSelectClientExecuted(p);
+        }
+        bool CanSaveAsyncExecute(object p) => _selectedClient != null && _clientInfo?.GetType() == typeof(EditClientViewModel);  
+        #endregion
+
         #region SelectClient
         public ICommand SelectClient { get; }
         private async Task OnSelectClientExecuted(object p)
@@ -362,6 +380,7 @@ namespace HomeWork15.ViewModels
         void OnEditSelectedClientExecute(object p)
         {
             _clientInfo = new EditClientViewModel(_selectedClient);
+            
             OnPropertyChanged("ClientInfo");
         }
         bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
@@ -424,6 +443,7 @@ namespace HomeWork15.ViewModels
         public MainWindowViewModel()
         {
             CloseAppCommand = new LambdaCommand(OnCloseAppCommandExecuted, CanCloseAppCommandExecute);
+            Save = new LambdaCommandAsync(OnSaveAsyncExecuted, CanSaveAsyncExecute);
             OpenDB = new LambdaCommandAsync(OnOpenDBExecuted, CanOpenDBExecute);
             SelectClient = new LambdaCommandAsync(OnSelectClientExecuted, CanSelectClient);
             AddClientsAsync = new LambdaCommandAsync(OnAddClientsAsyncExecuted, CanAddClientsAsyncExecute);

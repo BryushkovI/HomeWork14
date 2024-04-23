@@ -47,6 +47,7 @@ namespace HomeWork15.ViewModels
                 if (double.TryParse(value.ToString(), out _))
                 {
                     Set(ref _credit, double.Parse(value));
+                    SelectedClient.Credit = _credit;
                 }
             }
         }
@@ -77,6 +78,7 @@ namespace HomeWork15.ViewModels
                 if (double.TryParse(value.ToString(), out _))
                 {
                     Set(ref _deposit, double.Parse(value));
+                    SelectedClient.Deposit = _deposit;
                 }
             }
         }
@@ -101,6 +103,7 @@ namespace HomeWork15.ViewModels
                 if (double.TryParse(value.ToString(), out _))
                 {
                     Set(ref _bankAccount, double.Parse(value));
+                    SelectedClient.BankAccount = _bankAccount;
                 }
             }
         }
@@ -129,7 +132,32 @@ namespace HomeWork15.ViewModels
         public ClientTypeDic ClientType
         {
             get => _clientType;
-            set => _clientType = value;
+            set
+            {
+                Set(ref _clientType, value);
+                Client bufferClient = _selectedClient;
+                switch (_clientTypes.IndexOf(_clientTypes.Where(e => e.ClientType == _clientType.ClientType).Single()))
+                {
+                    case 0:
+                        _selectedClient = new Regular(bufferClient.Name,    bufferClient.AccountNumber, bufferClient.BankAccount);
+                        break;
+                    case 1:
+                        _selectedClient = new VIP(bufferClient.Name, bufferClient.AccountNumber, bufferClient.BankAccount);
+                        break;
+                    case 2:
+                        _selectedClient = new Entity(bufferClient.Name,   bufferClient.AccountNumber, bufferClient.BankAccount);
+                        break;
+                    default:
+                        break;
+                }
+                _selectedClient.Capitalization = bufferClient.Capitalization;
+                _selectedClient.Credit = bufferClient.Credit;
+                _selectedClient.DateCreditBegin = bufferClient.DateCreditBegin;
+                _selectedClient.DateCreditEnd = bufferClient.DateCreditEnd;
+                _selectedClient.DateDepositBegin = bufferClient.DateDepositBegin;
+                _selectedClient.DateDepositEnd = bufferClient.DateDepositEnd;
+                _selectedClient.Deposit = bufferClient.Deposit;
+            }
         }
         #endregion
 
