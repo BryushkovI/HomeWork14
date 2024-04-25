@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="HomeWork15.View.AddDepositBlockView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HomeWork15.View"
+             xmlns:viewmodels="clr-namespace:HomeWork15.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AddDepositBlockViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border BorderBrush="LightGray" BorderThickness="1"
+                CornerRadius="10"  Margin="3">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <!--<TextBlock Text="Сумма" FontSize="12" Margin="5,2" FontFamily="Century"/>-->
+                    <TextBox ToolTip="Сумма" FontSize="12" 
+                             Margin="5,2" Width="100" 
+                             FontFamily="Century" Text="{Binding Sum, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Капитализация" FontSize="12"
+                               Margin="5,2" FontFamily="Century"/>
+                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding Capitalization, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <!--<TextBlock Text="Дата погашения" FontSize="12" Margin="5,2" FontFamily="Century"/>-->
+                    <DatePicker Text="Дата погашения" Margin="10,0,0,0" SelectedDate="{Binding Date, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <!--<TextBlock Text="Сумма к погашению" FontSize="12" Margin="5,2" FontFamily="Century"/>-->
+                    <TextBlock ToolTip="Сумма к погашению" 
+                               Text="{Binding SumEnd}" FontSize="12" 
+                               Margin="5,2" FontFamily="Century"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

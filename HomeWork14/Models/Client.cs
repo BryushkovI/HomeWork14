@@ -99,21 +99,43 @@ namespace HomeWork15.Models
 
 
         protected double _DepositPercent;
+        /// <summary>
+        /// Процент по вкладу
+        /// </summary>
         virtual public double DepositPercent { get; set; }
 
         protected double _BankAccount;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// Счет
+        /// </summary>
         [JsonProperty("BankAccount")]
         public double BankAccount { get => _BankAccount; set => _BankAccount = value; }
-        
+        /// <summary>
+        /// Возвращает экземпляр нового клиента (используется при создании нового клиента)
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="bankAccout">Счет</param>
+        [JsonConstructor]
         public Client(string name, double bankAccout = 0)
         {
             Name = name;
             BankAccount = bankAccout;
         }
-
+        /// <summary>
+        /// Возвращет экземпляр клиента для изменения (когда номер УЗ уже известен)
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="accountNumber">Номер аккаунта</param>
+        /// <param name="bankAccout">Счет</param>
+        public Client(string name, int accountNumber, double bankAccout)
+        {
+            Name = name;
+            BankAccount = bankAccout;
+            AccountNumber = accountNumber;
+        }
+        
     }
 
     struct TitleClient

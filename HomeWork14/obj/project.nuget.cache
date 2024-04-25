@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0cgjgIVawXyCgia7RChBkzXr6Isbp7pek1V/2Z/vNAElhiMEdxM9qISTNg1TIhDoQNyEwaLx1DB9pD31LDE0Zg==",
+  "dgSpecHash": "lCvDJiQCx15ZedVIn9igD7HrTop3jT1uav8hZZYiwV0JfRpVZodKHZgwQatMuilnI/2OKYqw/EBaLY33q1PgLQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\HomeWork15.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bryus\\.nuget\\packages\\fontawesome5\\2.1.11\\fontawesome5.2.1.11.nupkg.sha512",
     "C:\\Users\\bryus\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\bryus\\.nuget\\packages\\nodatime\\3.1.11\\nodatime.3.1.11.nupkg.sha512",
+    "C:\\Users\\bryus\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.7.1\\system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
     "C:\\Users\\bryus\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []

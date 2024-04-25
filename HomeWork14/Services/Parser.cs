@@ -10,6 +10,12 @@ namespace HomeWork15.Services
 {
     class Parser : IParser
     {
+        /// <summary>
+        /// Возвращает список всех клиентов всех отделов
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path">Ссылка на JSON файл (БД)</param>
+        /// <returns></returns>
         public async Task<ObservableCollection<T>> DeserializeAllClientsAsync<T>(string path)
         {
             ObservableCollection<T> clientsCollection = new();
@@ -24,7 +30,15 @@ namespace HomeWork15.Services
             }
             return clientsCollection;
         }
-
+        /// <summary>
+        /// Возвращает список клиентов выбранного отдела
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Path">Ссылка на JSON файл (БД)</param>
+        /// <param name="AccountType">Номер типа аккаунта</param>
+        /// <param name="Skip">Количество пропускаемых записей</param>
+        /// <param name="Take">Количество выбираемых записей</param>
+        /// <returns></returns>
         public async Task<ObservableCollection<T>> DeserializeClientsLinqAsync<T>(string Path, int AccountType, int Skip = 0, int Take = int.MaxValue)
         {
             FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
@@ -39,6 +53,13 @@ namespace HomeWork15.Services
             }
             return ClientsCollection;
         }
+        /// <summary>
+        /// Получение конкретного клиента по номеру аккаунта
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Path">Ссылка на JSON файл (БД)</param>
+        /// <param name="AccountNumber">Номер аккаунта клиента</param>
+        /// <returns></returns>
         public async Task<T> DeserializeClientLinqAsync<T>(string Path, int AccountNumber)
         {
             FileStream fs = new(Path, FileMode.OpenOrCreate, FileAccess.Read);
@@ -47,6 +68,12 @@ namespace HomeWork15.Services
             var item = parsed.SelectToken($"[ ?( @.AccountNumber == {AccountNumber} ) ]").ToObject<T>();
             return item;
         }
+        /// <summary>
+        /// Запись клента в JSON файл (БД)
+        /// </summary>
+        /// <param name="path">Ссылка на файл</param>
+        /// <param name="client">Создаваемый клиент</param>
+        /// <returns></returns>
         public async Task CreateSerializeClientAsync(string path, Client client)
         {
             ObservableCollection<Client> clients = await DeserializeAllClientsAsync<Client>(path);
@@ -56,6 +83,12 @@ namespace HomeWork15.Services
             fs.Close();
 
         }
+        /// <summary>
+        /// Запись изменяемого клиента в JSON файл (БД)
+        /// </summary>
+        /// <param name="path">Ссылка на файл</param>
+        /// <param name="client">Изменяемый клиент</param>
+        /// <returns></returns>
         public async Task EditSerializeClientasync(string path, Client client)
         {
             ObservableCollection<Client> clients = await DeserializeAllClientsAsync<Client>(path);
@@ -65,7 +98,12 @@ namespace HomeWork15.Services
             await System.Text.Json.JsonSerializer.SerializeAsync(fs, clients);
             fs.Close();
         }
-
+        /// <summary>
+        /// Удаление клиента из JSON файла
+        /// </summary>
+        /// <param name="path">Ссылка на файл</param>
+        /// <param name="client">Удаляемый клиент</param>
+        /// <returns></returns>
         public async Task DeleteSerializeClientAsync(string path, Client client)
         {
             ObservableCollection<Client> clients = await DeserializeAllClientsAsync<Client>(path);

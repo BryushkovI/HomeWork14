@@ -4,11 +4,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HomeWork15.View" 
+             xmlns:fa="http://schemas.fontawesome.com/icons/"
              xmlns:viewmodels="clr-namespace:HomeWork15.ViewModels" 
              d:DataContext="{d:DesignInstance Type=viewmodels:ClientInfoViewModel}"
              mc:Ignorable="d" 
+             xmlns:views="clr-namespace:HomeWork15.View"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="GridInfo" Grid.Row="0" Grid.Column="2" Visibility="{Binding GridInfoVisibility}">
+    <UserControl.Resources>
+        <Style x:Key="AddButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="AddBorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <DrawingBrush Viewport="0,0,8,8" ViewportUnits="Absolute" TileMode="Tile">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <GeometryDrawing Brush="LightGray">
+                                    <GeometryDrawing.Geometry>
+                                        <GeometryGroup>
+                                            <RectangleGeometry Rect="0,0,50,50"/>
+                                            <RectangleGeometry Rect="50,50,50,50"/>
+                                        </GeometryGroup>
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Name="AddDepositBlockView" DataType="{x:Type viewmodels:AddDepositBlockViewModel}">
+            <views:AddDepositBlockView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="AddCreditBlockView" DataType="{x:Type viewmodels:AddCreditBlockViewModel}">
+            <views:AddCreditBlockView DataContext="{Binding}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Grid.Row="0" Grid.Column="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -61,7 +102,7 @@
             </StackPanel>
         </Border>
         <Border BorderBrush="LightGray" BorderThickness="1"
-            CornerRadius="10" Grid.Column="{Binding GridColumnCredit}" Margin="3"
+            CornerRadius="10" Grid.Column="3" Margin="3"
             Visibility="{Binding GridCreditVisibility}">
             <StackPanel x:Name="SPCredit" Orientation="Vertical"
                     Grid.Column="3">
@@ -75,5 +116,25 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+        <Border BorderThickness="1" Style="{StaticResource AddBorderStyle}"
+                CornerRadius="10" Grid.Column="2" Margin="3" Visibility="{Binding AddDepositVisibility}">
+            <Button Style="{StaticResource AddButtonStyle}" Command="{Binding CreateDepositAsync}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Открыть вклад"  Margin="5,2" FontFamily="Century"/>
+                    <fa:ImageAwesome Icon="Regular_PlusSquare" Height="40" Margin="10" Foreground="LightGray"/>
+                </StackPanel>
+            </Button>
+        </Border>
+        <Border BorderThickness="1" Style="{StaticResource AddBorderStyle}"
+                CornerRadius="10" Grid.Column="3" Margin="3" Visibility="{Binding AddCreditVisibility}">
+            <Button Style="{StaticResource AddButtonStyle}" Command="{Binding CreateCreditAsync}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Выдать кредит"  Margin="5,2" FontFamily="Century"/>
+                    <fa:ImageAwesome Icon="Regular_PlusSquare" Height="40" Margin="10" Foreground="LightGray"/>
+                </StackPanel>
+            </Button>
+        </Border>
+        <ContentControl Grid.Column="2" Content="{Binding AddDepositBlockViewModel}"/>
+        <ContentControl Grid.Column="3" Content="{Binding AddCreditBlockViewModel}"/>
     </Grid>
 </UserControl>

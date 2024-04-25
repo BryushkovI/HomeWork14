@@ -96,12 +96,18 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Выбранный тип клиентов
+        /// <summary>
+        /// Список типов
+        /// </summary>
         public enum ClientTypes
         {
             Regular,
             VIP,
             Entity
         }
+        /// <summary>
+        /// Базовый
+        /// </summary>
         public bool IsRegular
         {
             get { return ClientType == ClientTypes.Regular; }
@@ -115,6 +121,9 @@ namespace HomeWork15.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// VIP
+        /// </summary>
         public bool IsVIP
         {
             get { return ClientType == ClientTypes.VIP; }
@@ -128,6 +137,9 @@ namespace HomeWork15.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// Юр лицо
+        /// </summary>
         public bool IsEntity
         {
             get { return ClientType == ClientTypes.Entity; }
@@ -143,6 +155,9 @@ namespace HomeWork15.ViewModels
         }
 
         private ClientTypes _client_type;
+        /// <summary>
+        /// Тип выбранного отдела
+        /// </summary>
         public ClientTypes ClientType
         {
             get => _client_type;
@@ -153,11 +168,6 @@ namespace HomeWork15.ViewModels
                 
             } 
         }
-        #endregion
-
-        #region Поток
-        private Thread _thread;
-        private Task<ObservableCollection<TitleClient>> _task; 
         #endregion
 
         #region Поиск клиента
@@ -182,7 +192,9 @@ namespace HomeWork15.ViewModels
                 return 2;
             }
         }
-
+        /// <summary>
+        /// Видимость кнопки "далее" для добавления следующих клиентов
+        /// </summary>
         public Visibility AddClientsButtonVisibility
         {
             get
@@ -197,6 +209,9 @@ namespace HomeWork15.ViewModels
 
         private int _skip = 0;
         private ObservableCollection<TitleClient> _clients;
+        /// <summary>
+        /// Список заголовков клиентов
+        /// </summary>
         public ObservableCollection<TitleClient> Clients
         {
             get
@@ -235,6 +250,10 @@ namespace HomeWork15.ViewModels
             get => _selectedClient;
             set => Set(ref _selectedClient, value );
         }
+        /// <summary>
+        /// Возвращает список клиентов выбранного отдела
+        /// </summary>
+        /// <returns></returns>
         private async Task<Client> OnOpenSelectedClientAsync()
         {
             IParser parser = new Parser();
@@ -258,6 +277,9 @@ namespace HomeWork15.ViewModels
 
         #region Комманды
         #region CloseAppCommand
+        /// <summary>
+        /// Закрыть программу
+        /// </summary>
         public ICommand CloseAppCommand { get; }
         private void OnCloseAppCommandExecuted(object p)
         {
@@ -268,12 +290,37 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Save
+        /// <summary>
+        /// Сохранить выбранного клиента
+        /// </summary>
         public IAsyncCommand Save { get; }
 
         async Task OnSaveAsyncExecuted(object p)
         {
-            EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
-            _selectedClient = editClientVM.SelectedClient;
+            if (_clientInfo.GetType() == typeof(EditClientViewModel))
+            {
+                EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
+                _selectedClient = editClientVM.SelectedClient;
+            }
+            if (_clientInfo.GetType() == typeof(ClientInfoViewModel))
+            {
+                ClientInfoViewModel clientInfoVM = (ClientInfoViewModel)_clientInfo;
+                _selectedClient = clientInfoVM.SelectedClient;
+                if (double.Parse(clientInfoVM.AddCreditBlockViewModel?.SumEnd) != 0)
+                {
+                    _selectedClient.Credit = double.Parse(clientInfoVM.AddCreditBlockViewModel?.Sum);
+                    _selectedClient.DateCreditBegin = DateTime.Today;
+                    _selectedClient.DateCreditEnd = (DateTime)clientInfoVM.AddCreditBlockViewModel?.Date;
+                }
+                if (double.Parse(clientInfoVM.AddDepositBlockViewModel?.SumEnd) != 0)
+                {
+                    _selectedClient.Deposit = double.Parse(clientInfoVM.AddDepositBlockViewModel?.Sum);
+                    _selectedClient.DateDepositBegin = DateTime.Today;
+                    _selectedClient.DateDepositEnd = (DateTime)clientInfoVM.AddDepositBlockViewModel?.Date;
+                    _selectedClient.Capitalization = clientInfoVM.AddDepositBlockViewModel.Capitalization;
+                }
+
+            }
             IParser parser = new Parser();
             await parser.EditSerializeClientasync(@"Clients.json", _selectedClient);
             _clientInfo = new ClientInfoViewModel(_selectedClient);
@@ -282,10 +329,14 @@ namespace HomeWork15.ViewModels
             await OnOpenDBExecuted(p);
             await OnSelectClientExecuted(p);
         }
-        bool CanSaveAsyncExecute(object p) => _selectedClient != null && _clientInfo?.GetType() == typeof(EditClientViewModel);  
+        bool CanSaveAsyncExecute(object p) => _selectedClient != null && ( _clientInfo?.GetType() == typeof(EditClientViewModel)  
+                                                                        || _clientInfo?.GetType() == typeof(ClientInfoViewModel) );  
         #endregion
 
         #region SelectClient
+        /// <summary>
+        /// Выбрать клиента
+        /// </summary>
         public ICommand SelectClient { get; }
         private async Task OnSelectClientExecuted(object p)
         {
@@ -309,6 +360,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region OpenDB
+        /// <summary>
+        /// Открыть список клиентов выбранного отдела
+        /// </summary>
         public ICommand OpenDB { get; }
         private async Task OnOpenDBExecuted(object p)
         {
@@ -331,6 +385,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region AddClients
+        /// <summary>
+        /// Отобразить следующих 10 клиентов
+        /// </summary>
         public IAsyncCommand AddClientsAsync { get; }
         async Task OnAddClientsAsyncExecuted(object p)
         {
@@ -357,6 +414,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region CreateNewClient
+        /// <summary>
+        /// Открыть интерфес создания нового клиента
+        /// </summary>
         public ICommand AddClient { get; }
         void OnCreateNewClientExecuted(object p)
         {
@@ -367,6 +427,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region DeleteSelectedClient
+        /// <summary>
+        /// Удалить выранного клиента
+        /// </summary>
         public IAsyncCommand DeleteClient { get; }
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
@@ -384,6 +447,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region EditSelectedClient
+        /// <summary>
+        /// Редактировать выбранного клиента
+        /// </summary>
         public ICommand EditClient { get; }
         void OnEditSelectedClientExecute(object p)
         {
@@ -395,6 +461,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region CreateCredit
+        /// <summary>
+        /// Открыть кредит для выбранного клиента
+        /// </summary>
         public IAsyncCommand CreateCreditAsync { get; }
 
         async Task OnCreateCreditAsyncExecuted(object p)
@@ -406,6 +475,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region CreateDeposit
+        /// <summary>
+        /// Открыть депозит для выбранного клиента
+        /// </summary>
         public IAsyncCommand CreateDepositAsync { get; }
 
         async Task OnCreateDepositAsyncExecuted(object p)

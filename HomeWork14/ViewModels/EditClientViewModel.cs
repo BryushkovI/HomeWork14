@@ -139,7 +139,7 @@ namespace HomeWork15.ViewModels
                 switch (_clientTypes.IndexOf(_clientTypes.Where(e => e.ClientType == _clientType.ClientType).Single()))
                 {
                     case 0:
-                        _selectedClient = new Regular(bufferClient.Name,    bufferClient.AccountNumber, bufferClient.BankAccount);
+                        _selectedClient = new Regular(bufferClient.Name, bufferClient.AccountNumber, bufferClient.BankAccount);
                         break;
                     case 1:
                         _selectedClient = new VIP(bufferClient.Name, bufferClient.AccountNumber, bufferClient.BankAccount);

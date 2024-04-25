@@ -23,6 +23,7 @@ namespace HomeWork15.Services
                 _regex = new(_pattern,RegexOptions.IgnoreCase);
             }
         }
+
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             return int.TryParse(value.ToString(), out _) || value.ToString() == string.Empty

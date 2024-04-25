@@ -10,15 +10,26 @@ namespace HomeWork15.Models
 {
     class VIP : Client
     {
+        /// <summary>
+        /// Конструктор для новых пользователей
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="bankAccout">Счет</param>
         [JsonConstructor]
         public VIP(string name, double bankAccout = 0) : base(name, bankAccout)
         {
                 Random rnd = new();
                 AccountNumber = rnd.Next(20000000, 29999999);
         }
-        public VIP(string name, int accountNumber, double bankAccout = 0) : base(name, bankAccout)
+        /// <summary>
+        /// Конструктор для изменения клиентов
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="accountNumber">Текущий номер аккаунта</param>
+        /// <param name="bankAccout">Счет</param>
+        public VIP(string name, int accountNumber, double bankAccout) : base(name, accountNumber, bankAccout)
         {
-            AccountNumber = accountNumber;
+
         }
 
         public override double CreditPercent

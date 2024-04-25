@@ -12,15 +12,26 @@ namespace HomeWork15.Models
 {
     class Entity : Client
     {
+        /// <summary>
+        /// Конструктор для новых пользователей
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="bankAccout">Счет</param>
         [JsonConstructor]
         public Entity(string name, double bankAccout = 0) : base(name, bankAccout)
         {
             Random rnd = new();
             AccountNumber = rnd.Next(30000000, 39999999);
         }
-        public Entity(string name, int accountNumber, double bankAccout = 0) : base(name, bankAccout)
+        /// <summary>
+        /// Конструктор для изменения клиентов
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="accountNumber">Текущий номер аккаунта</param>
+        /// <param name="bankAccout">Счет</param>
+        public Entity(string name, int accountNumber, double bankAccout) : base(name, accountNumber, bankAccout)
         {
-            AccountNumber = accountNumber;
+
         }
 
         public override double CreditPercent

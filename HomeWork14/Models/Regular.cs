@@ -10,16 +10,28 @@ namespace HomeWork15.Models
 {
     class Regular : Client
     {
+        /// <summary>
+        /// Конструктор для изменения клиентов
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="accountNumber">Текущий номер аккаунта</param>
+        /// <param name="bankAccout">Счет</param>
+        public Regular(string name, int accountNumber, double bankAccout) : base(name, accountNumber, bankAccout)
+        {
+
+        }
+        /// <summary>
+        /// Конструктор для новых пользователей
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="bankAccout">Счет</param>
         [JsonConstructor]
         public Regular(string name, double bankAccout = 0) : base(name, bankAccout)
         {
                 Random rnd = new();
                 AccountNumber = rnd.Next(10000000, 19999999);
         }
-        public Regular(string name, int accountNumber, double bankAccout = 0) : base(name, bankAccout)
-        {
-            AccountNumber = accountNumber;
-        }
+        
 
         public override double CreditPercent
         {

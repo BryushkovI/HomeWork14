@@ -1,11 +1,12 @@
-﻿using HomeWork15.Models;
+﻿using HomeWork15.Command;
+using HomeWork15.Command.Base;
+using HomeWork15.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using static HomeWork15.ViewModels.MainWindowViewModel;
 
 namespace HomeWork15.ViewModels
 {
@@ -17,13 +18,27 @@ namespace HomeWork15.ViewModels
             get => _selectedClient;
             set => Set(ref _selectedClient, value);
         }
-        public Visibility GridInfoVisibility
+
+        private AddDepositBlockViewModel _addDepositBlockViewModel;
+        /// <summary>
+        /// Интерфейс для открытия вклада
+        /// </summary>
+        public AddDepositBlockViewModel AddDepositBlockViewModel
         {
-            get
-            {
-                return _selectedClient == null ? Visibility.Hidden : Visibility.Visible;
-            }
+            get => _addDepositBlockViewModel;
+            set => Set(ref _addDepositBlockViewModel, value);
         }
+
+        private AddCreditBlockViewModel _addCreditBlockViewModel;
+        /// <summary>
+        /// Интерфейс для открытия кредита
+        /// </summary>
+        public AddCreditBlockViewModel AddCreditBlockViewModel
+        {
+            get => _addCreditBlockViewModel;
+            set => Set(ref _addCreditBlockViewModel, value);
+        }
+
         #region Карточка инфо
         public Dictionary<Type, string> ClientTypeDictionary = new()
         {
@@ -31,6 +46,9 @@ namespace HomeWork15.ViewModels
             { typeof(VIP), "VIP" },
             { typeof(Entity), "Для Бизнеса" }
         };
+        /// <summary>
+        /// Список типов клиентов
+        /// </summary>
         public string ClientTypeDescription
         {
             get
@@ -55,6 +73,16 @@ namespace HomeWork15.ViewModels
                 return Visibility.Collapsed;
             }
         }
+
+        Visibility _addDepositVisibility;
+        /// <summary>
+        /// Видимость кнопки добавдления вклада
+        /// </summary>
+        public Visibility AddDepositVisibility
+        {
+            get => _addDepositVisibility;
+            set => Set(ref _addDepositVisibility, value);
+        }
         #endregion
 
         #region Карточка Кредит
@@ -72,6 +100,16 @@ namespace HomeWork15.ViewModels
                 return Visibility.Collapsed;
             }
         }
+
+        Visibility _addCreditVisibility;
+        /// <summary>
+        /// Видимость кнопки открытия кредита
+        /// </summary>
+        public Visibility AddCreditVisibility
+        {
+            get => _addCreditVisibility;
+            set => Set(ref  _addCreditVisibility, value);
+        }
         public int GridColumnCredit
         {
             get
@@ -85,10 +123,43 @@ namespace HomeWork15.ViewModels
         }
         #endregion
 
+        #region CreateCredit
+        /// <summary>
+        /// Открыть интерфейс открытия кредита
+        /// </summary>
+        public IAsyncCommand CreateCreditAsync { get; }
+
+        async Task OnCreateCreditAsyncExecuted(object p)
+        {
+            AddCreditVisibility = Visibility.Collapsed;
+            AddCreditBlockViewModel = new(_selectedClient);
+        }
+
+        bool CanCreateCreditAsyncExecute(object p) => _selectedClient != null && _selectedClient.Credit == 0;
+        #endregion
+
+        #region CreateDeposit
+        /// <summary>
+        /// Открыть интерфейс открытия вклада
+        /// </summary>
+        public IAsyncCommand CreateDepositAsync { get; }
+
+        async Task OnCreateDepositAsyncExecuted(object p)
+        {
+            AddDepositVisibility = Visibility.Collapsed;
+            AddDepositBlockViewModel = new(_selectedClient);
+        }
+        bool CanCreateDepositAsyncExecute(object p) => _selectedClient != null && _selectedClient.Deposit == 0;
+        #endregion
+
 
         public ClientInfoViewModel(Client selectedClient)
         {
             SelectedClient = selectedClient;
+            _addCreditVisibility = selectedClient.Credit == 0 ? Visibility.Visible : Visibility.Collapsed;
+            _addDepositVisibility = selectedClient.Deposit == 0 ? Visibility.Visible : Visibility.Collapsed;
+            CreateCreditAsync = new LambdaCommandAsync(OnCreateCreditAsyncExecuted, CanCreateCreditAsyncExecute);
+            CreateDepositAsync = new LambdaCommandAsync(OnCreateDepositAsyncExecuted, CanCreateDepositAsyncExecute);
         }
     }
 }

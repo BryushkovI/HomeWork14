@@ -72,6 +72,9 @@ namespace HomeWork15.ViewModels
         #endregion
 
         #region Команда Создать
+        /// <summary>
+        /// Сохранение нового клиента
+        /// </summary>
         public IAsyncCommand CreateClientAsync { get; }
 
         async Task OnCreateClientAsyncExecuted(object p)
@@ -80,11 +83,11 @@ namespace HomeWork15.ViewModels
             Client client;
             if (ClientType.ClientType == typeof(Regular))
             {
-                 client = new Regular(_clientName,_bankAccount);
+                client = new Regular(_clientName, _bankAccount);
             }
             else if(ClientType.ClientType == typeof(VIP))
             {
-                client = new VIP(_clientName, _bankAccount);
+                client = new VIP(_clientName,_bankAccount);
             }
             else
             {
