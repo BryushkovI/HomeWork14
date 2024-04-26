@@ -20,7 +20,8 @@ namespace HomeWork15.ViewModels
                 base.Sum = value;
                 if (_date != null)
                 {
-                    _sumEnd = _finConstructor.GetCreditSum(_sumStart, (DateTime)_date);
+                    _finConstructor.UpdateClientCreditSum(_sumStart);
+                    _sumEnd = _finConstructor.GetCreditSum();
                     OnPropertyChanged(nameof(SumEnd));
                 }
             }
@@ -36,7 +37,9 @@ namespace HomeWork15.ViewModels
                 base.Date = value;
                 if (_date != null)
                 {
-                    _sumEnd = _finConstructor.GetCreditSum(_sumStart, (DateTime)_date);
+                    _finConstructor.UpdateClientCreditEnd((DateTime)_date);
+                    _finConstructor.UpdateClientCreditSum(_sumStart);
+                    _sumEnd = _finConstructor.GetCreditSum();
                     OnPropertyChanged(nameof(SumEnd));
                 }
             }

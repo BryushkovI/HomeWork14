@@ -21,8 +21,8 @@ namespace HomeWork15.ViewModels
                 Set(ref _capitalization, value);
                 if (_date != null)
                 {
-                    _sumEnd = _capitalization ? _finConstructor.GetDepositSumCap(_sumStart, (DateTime)_date)
-                                              : _finConstructor.GetDepositSumNoCap(_sumStart, (DateTime)_date);
+                    _sumEnd = _capitalization ? _finConstructor.GetDepositSumCap()
+                                              : _finConstructor.GetDepositSumNoCap();
                     OnPropertyChanged(nameof(SumEnd));
                 }
             }
@@ -36,8 +36,9 @@ namespace HomeWork15.ViewModels
                 base.Sum = value;
                 if (_date != null)
                 {
-                    _sumEnd = _capitalization ? _finConstructor.GetDepositSumCap(_sumStart, (DateTime)_date)
-                                              : _finConstructor.GetDepositSumNoCap(_sumStart, (DateTime)_date);
+                    _finConstructor.UpdateClientDepositSum(_sumStart);
+                    _sumEnd = _capitalization ? _finConstructor.GetDepositSumCap()
+                                              : _finConstructor.GetDepositSumNoCap();
                     OnPropertyChanged(nameof(SumEnd));
                 }
             }
@@ -50,9 +51,11 @@ namespace HomeWork15.ViewModels
             {
                 base.Date = value;
                 if (_date != null)
-                {   
-                    _sumEnd = _capitalization ? _finConstructor.GetDepositSumCap(_sumStart, (DateTime)_date)
-                                              : _finConstructor.GetDepositSumNoCap(_sumStart, (DateTime)_date);
+                {
+                    _finConstructor.UpdateClientDepositSum(_sumStart);
+                    _finConstructor.UpdateClientDepositEnd((DateTime)_date);
+                    _sumEnd = _capitalization ? _finConstructor.GetDepositSumCap()
+                                              : _finConstructor.GetDepositSumNoCap();
                     OnPropertyChanged(nameof(SumEnd));
                 }
             }
