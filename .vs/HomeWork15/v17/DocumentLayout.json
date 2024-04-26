@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\addblockviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\addblockviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\services\\financialconstructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\services\\financialconstructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\workspaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\workspaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\services\\plotdataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\services\\plotdataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\view\\plot.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\view\\plot.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\clientinfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\clientinfoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\adddepositblockviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\adddepositblockviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\addcreditblockviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\addcreditblockviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\editclientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\editclientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,77 +58,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClientInfoViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\ClientInfoViewModel.cs",
-              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\ClientInfoViewModel.cs",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\ClientInfoViewModel.cs",
-              "RelativeToolTip": "HomeWork14\\ViewModels\\ClientInfoViewModel.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACMAAAA+AAAA",
+              "DocumentIndex": 0,
+              "Title": "FinancialConstructor.cs",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\FinancialConstructor.cs",
+              "RelativeDocumentMoniker": "HomeWork14\\Services\\FinancialConstructor.cs",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\FinancialConstructor.cs",
+              "RelativeToolTip": "HomeWork14\\Services\\FinancialConstructor.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:33:42.099Z",
+              "WhenOpened": "2024-04-26T14:18:45.498Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddBlockViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddBlockViewModel.cs",
-              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\AddBlockViewModel.cs",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddBlockViewModel.cs",
-              "RelativeToolTip": "HomeWork14\\ViewModels\\AddBlockViewModel.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAwwCYAAAAoAAAA",
+              "DocumentIndex": 2,
+              "Title": "PlotDataProvider.cs",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\PlotDataProvider.cs",
+              "RelativeDocumentMoniker": "HomeWork14\\Services\\PlotDataProvider.cs",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\PlotDataProvider.cs",
+              "RelativeToolTip": "HomeWork14\\Services\\PlotDataProvider.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T06:36:15.075Z",
+              "WhenOpened": "2024-04-26T14:09:53.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AddDepositBlockViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddDepositBlockViewModel.cs",
-              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\AddDepositBlockViewModel.cs",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddDepositBlockViewModel.cs",
-              "RelativeToolTip": "HomeWork14\\ViewModels\\AddDepositBlockViewModel.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwCQAAAAUAAAA",
+              "Title": "Plot.xaml",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\Plot.xaml",
+              "RelativeDocumentMoniker": "HomeWork14\\View\\Plot.xaml",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\Plot.xaml",
+              "RelativeToolTip": "HomeWork14\\View\\Plot.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-26T12:55:10.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WorkSpaceViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
+              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
+              "RelativeToolTip": "HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAswBoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T18:53:46.084Z",
+              "WhenOpened": "2024-04-26T12:52:18.202Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AddCreditBlockViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddCreditBlockViewModel.cs",
-              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\AddCreditBlockViewModel.cs",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddCreditBlockViewModel.cs",
-              "RelativeToolTip": "HomeWork14\\ViewModels\\AddCreditBlockViewModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAswCQAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T08:03:42.411Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EditClientViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\EditClientViewModel.cs",
-              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\EditClientViewModel.cs",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\EditClientViewModel.cs",
-              "RelativeToolTip": "HomeWork14\\ViewModels\\EditClientViewModel.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAAwFEAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T16:41:11.813Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeToolTip": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AQIAADIBAAAAAAAAAAD4vzoBAABRAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAADwvx4BAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-25T13:19:21.46Z",
               "EditorCaption": ""

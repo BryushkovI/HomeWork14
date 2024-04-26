@@ -272,7 +272,16 @@ namespace HomeWork15.ViewModels
         public Visibility MenuItemPlots
         {
             get => _selectedClient != null ? Visibility.Visible : Visibility.Collapsed;
-        } 
+        }
+        #endregion
+
+        #region Рабочая область
+        ViewModel _workSpaceVM;
+        public ViewModel WorkSpaceVM
+        {
+            get => _workSpaceVM;
+            set => _workSpaceVM = value;
+        }
         #endregion
 
         #region Комманды
@@ -294,7 +303,11 @@ namespace HomeWork15.ViewModels
         /// Сохранить выбранного клиента
         /// </summary>
         public IAsyncCommand Save { get; }
-
+        /// <summary>
+        /// Перезаписывает данные о выбранном клиенте
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         async Task OnSaveAsyncExecuted(object p)
         {
             if (_clientInfo.GetType() == typeof(EditClientViewModel))
@@ -460,39 +473,13 @@ namespace HomeWork15.ViewModels
         bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
         #endregion
 
-        #region CreateCredit
-        /// <summary>
-        /// Открыть кредит для выбранного клиента
-        /// </summary>
-        public IAsyncCommand CreateCreditAsync { get; }
-
-        async Task OnCreateCreditAsyncExecuted(object p)
-        {
-
-        }
-
-        bool CanCreateCreditAsyncExecute(object p) => _selectedClient != null && _selectedClient.Credit == 0;
-        #endregion
-
-        #region CreateDeposit
-        /// <summary>
-        /// Открыть депозит для выбранного клиента
-        /// </summary>
-        public IAsyncCommand CreateDepositAsync { get; }
-
-        async Task OnCreateDepositAsyncExecuted(object p)
-        {
-
-        }
-        bool CanCreateDepositAsyncExecute(object p) => _selectedClient != null && _selectedClient.Deposit == 0;
-        #endregion
-
         #region BuildCreditPlot
         public IAsyncCommand BuildCreditPlot { get; }
 
         async Task OnBuildCreditPlotExecuted(object p)
         {
-
+            _workSpaceVM = new WorkSpaceViewModel(_selectedClient, true);
+            OnPropertyChanged(nameof(WorkSpaceVM));
         }
 
         bool CanBuildCreditPlotExecute(object p) => _selectedClient?.Credit != 0;
@@ -503,21 +490,13 @@ namespace HomeWork15.ViewModels
 
         async Task OnBuildDepositPlotExecuted(object p)
         {
-
+            _workSpaceVM = new WorkSpaceViewModel(_selectedClient, false);
+            OnPropertyChanged(nameof(WorkSpaceVM));
         }
 
         bool CanBuildDepositPlotExecute(object p) => _selectedClient?.Deposit != 0;
         #endregion
 
-        #endregion
-
-        #region Рабочая область
-        ViewModel _workSpaceVM;
-        public ViewModel WorkSpaceVM
-        {
-            get => _workSpaceVM;
-            set => _workSpaceVM = value;
-        }
         #endregion
 
         public MainWindowViewModel()
@@ -530,8 +509,6 @@ namespace HomeWork15.ViewModels
             AddClient = new LambdaCommand(OnCreateNewClientExecuted, CanCreateNewClientExecute);
             EditClient = new LambdaCommand(OnEditSelectedClientExecute, CanEditSelectedClientExecute);
             DeleteClient = new LambdaCommandAsync(OnDeleteSelectedClientAsyncExecuted, CanDeleteSelectedClientAsyncExecute);
-            CreateCreditAsync = new LambdaCommandAsync(OnCreateCreditAsyncExecuted, CanCreateCreditAsyncExecute);
-            CreateDepositAsync = new LambdaCommandAsync(OnCreateDepositAsyncExecuted, CanCreateDepositAsyncExecute);
             BuildCreditPlot = new LambdaCommandAsync(OnBuildCreditPlotExecuted, CanBuildCreditPlotExecute);
             BuildDepositPlot = new LambdaCommandAsync(OnBuildDepositPlotExecuted, CanBuildDepositPlotExecute);
         }

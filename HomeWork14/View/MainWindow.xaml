@@ -101,6 +101,9 @@
         <DataTemplate x:Name="ClientInfoView" DataType="{x:Type vm:ClientInfoViewModel}">
             <views:ClientInfoView DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="Plot" DataType="{x:Type vm:WorkSpaceViewModel}">
+            <views:Plot DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainWindowViewModel/>

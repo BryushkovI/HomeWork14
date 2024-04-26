@@ -54,7 +54,7 @@
                     <DatePicker Text="Дата погашения" Margin="10,0,0,0" SelectedDate="{Binding Date, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <!--<TextBlock Text="Сумма к погашению" FontSize="12" Margin="5,2" FontFamily="Century"/>-->
+                    <TextBlock Text="Итого: " FontSize="12" Margin="5,2" FontFamily="Century"/>
                     <TextBlock ToolTip="Сумма к погашению" 
                                Text="{Binding SumEnd}" FontSize="12" 
                                Margin="5,2" FontFamily="Century"/>

@@ -37,3 +37,8 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\AddCreditBlockView.baml
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\AddDepositBlockView.baml
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\NodaTime.dll
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\OxyPlot.dll
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\OxyPlot.Wpf.dll
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\OxyPlot.Wpf.Shared.dll
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\Plot.g.cs
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\Plot.baml
