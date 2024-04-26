@@ -3,19 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:service="clr-namespace:HomeWork15.Services"
              xmlns:local="clr-namespace:HomeWork15.View"
              xmlns:viewmodels="clr-namespace:HomeWork15.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:AddCreditBlockViewModel}"
+             xmlns:fa ="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBox" >
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <fa:ImageAwesome Icon="Solid_Exclamation" Width="20" Height="20"/>
+            </StackPanel>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
         <Border BorderBrush="LightGray" BorderThickness="1"
         CornerRadius="10"  Margin="3">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Text="{Binding Sum, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" ToolTip="Сумма" FontSize="12" 
+                    <TextBox ToolTip="Сумма" FontSize="12" 
                              Margin="5,2" FontFamily="Century" 
-                             Width="100"/>
+                             Width="100" Validation.ErrorTemplate="{StaticResource validationFailed}">
+                        <TextBox.Text>
+                            <Binding Path="Sum" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <service:RegexValidationRule Pattern="^\d+$"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <DatePicker Margin="5,2" Text="Дата погашения" SelectedDate="{Binding Date, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>

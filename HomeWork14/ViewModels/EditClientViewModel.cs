@@ -48,6 +48,7 @@ namespace HomeWork15.ViewModels
                 {
                     Set(ref _credit, double.Parse(value));
                     SelectedClient.Credit = _credit;
+                    OnPropertyChanged(nameof(SelectedClient));
                 }
             }
         }
@@ -79,6 +80,7 @@ namespace HomeWork15.ViewModels
                 {
                     Set(ref _deposit, double.Parse(value));
                     SelectedClient.Deposit = _deposit;
+                    OnPropertyChanged(nameof(Deposit));
                 }
             }
         }

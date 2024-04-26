@@ -81,7 +81,7 @@
             Grid.Column="2">
                 <TextBlock Text="Вклад" FontSize="12" 
                Margin="5,2" FontFamily="Century"/>
-                <TextBox Text="{Binding Deposit}" FontSize="12" 
+                <TextBox Text="{Binding Deposit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="12" 
                Margin="5,2" FontFamily="Century"/>
                 <StackPanel Orientation="Horizontal" Margin="5,2">
                     <TextBlock Text="Капитализация" FontFamily="Century"/>
@@ -103,7 +103,7 @@
             Grid.Column="3">
                 <TextBlock Text="Кредит" FontSize="12" 
                Margin="5,2" FontFamily="Century"/>
-                <TextBox Text="{Binding Credit}" FontSize="12" 
+                <TextBox Text="{Binding Credit, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="12" 
                Margin="5,2" FontFamily="Century"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="До:" Margin="5,2" FontFamily="Century"/>

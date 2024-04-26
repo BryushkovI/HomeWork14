@@ -306,13 +306,13 @@ namespace HomeWork15.ViewModels
             {
                 ClientInfoViewModel clientInfoVM = (ClientInfoViewModel)_clientInfo;
                 _selectedClient = clientInfoVM.SelectedClient;
-                if (double.Parse(clientInfoVM.AddCreditBlockViewModel?.SumEnd) != 0)
+                if (double.TryParse(clientInfoVM.AddCreditBlockViewModel?.SumEnd, out _))
                 {
                     _selectedClient.Credit = double.Parse(clientInfoVM.AddCreditBlockViewModel?.Sum);
                     _selectedClient.DateCreditBegin = DateTime.Today;
                     _selectedClient.DateCreditEnd = (DateTime)clientInfoVM.AddCreditBlockViewModel?.Date;
                 }
-                if (double.Parse(clientInfoVM.AddDepositBlockViewModel?.SumEnd) != 0)
+                if (double.TryParse(clientInfoVM.AddDepositBlockViewModel?.SumEnd, out _))
                 {
                     _selectedClient.Deposit = double.Parse(clientInfoVM.AddDepositBlockViewModel?.Sum);
                     _selectedClient.DateDepositBegin = DateTime.Today;

@@ -24,7 +24,11 @@ namespace HomeWork15.ViewModels
                 if (int.TryParse(value, out _))
                 {
                     Set(ref _sumStart, int.Parse(value));
-                }   
+                }
+                else
+                {
+                    Set(ref _sumStart, 0);
+                }
             }
         }
 
@@ -32,7 +36,7 @@ namespace HomeWork15.ViewModels
 
         virtual public string SumEnd
         {
-            get =>  _sumEnd.ToString();
+            get =>  string.Format("{0:f2}", _sumEnd);
         }
 
         protected DateTime? _date;
