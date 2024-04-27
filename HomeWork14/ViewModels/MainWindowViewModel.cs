@@ -497,6 +497,8 @@ namespace HomeWork15.ViewModels
         bool CanBuildDepositPlotExecute(object p) => _selectedClient?.Deposit != 0;
         #endregion
 
+
+
         #endregion
 
         public MainWindowViewModel()

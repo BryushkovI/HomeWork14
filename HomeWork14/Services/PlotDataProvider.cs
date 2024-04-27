@@ -11,11 +11,11 @@ namespace HomeWork15.Services
 {
     internal class PlotDataProvider
     {
-        public static LineSeries LoadData(Client client)
+        public static LineSeries LoadData(Client client, bool isCredit, out Dictionary<DateTime, double> items)
         {
             LineSeries series = new();
             var finConstructor = new FinancialConstructor(client);
-            var items = finConstructor.GetTableOfPayments();
+            items = isCredit ? finConstructor.GetTableOfPayments() : finConstructor.GetTableOfProfits();
             foreach ( var item in items )
             {
                 series.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(item.Key), item.Value));

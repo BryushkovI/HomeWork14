@@ -87,9 +87,18 @@ namespace HomeWork15.Services
         /// Получение суммы месячной выплаты по вкладу
         /// </summary>
         /// <returns></returns>
-        double GetMonthlyDepositPaymentNoCap()
+        double GetMonthlyDepositProfitNoCap()
         {
             return Client.Deposit * GetMonthlyDepositRate();
+        }
+        /// <summary>
+        /// Получение суммы месячной выплаты по вкладу с капитализацией
+        /// </summary>
+        /// <param name="month">Количество месяцев с момента открытия вклада</param>
+        /// <returns></returns>
+        double GetMonthlyDepositProfitCap(int month)
+        {
+            return Math.Round(Client.Deposit * Math.Pow(1 + GetMonthlyDepositRate(), month));
         }
         /// <summary>
         /// Получение полной суммы вклада (без капитализации)
@@ -140,18 +149,26 @@ namespace HomeWork15.Services
             tablePaymants.Add(Client.DateCreditEnd, 0);
             return tablePaymants;
         }
-        #endregion
 
         public Dictionary<DateTime, double> GetTableOfProfits()
         {
             Dictionary<DateTime, double> tableProfits = new()
             {
-                { Client.DateDepositBegin, 0 }
+                { Client.DateDepositBegin, Client.Deposit }
             };
 
-
-
+            double depositSum = Client.Deposit;
+            for (int i = 1; i < CountMonthDeposit(); i++)
+            {
+                depositSum = Client.Capitalization ? GetMonthlyDepositProfitCap(i) : depositSum + GetMonthlyDepositProfitNoCap();
+                tableProfits.Add(Client.DateDepositBegin.AddMonths(i), depositSum);
+            }
+            depositSum = Client.Capitalization ? GetDepositSumCap() : GetDepositSumNoCap();
+            tableProfits.Add(Client.DateDepositEnd, depositSum);
             return tableProfits;
         }
+        #endregion
+
+
     }
 }
