@@ -42,3 +42,5 @@ C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\OxyPl
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\bin\Debug\net5.0-windows\OxyPlot.Wpf.Shared.dll
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\Plot.g.cs
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\Plot.baml
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\TranfserView.g.cs
+C:\Users\bryus\source\repos\HomeWork14\HomeWork14\obj\Debug\net5.0-windows\View\TranfserView.baml

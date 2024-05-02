@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\workspaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\workspaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\addclientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\addclientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\view\\plot.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\view\\plot.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\transferviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\transferviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\services\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\services\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\view\\tranfserview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\view\\tranfserview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,40 +58,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Plot.xaml",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\Plot.xaml",
-              "RelativeDocumentMoniker": "HomeWork14\\View\\Plot.xaml",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\Plot.xaml",
-              "RelativeToolTip": "HomeWork14\\View\\Plot.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-26T12:55:10.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WorkSpaceViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
-              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
-              "RelativeToolTip": "HomeWork14\\ViewModels\\WorkSpaceViewModel.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABIAAAAhAAAA",
+              "Title": "AddClientViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddClientViewModel.cs",
+              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\AddClientViewModel.cs",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\AddClientViewModel.cs",
+              "RelativeToolTip": "HomeWork14\\ViewModels\\AddClientViewModel.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T12:52:18.202Z",
+              "WhenOpened": "2024-05-02T13:41:21.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeToolTip": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AQIAAOQAAAAAAAAAAAAIwPEBAAASAAAA",
+              "ViewState": "AQIAABwBAAAAAAAAAAAIwGEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T13:19:21.46Z"
+              "WhenOpened": "2024-05-02T12:26:45.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Parser.cs",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\Parser.cs",
+              "RelativeDocumentMoniker": "HomeWork14\\Services\\Parser.cs",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\Parser.cs",
+              "RelativeToolTip": "HomeWork14\\Services\\Parser.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAABZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T14:19:13.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransferViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\TransferViewModel.cs",
+              "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\TransferViewModel.cs",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\TransferViewModel.cs",
+              "RelativeToolTip": "HomeWork14\\ViewModels\\TransferViewModel.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwEYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T19:30:57.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TranfserView.xaml",
+              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\TranfserView.xaml",
+              "RelativeDocumentMoniker": "HomeWork14\\View\\TranfserView.xaml",
+              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\View\\TranfserView.xaml",
+              "RelativeToolTip": "HomeWork14\\View\\TranfserView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-27T19:30:29.954Z",
+              "EditorCaption": ""
             }
           ]
         }

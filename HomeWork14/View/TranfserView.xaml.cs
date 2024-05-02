@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HomeWork15.View
 {
     /// <summary>
-    /// Логика взаимодействия для Transfer.xaml
+    /// Логика взаимодействия для TranfserView.xaml
     /// </summary>
-    public partial class Transfer : UserControl
+    public partial class TranfserView : UserControl
     {
-        public Transfer()
+        public TranfserView()
         {
             InitializeComponent();
         }

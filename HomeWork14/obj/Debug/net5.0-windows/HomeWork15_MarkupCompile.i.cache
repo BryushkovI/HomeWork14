@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\bryus\source\repos\HomeWork14\HomeWork14\App.xaml
-81526325956
+8-712724334
 
-32-1205722131
+33-1856217082
 2002120652560
-View\AddClientView.xaml;View\AddCreditBlockView.xaml;View\AddDepositBlockView.xaml;View\ClientInfoView.xaml;View\EditClientView.xaml;View\MainWindow.xaml;View\Plot.xaml;View\Transfer.xaml;
+View\AddClientView.xaml;View\AddCreditBlockView.xaml;View\AddDepositBlockView.xaml;View\ClientInfoView.xaml;View\EditClientView.xaml;View\MainWindow.xaml;View\Plot.xaml;View\TranfserView.xaml;
 
 True
 

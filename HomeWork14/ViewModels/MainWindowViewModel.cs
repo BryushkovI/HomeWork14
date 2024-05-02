@@ -256,7 +256,6 @@ namespace HomeWork15.ViewModels
         /// <returns></returns>
         private async Task<Client> OnOpenSelectedClientAsync()
         {
-            IParser parser = new Parser();
             return _client_type switch
             {
                 ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
@@ -283,6 +282,8 @@ namespace HomeWork15.ViewModels
             set => _workSpaceVM = value;
         }
         #endregion
+
+        readonly IParser parser;
 
         #region Комманды
         #region CloseAppCommand
@@ -334,7 +335,6 @@ namespace HomeWork15.ViewModels
                 }
 
             }
-            IParser parser = new Parser();
             await parser.EditSerializeClientasync(@"Clients.json", _selectedClient);
             _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
@@ -381,7 +381,6 @@ namespace HomeWork15.ViewModels
         {
             ProgressBarVisibility = Visibility.Visible;
             Status = statusPairs[ReadyStatus.Busy];
-            IParser parser = new Parser();
             if (_clients?.Count % 10 != 0)
             {
                 _skip = 0;
@@ -406,7 +405,6 @@ namespace HomeWork15.ViewModels
         {
             ProgressBarVisibility = Visibility.Visible;
             Status = statusPairs[ReadyStatus.Busy];
-            IParser parser = new Parser();
             ObservableCollection<TitleClient> newTitleClient = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json", (int)ClientType, _skip, 10);
             foreach (var item in newTitleClient)
             {
@@ -446,7 +444,6 @@ namespace HomeWork15.ViewModels
         public IAsyncCommand DeleteClient { get; }
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
-            IParser parser = new Parser();
             await parser.DeleteSerializeClientAsync(@"Clients.json", _selectedClient);
             
             _clientInfo = null;
@@ -497,7 +494,18 @@ namespace HomeWork15.ViewModels
         bool CanBuildDepositPlotExecute(object p) => _selectedClient?.Deposit != 0;
         #endregion
 
+        #region CreateTransfer
+        public ICommand CreateTransfer { get; }
 
+        async Task OnCreateTransferExecuted(object p)
+        {
+            ObservableCollection<TitleClient> titleClients = await parser.DeserializeAllClientsAsync<TitleClient>(@"Clients.json");
+            _workSpaceVM = new TransferViewModel(_selectedClient, titleClients);
+            OnPropertyChanged(nameof(WorkSpaceVM));
+        }
+
+        bool CanCreateTransferExecuted(object p) => _selectedClient != null; 
+        #endregion
 
         #endregion
 
@@ -513,6 +521,8 @@ namespace HomeWork15.ViewModels
             DeleteClient = new LambdaCommandAsync(OnDeleteSelectedClientAsyncExecuted, CanDeleteSelectedClientAsyncExecute);
             BuildCreditPlot = new LambdaCommandAsync(OnBuildCreditPlotExecuted, CanBuildCreditPlotExecute);
             BuildDepositPlot = new LambdaCommandAsync(OnBuildDepositPlotExecuted, CanBuildDepositPlotExecute);
+            CreateTransfer = new LambdaCommandAsync(OnCreateTransferExecuted, CanCreateTransferExecuted);
+            parser = new Parser();
         }
     }
 }
