@@ -75,25 +75,29 @@ namespace HomeWork15.ViewModels
         /// <summary>
         /// Сохранение нового клиента
         /// </summary>
+        /// 
         public IAsyncCommand CreateClientAsync { get; }
+
+        public Client _client;
 
         async Task OnCreateClientAsyncExecuted(object p)
         {
             IParser parser = new Parser();
-            Client client;
+            
             if (ClientType.ClientType == typeof(Regular))
             {
-                client = new Regular(_clientName, _bankAccount);
+                _client = new Regular(_clientName, _bankAccount);
             }
             else if(ClientType.ClientType == typeof(VIP))
             {
-                client = new VIP(_clientName,_bankAccount);
+                _client = new VIP(_clientName,_bankAccount);
             }
             else
             {
-                client = new Entity(_clientName, _bankAccount);
+                _client = new Entity(_clientName, _bankAccount);
             }
-            await parser.CreateSerializeClientAsync(@"Clients.json", client);
+           
+            OnSaving();
         }
         bool CanCreateClientAsyncExecute(object p) => _clientType.ClientType != null && _clientName != null;
 

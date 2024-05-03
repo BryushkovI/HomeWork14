@@ -28,6 +28,10 @@ namespace HomeWork15.ViewModels
             get => _Title;
             set => Set(ref _Title, value);
         }
+
+        readonly string _path = @"Clients.json";
+
+        readonly IParser parser;
         #endregion
 
         #region Статус
@@ -235,13 +239,7 @@ namespace HomeWork15.ViewModels
         public TitleClient SelectedTitleClient
         {
             get => _selectedTitleClient;
-            set
-            {
-
-                _selectedTitleClient = value;
-                
-                
-            }
+            set => Set(ref _selectedTitleClient, value);
         }
 
         private Client _selectedClient;
@@ -258,9 +256,9 @@ namespace HomeWork15.ViewModels
         {
             return _client_type switch
             {
-                ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                ClientTypes.VIP => await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                ClientTypes.Entity => await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(_path, int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.VIP => await parser.DeserializeClientLinqAsync<VIP>(_path, int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
+                ClientTypes.Entity => await parser.DeserializeClientLinqAsync<Entity>(_path, int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
                 _ => null,
             };
         }
@@ -282,8 +280,6 @@ namespace HomeWork15.ViewModels
             set => _workSpaceVM = value;
         }
         #endregion
-
-        readonly IParser parser;
 
         #region Комманды
         #region CloseAppCommand
@@ -316,7 +312,7 @@ namespace HomeWork15.ViewModels
                 EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
                 _selectedClient = editClientVM.SelectedClient;
             }
-            if (_clientInfo.GetType() == typeof(ClientInfoViewModel))
+            else if (_clientInfo.GetType() == typeof(ClientInfoViewModel))
             {
                 ClientInfoViewModel clientInfoVM = (ClientInfoViewModel)_clientInfo;
                 _selectedClient = clientInfoVM.SelectedClient;
@@ -335,7 +331,8 @@ namespace HomeWork15.ViewModels
                 }
 
             }
-            await parser.EditSerializeClientasync(@"Clients.json", _selectedClient);
+            await parser.EditSerializeClientasync(_path, _selectedClient);
+            
             _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
             OnPropertyChanged("ClientInfo");
@@ -343,7 +340,24 @@ namespace HomeWork15.ViewModels
             await OnSelectClientExecuted(p);
         }
         bool CanSaveAsyncExecute(object p) => _selectedClient != null && ( _clientInfo?.GetType() == typeof(EditClientViewModel)  
-                                                                        || _clientInfo?.GetType() == typeof(ClientInfoViewModel) );  
+                                                                        || _clientInfo?.GetType() == typeof(ClientInfoViewModel) );
+
+        private void ClientInfo_Saveing()
+        {
+            Task.Run(async () =>
+            {
+                AddClientViewModel addClientVM = (AddClientViewModel)_clientInfo;
+                _selectedClient = addClientVM._client;
+                _selectedTitleClient.AccountNumber = _selectedClient.AccountNumber.ToString();
+                _selectedTitleClient.Name = _selectedClient.Name;
+                await parser.CreateSerializeClientAsync(_path, _selectedClient);
+                _clientInfo = new ClientInfoViewModel(_selectedClient);
+                OnPropertyChanged("SelectedClient");
+                OnPropertyChanged("ClientInfo");
+                await OnOpenDBExecuted(null);
+                await OnSelectClientExecuted(null);
+            });
+        }
         #endregion
 
         #region SelectClient
@@ -367,6 +381,8 @@ namespace HomeWork15.ViewModels
             _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
             OnPropertyChanged("ClientInfo");
+            _workSpaceVM = null;
+            OnPropertyChanged("WorkSpaceVM");
             OnPropertyChanged("MenuItemPlots");
         }
         private bool CanSelectClient(object p) => _selectedTitleClient.AccountNumber != null; 
@@ -385,7 +401,7 @@ namespace HomeWork15.ViewModels
             {
                 _skip = 0;
             }
-            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json", (int)ClientType, _skip, 10);
+            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(_path, (int)ClientType, _skip, 10);
             OnPropertyChanged("ListRowSpan");
             OnPropertyChanged("AddClientsButtonVisibility");
             _skip += 10;
@@ -405,7 +421,7 @@ namespace HomeWork15.ViewModels
         {
             ProgressBarVisibility = Visibility.Visible;
             Status = statusPairs[ReadyStatus.Busy];
-            ObservableCollection<TitleClient> newTitleClient = await parser.DeserializeClientsLinqAsync<TitleClient>(@"Clients.json", (int)ClientType, _skip, 10);
+            ObservableCollection<TitleClient> newTitleClient = await parser.DeserializeClientsLinqAsync<TitleClient>(_path, (int)ClientType, _skip, 10);
             foreach (var item in newTitleClient)
             {
                 Clients.Add(item);
@@ -433,6 +449,7 @@ namespace HomeWork15.ViewModels
         {
             _clientInfo = new AddClientViewModel();
             OnPropertyChanged("ClientInfo");
+            _clientInfo.Saveing += ClientInfo_Saveing;
         }
         bool CanCreateNewClientExecute(object p) => true;
         #endregion
@@ -444,7 +461,7 @@ namespace HomeWork15.ViewModels
         public IAsyncCommand DeleteClient { get; }
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
-            await parser.DeleteSerializeClientAsync(@"Clients.json", _selectedClient);
+            await parser.DeleteSerializeClientAsync(_path, _selectedClient);
             
             _clientInfo = null;
             _clients.Remove(_clients.Where(e => e.AccountNumber == _selectedClient.AccountNumber.ToString()).Single());
@@ -466,6 +483,7 @@ namespace HomeWork15.ViewModels
             _clientInfo = new EditClientViewModel(_selectedClient);
             
             OnPropertyChanged("ClientInfo");
+            //_clientInfo.Saveing += ClientInfo_Saveing;
         }
         bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
         #endregion
@@ -499,12 +517,31 @@ namespace HomeWork15.ViewModels
 
         async Task OnCreateTransferExecuted(object p)
         {
-            ObservableCollection<TitleClient> titleClients = await parser.DeserializeAllClientsAsync<TitleClient>(@"Clients.json");
+            ObservableCollection<TitleClient> titleClients = await parser.DeserializeAllClientsAsync<TitleClient>(_path);
+            titleClients.Remove(titleClients.Single(e => e.AccountNumber == _selectedClient.AccountNumber.ToString()));
             _workSpaceVM = new TransferViewModel(_selectedClient, titleClients);
             OnPropertyChanged(nameof(WorkSpaceVM));
+            _workSpaceVM.Saveing += WorkSpaceVM_Saveing;
         }
 
-        bool CanCreateTransferExecuted(object p) => _selectedClient != null; 
+        bool CanCreateTransferExecuted(object p) => _selectedClient != null;
+
+        private void WorkSpaceVM_Saveing()
+        {
+            Task.Run(async () =>
+            {
+                TransferViewModel transferVM = (TransferViewModel)_workSpaceVM;
+                await parser.EditSerializeClientasync(_path, transferVM._client);
+                await parser.EditSerializeClientasync(_path, transferVM._clientRecipient);
+                _workSpaceVM = null;
+                _clientInfo = new ClientInfoViewModel(_selectedClient);
+                OnPropertyChanged("SelectedClient");
+                OnPropertyChanged("ClientInfo");
+                OnPropertyChanged("WorkSpaceVM");
+                await OnOpenDBExecuted(null);
+                await OnSelectClientExecuted(null);
+            });
+        }
         #endregion
 
         #endregion

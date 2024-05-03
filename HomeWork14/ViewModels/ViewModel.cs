@@ -24,5 +24,14 @@ namespace HomeWork15.ViewModels
             OnPropertyChanged(PropertyName);
             return true;
         }
+
+        public delegate void ViewModelHandler();
+
+        public event ViewModelHandler Saveing;
+
+        public void OnSaving()
+        {
+            Saveing?.Invoke();
+        }
     }
 }

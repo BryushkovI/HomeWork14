@@ -14,13 +14,13 @@ namespace HomeWork15.ViewModels
 {
     class TransferViewModel : ViewModel
     {
-        Client _client;
+        public Client _client;
         public Client Client
         {
             get => _client;
             set => Set(ref _client, value);
         }
-
+        public Client _clientRecipient;
         private int _transferSum;
         public int TransferSum
         {
@@ -51,23 +51,22 @@ namespace HomeWork15.ViewModels
         async Task OnTransferAsyncExecute(object p)
         {
             IParser parser = new Parser();
-            Client clientRecipient;
+            
             if (parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 0)
             {
-                clientRecipient = await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
+                _clientRecipient = await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
             }
             else if(parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 1)
             {
-                clientRecipient = await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
+                _clientRecipient = await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
             }
             else
             {
-                clientRecipient = await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
+                _clientRecipient = await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
             }
-            clientRecipient.BankAccount += _transferSum;
+            _clientRecipient.BankAccount += _transferSum;
             _client.BankAccount -= _transferSum;
-            await parser.EditSerializeClientasync(@"Clients.json", clientRecipient);
-            await parser.EditSerializeClientasync(@"Clients.json", _client);
+            OnSaving();
 
         }
 
