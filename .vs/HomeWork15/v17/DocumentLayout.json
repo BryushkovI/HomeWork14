@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\projectmap\\taskslist.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\projectmap\\taskslist.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|c:\\users\\bryus\\source\\repos\\homework14\\homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22A9D880-71A8-4B31-90DC-6BC362CB122E}|HomeWork14\\HomeWork15.csproj|solutionrelative:homework14\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,41 +47,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TasksList.txt",
-              "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ProjectMap\\TasksList.txt",
-              "RelativeDocumentMoniker": "HomeWork14\\ProjectMap\\TasksList.txt",
-              "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ProjectMap\\TasksList.txt",
-              "RelativeToolTip": "HomeWork14\\ProjectMap\\TasksList.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-05-03T13:18:42.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\ViewModels\\MainWindowViewModel.cs",
               "RelativeToolTip": "HomeWork14\\ViewModels\\MainWindowViewModel.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAkwOcAAAASAAAA",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAAwB0BAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T12:26:45.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Parser.cs",
               "DocumentMoniker": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\Parser.cs",
               "RelativeDocumentMoniker": "HomeWork14\\Services\\Parser.cs",
               "ToolTip": "C:\\Users\\bryus\\source\\repos\\HomeWork14\\HomeWork14\\Services\\Parser.cs",
               "RelativeToolTip": "HomeWork14\\Services\\Parser.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAIAwwEwAAABQAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEwAAABQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T14:19:13.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T14:19:13.568Z"
             }
           ]
         }

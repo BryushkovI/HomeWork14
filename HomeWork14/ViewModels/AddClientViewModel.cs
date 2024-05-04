@@ -18,6 +18,7 @@ namespace HomeWork15.ViewModels
 {
     internal class AddClientViewModel : ViewModel
     {
+        Logger _logger;
         #region Данные клиента
         private string _clientName;
         /// <summary>
@@ -98,6 +99,11 @@ namespace HomeWork15.ViewModels
             }
            
             OnSaving();
+            OnLog("Добавлена учетная запись клиента {0} {1}", new[]
+            {
+                _client.Name,
+                DateTime.Now.ToString()
+            });
         }
         bool CanCreateClientAsyncExecute(object p) => _clientType.ClientType != null && _clientName != null;
 
@@ -107,6 +113,7 @@ namespace HomeWork15.ViewModels
         public AddClientViewModel()
         {
             CreateClientAsync = new LambdaCommandAsync(OnCreateClientAsyncExecuted, CanCreateClientAsyncExecute);
+            Log += _logger.FileLog;
         }
     }
     /// <summary>

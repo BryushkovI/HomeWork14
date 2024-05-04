@@ -1,4 +1,6 @@
-﻿using HomeWork15.Models;
+﻿using HomeWork15.Command;
+using HomeWork15.Command.Base;
+using HomeWork15.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,8 +62,12 @@ namespace HomeWork15.ViewModels
                 }
             }
         }
+
+        
+
         public AddDepositBlockViewModel(Client client) : base(client)
         {
+            
         }
 
     }

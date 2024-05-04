@@ -10,6 +10,7 @@ namespace HomeWork15.ViewModels
 {
     abstract internal class ViewModel : INotifyPropertyChanged
     {
+        #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
@@ -24,7 +25,9 @@ namespace HomeWork15.ViewModels
             OnPropertyChanged(PropertyName);
             return true;
         }
+        #endregion
 
+        #region Saving
         public delegate void ViewModelHandler();
 
         public event ViewModelHandler Saveing;
@@ -32,6 +35,14 @@ namespace HomeWork15.ViewModels
         public void OnSaving()
         {
             Saveing?.Invoke();
+        }
+        #endregion
+
+        public delegate void LoggerHandler(string message, params object[] args);
+        public event LoggerHandler Log;
+        public void OnLog(string message, params object[] args)
+        {
+            Log?.Invoke(message, args);
         }
     }
 }

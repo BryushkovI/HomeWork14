@@ -133,7 +133,10 @@ namespace HomeWork15.ViewModels
         {
             AddCreditVisibility = Visibility.Collapsed;
             AddCreditBlockViewModel = new(_selectedClient);
+            _addCreditBlockViewModel.Saveing += AddBlockViewModel_Saveing;
         }
+
+        
 
         bool CanCreateCreditAsyncExecute(object p) => _selectedClient != null && _selectedClient.Credit == 0;
         #endregion
@@ -148,10 +151,15 @@ namespace HomeWork15.ViewModels
         {
             AddDepositVisibility = Visibility.Collapsed;
             AddDepositBlockViewModel = new(_selectedClient);
+            _addDepositBlockViewModel.Saveing += AddBlockViewModel_Saveing;
         }
         bool CanCreateDepositAsyncExecute(object p) => _selectedClient != null && _selectedClient.Deposit == 0;
         #endregion
 
+        private void AddBlockViewModel_Saveing()
+        {
+            OnSaving();
+        }
 
         public ClientInfoViewModel(Client selectedClient)
         {

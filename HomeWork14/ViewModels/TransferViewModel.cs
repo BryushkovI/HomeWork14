@@ -14,6 +14,7 @@ namespace HomeWork15.ViewModels
 {
     class TransferViewModel : ViewModel
     {
+        Logger _logger;
         public Client _client;
         public Client Client
         {
@@ -67,7 +68,13 @@ namespace HomeWork15.ViewModels
             _clientRecipient.BankAccount += _transferSum;
             _client.BankAccount -= _transferSum;
             OnSaving();
-
+            OnLog("{0} перевел(а) {1} {2} {3}", new[]
+            {
+                _client.Name,
+                _clientRecipient.Name,
+                _transferSum.ToString(),
+                DateTime.Now.ToString()
+            });
         }
 
         bool CanTransferAsyncExecuded(object p)
@@ -85,6 +92,7 @@ namespace HomeWork15.ViewModels
             Client = client;
             _clients = titleClients;
             TransferAsync = new LambdaCommandAsync(OnTransferAsyncExecute, CanTransferAsyncExecuded);
+            Log += _logger.FileLog;
         }
     }
 }

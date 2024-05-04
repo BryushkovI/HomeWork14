@@ -46,6 +46,9 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <DatePicker Margin="5,2" Text="Дата погашения" SelectedDate="{Binding Date, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Command="{Binding Create}">
+                        <TextBlock Text="Выдать" FontSize="12" Margin="5,2" FontFamily="Century"/>
+                    </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Итого:" FontSize="12" Margin="5,2" FontFamily="Century"/>

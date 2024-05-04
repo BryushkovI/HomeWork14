@@ -32,6 +32,8 @@ namespace HomeWork15.ViewModels
         readonly string _path = @"Clients.json";
 
         readonly IParser parser;
+
+        readonly Logger _logger;
         #endregion
 
         #region Статус
@@ -307,32 +309,15 @@ namespace HomeWork15.ViewModels
         /// <returns></returns>
         async Task OnSaveAsyncExecuted(object p)
         {
-            if (_clientInfo.GetType() == typeof(EditClientViewModel))
-            {
-                EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
-                _selectedClient = editClientVM.SelectedClient;
-            }
-            else if (_clientInfo.GetType() == typeof(ClientInfoViewModel))
-            {
-                ClientInfoViewModel clientInfoVM = (ClientInfoViewModel)_clientInfo;
-                _selectedClient = clientInfoVM.SelectedClient;
-                if (double.TryParse(clientInfoVM.AddCreditBlockViewModel?.SumEnd, out _))
-                {
-                    _selectedClient.Credit = double.Parse(clientInfoVM.AddCreditBlockViewModel?.Sum);
-                    _selectedClient.DateCreditBegin = DateTime.Today;
-                    _selectedClient.DateCreditEnd = (DateTime)clientInfoVM.AddCreditBlockViewModel?.Date;
-                }
-                if (double.TryParse(clientInfoVM.AddDepositBlockViewModel?.SumEnd, out _))
-                {
-                    _selectedClient.Deposit = double.Parse(clientInfoVM.AddDepositBlockViewModel?.Sum);
-                    _selectedClient.DateDepositBegin = DateTime.Today;
-                    _selectedClient.DateDepositEnd = (DateTime)clientInfoVM.AddDepositBlockViewModel?.Date;
-                    _selectedClient.Capitalization = clientInfoVM.AddDepositBlockViewModel.Capitalization;
-                }
 
-            }
+            EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
+            _selectedClient = editClientVM.SelectedClient;
             await parser.EditSerializeClientasync(_path, _selectedClient);
-            
+            OnLog("Данные клиента {0} были изменены {1}.", new[]
+                    {
+                        _selectedClient?.Name,
+                        DateTime.Now.ToString(),
+                    });
             _clientInfo = new ClientInfoViewModel(_selectedClient);
             OnPropertyChanged("SelectedClient");
             OnPropertyChanged("ClientInfo");
@@ -384,7 +369,51 @@ namespace HomeWork15.ViewModels
             _workSpaceVM = null;
             OnPropertyChanged("WorkSpaceVM");
             OnPropertyChanged("MenuItemPlots");
+            _clientInfo.Saveing += ClientInfo_EditSaving;
         }
+
+        private void ClientInfo_EditSaving()
+        {
+            Task.Run(async () =>
+            {
+                ClientInfoViewModel clientInfoVM = (ClientInfoViewModel)_clientInfo;
+                _selectedClient = clientInfoVM.SelectedClient;
+                if (double.TryParse(clientInfoVM.AddCreditBlockViewModel?.SumEnd, out _))
+                {
+                    _selectedClient.Credit = double.Parse(clientInfoVM.AddCreditBlockViewModel?.Sum);
+                    _selectedClient.DateCreditBegin = DateTime.Today;
+                    _selectedClient.DateCreditEnd = (DateTime)clientInfoVM.AddCreditBlockViewModel?.Date;
+                    OnLog("Клиенту {0} выдан кредит на сумму {1:C2} с {2:d} до {3:d}.", new[]
+                    {
+                        _selectedClient?.Name,
+                        _selectedClient?.Credit.ToString(),
+                        _selectedClient?.DateCreditBegin.ToString(),
+                        _selectedClient?.DateCreditEnd.ToString()
+                    });
+                }
+                if (double.TryParse(clientInfoVM.AddDepositBlockViewModel?.SumEnd, out _))
+                {
+                    _selectedClient.Deposit = double.Parse(clientInfoVM.AddDepositBlockViewModel?.Sum);
+                    _selectedClient.DateDepositBegin = DateTime.Today;
+                    _selectedClient.DateDepositEnd = (DateTime)clientInfoVM.AddDepositBlockViewModel?.Date;
+                    _selectedClient.Capitalization = clientInfoVM.AddDepositBlockViewModel.Capitalization;
+                    OnLog("Клиенту {0} открыт вклад на сумму {1:C2} с {2:d} до {3:d}.", new[]
+                    {
+                        _selectedClient?.Name,
+                        _selectedClient?.Deposit.ToString(),
+                        _selectedClient?.DateDepositBegin.ToString(),
+                        _selectedClient?.DateDepositEnd.ToString()
+                    });
+                }
+                await parser.EditSerializeClientasync(_path, _selectedClient);
+                _clientInfo = new ClientInfoViewModel(_selectedClient);
+                OnPropertyChanged("SelectedClient");
+                OnPropertyChanged("ClientInfo");
+                await OnOpenDBExecuted(null);
+                await OnSelectClientExecuted(null);
+            });
+        }
+
         private bool CanSelectClient(object p) => _selectedTitleClient.AccountNumber != null; 
         #endregion
 
@@ -426,11 +455,6 @@ namespace HomeWork15.ViewModels
             {
                 Clients.Add(item);
             }
-
-            //if (Clients.Count % 10 == 0)
-            //{
-            //    Clients.Add(new TitleClient("", "далее"));
-            //}
             _skip += 10;
             OnPropertyChanged("ListRowSpan");
             OnPropertyChanged("AddClientsButtonVisibility");
@@ -462,7 +486,11 @@ namespace HomeWork15.ViewModels
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
             await parser.DeleteSerializeClientAsync(_path, _selectedClient);
-            
+            OnLog("Учетная запись клиента {0} была удалена {1}", new[]
+            {
+                _selectedClient.Name,
+                DateTime.Now.ToString()
+            });
             _clientInfo = null;
             _clients.Remove(_clients.Where(e => e.AccountNumber == _selectedClient.AccountNumber.ToString()).Single());
             _selectedClient = null;
@@ -560,6 +588,8 @@ namespace HomeWork15.ViewModels
             BuildDepositPlot = new LambdaCommandAsync(OnBuildDepositPlotExecuted, CanBuildDepositPlotExecute);
             CreateTransfer = new LambdaCommandAsync(OnCreateTransferExecuted, CanCreateTransferExecuted);
             parser = new Parser();
+            _logger = new Logger();
+            Log += _logger.FileLog;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using HomeWork15.Models;
+﻿using HomeWork15.Command;
+using HomeWork15.Command.Base;
+using HomeWork15.Models;
 using HomeWork15.Services;
 using System;
 using System.Collections.Generic;
@@ -54,10 +56,22 @@ namespace HomeWork15.ViewModels
             }
         }
 
+        #region CreateDeposit
+        public IAsyncCommand Create { get; }
+
+        async Task OnCreateExecuted(object p)
+        {
+            OnSaving();
+        }
+
+        bool CanCreateExecute(object p) => _sumEnd != 0;
+        #endregion
+
         public AddBlockViewModel(Client client)
         {
             _client = client;
             _finConstructor = new(_client);
+            Create = new LambdaCommandAsync(OnCreateExecuted, CanCreateExecute);
         }
 
 
