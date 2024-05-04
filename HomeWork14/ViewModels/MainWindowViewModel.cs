@@ -511,7 +511,6 @@ namespace HomeWork15.ViewModels
             _clientInfo = new EditClientViewModel(_selectedClient);
             
             OnPropertyChanged("ClientInfo");
-            //_clientInfo.Saveing += ClientInfo_Saveing;
         }
         bool CanEditSelectedClientExecute(object p) => _selectedClient != null;
         #endregion
