@@ -10,11 +10,13 @@ using System.Data.SqlClient;
 using System.Windows.Media;
 using OxyPlot;
 using System.Data;
+using static HomeWork15.DataProvider.IDataProvider;
 
 namespace HomeWork15.DataProvider
 {
     class DataProvider : IDataProvider
     {
+        
         readonly SqlConnectionStringBuilder sqlConnectionStringBuilder = new()
         {
             DataSource = @"(localdb)\MSSQLLocalDB",
@@ -152,6 +154,7 @@ namespace HomeWork15.DataProvider
 
             }
         }
+
         /// <summary>
         /// Создание записи клиента
         /// </summary>
@@ -187,12 +190,42 @@ namespace HomeWork15.DataProvider
                 using(SqlConnection connection = new(sqlConnectionStringBuilder.ConnectionString))
                 {
                     await connection.OpenAsync();
-                    string query = string.Format(@"DELETE Clients 
-                                                    WHERE id = {0}
-                                                   DELETE Credits
+                    string query = string.Format(@"DELETE Credits
                                                     WHERE clientId = {0}
                                                    DELETE Deposits
-                                                    WHERE clientId = {0}", client.AccountNumber);
+                                                    WHERE clientId = {0}
+                                                   DELETE Clients 
+                                                    WHERE id = {0}", client.AccountNumber);
+                    SqlCommand command = new(query, connection);
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+        /// <summary>
+        /// Открытие кредита\вклада клиенту
+        /// </summary>
+        /// <param name="client">Клиент</param>
+        /// <param name="block">Кредит\Вклад</param>
+        /// <returns></returns>
+        public async Task AddFinToolForClientAsync(Client client, UpdateBlock block)
+        {
+            try
+            {
+                using (SqlConnection connection = new(sqlConnectionStringBuilder.ConnectionString))
+                {
+                    await connection.OpenAsync();
+                    string query = string.Format(@"INSERT {0}
+                                                   VALUES ({1}, {2},{3} '{4}', '{5}')",
+                                                   block == UpdateBlock.Deposit ? "Deposits" : "Credits",
+                                                   client.AccountNumber,
+                                                   block == UpdateBlock.Deposit ? client.Deposit : client.Credit,
+                                                   block == UpdateBlock.Deposit ? client.Capitalization ? 1 : 0 + "," : "",
+                                                   block == UpdateBlock.Deposit ? client.DateDepositBegin.ToString("yyyy-MM-dd") : client.DateCreditBegin.ToString("yyyy-MM-dd"),
+                                                   block == UpdateBlock.Deposit ? client.DateDepositEnd.ToString("yyyy-MM-dd") : client.DateCreditEnd.ToString("yyyy-MM-dd"));
                     SqlCommand command = new(query, connection);
                     await command.ExecuteNonQueryAsync();
                 }
@@ -205,6 +238,11 @@ namespace HomeWork15.DataProvider
     }
     interface IDataProvider
     {
+        enum UpdateBlock
+        {
+            Credit,
+            Deposit
+        }
         public Task<ObservableCollection<TitleClient>> GetTitleClientsAsync(int AccountType, int Skip, int Take);
 
         public Task<Client> GetClientAsync(int AccountNumber);
@@ -214,5 +252,7 @@ namespace HomeWork15.DataProvider
         public Task CreateClientAsync(Client client);
 
         public Task DeleteClientAsync(Client client);
+
+        public Task AddFinToolForClientAsync(Client client, UpdateBlock block);
     }
 }

@@ -377,6 +377,7 @@ namespace HomeWork15.ViewModels
                     _selectedClient.Credit = double.Parse(clientInfoVM.AddCreditBlockViewModel?.Sum);
                     _selectedClient.DateCreditBegin = DateTime.Today;
                     _selectedClient.DateCreditEnd = (DateTime)clientInfoVM.AddCreditBlockViewModel?.Date;
+                    await dataProvider.AddFinToolForClientAsync(_selectedClient, IDataProvider.UpdateBlock.Credit);
                     OnLog("Клиенту {0} выдан кредит на сумму {1:C2} с {2:d} до {3:d}.", new[]
                     {
                         _selectedClient?.Name,
@@ -391,6 +392,7 @@ namespace HomeWork15.ViewModels
                     _selectedClient.DateDepositBegin = DateTime.Today;
                     _selectedClient.DateDepositEnd = (DateTime)clientInfoVM.AddDepositBlockViewModel?.Date;
                     _selectedClient.Capitalization = clientInfoVM.AddDepositBlockViewModel.Capitalization;
+                    await dataProvider.AddFinToolForClientAsync(_selectedClient, IDataProvider.UpdateBlock.Deposit);
                     OnLog("Клиенту {0} открыт вклад на сумму {1:C2} с {2:d} до {3:d}.", new[]
                     {
                         _selectedClient?.Name,
@@ -399,7 +401,8 @@ namespace HomeWork15.ViewModels
                         _selectedClient?.DateDepositEnd.ToString()
                     });
                 }
-                await parser.EditSerializeClientasync(_path, _selectedClient);
+                //await parser.EditSerializeClientasync(_path, _selectedClient);
+                
                 _clientInfo = new ClientInfoViewModel(_selectedClient);
                 OnPropertyChanged("SelectedClient");
                 OnPropertyChanged("ClientInfo");

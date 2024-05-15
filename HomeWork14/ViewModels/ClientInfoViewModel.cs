@@ -135,9 +135,6 @@ namespace HomeWork15.ViewModels
             AddCreditBlockViewModel = new(_selectedClient);
             _addCreditBlockViewModel.Saveing += AddBlockViewModel_Saveing;
         }
-
-        
-
         bool CanCreateCreditAsyncExecute(object p) => _selectedClient != null && _selectedClient.Credit == 0;
         #endregion
 
