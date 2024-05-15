@@ -16,13 +16,16 @@ namespace HomeWork15.DataProvider
 {
     class DataProvider : IDataProvider
     {
-        
+        readonly Logger _logger;
         readonly SqlConnectionStringBuilder sqlConnectionStringBuilder = new()
         {
             DataSource = @"(localdb)\MSSQLLocalDB",
             InitialCatalog = "BankPrototype",
             IntegratedSecurity = true
         };
+
+        public event LoggerHandler Log;
+
         /// <summary>
         /// Возвращает список клиентов выбранного отдела
         /// </summary>
@@ -57,8 +60,12 @@ namespace HomeWork15.DataProvider
             }
             catch (Exception ex)
             {
-
-                
+                OnLog("При попытке получения списка клиентов произошла ошибка {0}. Текст ошибки: {1}", new[]
+                {
+                    nameof(ex),
+                    ex.Message
+                });
+                throw;
             }
             return clients;
         }
@@ -109,9 +116,14 @@ namespace HomeWork15.DataProvider
                             client.Capitalization = bool.Parse(dataReader[nameof(Client.Capitalization)].ToString());
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
+                        OnLog("При попытке получить данные о кредите/депозите произошла ошибка {0}. Текст ошибки: {1}", new[]
+                        {
+                            nameof(ex),
+                            ex.Message
+                        });
+                        throw;
                     }
                     return client;
                     
@@ -119,7 +131,12 @@ namespace HomeWork15.DataProvider
             }
             catch (Exception ex)
             {
-
+                OnLog("При попытке получить данные клиента произошла ошибка {0}. Текст ошибки: {1}", new[]
+                {
+                    nameof(ex),
+                    ex.Message
+                });
+                throw;
             }
             return null;
         }
@@ -154,7 +171,12 @@ namespace HomeWork15.DataProvider
             }
             catch (Exception ex)
             {
-
+                OnLog("При попытке обновить данные клиента произошла ошибка {0}. Текст ошибки: {1}", new[]
+                {
+                    nameof(ex),
+                    ex.Message
+                });
+                throw;
             }
         }
 
@@ -178,7 +200,12 @@ namespace HomeWork15.DataProvider
             }
             catch (Exception ex)
             {
-
+                OnLog("При попытке создать нового клиента произошла ошибка {0}. Текст ошибки: {1}", new[]
+                {
+                    nameof(ex),
+                    ex.Message
+                });
+                throw;
             }
         }
         /// <summary>
@@ -205,7 +232,12 @@ namespace HomeWork15.DataProvider
             }
             catch (Exception ex)
             {
-                
+                OnLog("При попытке удалить клиента произошла ошибка {0}. Текст ошибки: {1}", new[]
+                {
+                    nameof(ex),
+                    ex.Message
+                });
+                throw;
             }
         }
         /// <summary>
@@ -235,8 +267,28 @@ namespace HomeWork15.DataProvider
             }
             catch (Exception ex)
             {
-                
+                OnLog("При попытке открытия кредита/вклада произошла ошибка {0}. Текст ошибки: {1}", new[]
+                {
+                    nameof(ex),
+                    ex.Message
+                });
+                throw;
             }
+        }
+        /// <summary>
+        /// Уведомление о событии
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="args"></param>
+        public void OnLog(string message, params object[] args)
+        {
+            Log?.Invoke(message, args);
+        }
+
+        public DataProvider()
+        {
+            _logger = new();
+            Log += _logger.FileLog;
         }
     }
     interface IDataProvider
@@ -257,5 +309,9 @@ namespace HomeWork15.DataProvider
         public Task DeleteClientAsync(Client client);
 
         public Task AddFinToolForClientAsync(Client client, UpdateBlock block);
+
+        public delegate void LoggerHandler(string message, params object[] args);
+        public event LoggerHandler Log;
+        public void OnLog(string message, params object[] args);
     }
 }

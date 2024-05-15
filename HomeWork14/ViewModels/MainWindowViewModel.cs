@@ -427,7 +427,6 @@ namespace HomeWork15.ViewModels
             {
                 _skip = 0;
             }
-            //Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(_path, (int)ClientType, _skip, 10);
             Clients = await dataProvider.GetTitleClientsAsync((int)ClientType, _skip, 10);
             OnPropertyChanged("ListRowSpan");
             OnPropertyChanged("AddClientsButtonVisibility");
@@ -483,7 +482,6 @@ namespace HomeWork15.ViewModels
         public IAsyncCommand DeleteClient { get; }
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
-            //await parser.DeleteSerializeClientAsync(_path, _selectedClient);
             await dataProvider.DeleteClientAsync(_selectedClient);
             OnLog("Учетная запись клиента {0} была удалена {1}", new[]
             {
@@ -543,7 +541,7 @@ namespace HomeWork15.ViewModels
 
         async Task OnCreateTransferExecuted(object p)
         {
-            ObservableCollection<TitleClient> titleClients = await dataProvider.GetTitleClientsAsync(); //await parser.DeserializeAllClientsAsync<TitleClient>(_path);
+            ObservableCollection<TitleClient> titleClients = await dataProvider.GetTitleClientsAsync();
             titleClients.Remove(titleClients.Single(e => e.AccountNumber == _selectedClient.AccountNumber.ToString()));
             _workSpaceVM = new TransferViewModel(_selectedClient, titleClients);
             OnPropertyChanged(nameof(WorkSpaceVM));
@@ -557,8 +555,6 @@ namespace HomeWork15.ViewModels
             Task.Run(async () =>
             {
                 TransferViewModel transferVM = (TransferViewModel)_workSpaceVM;
-                //await parser.EditSerializeClientasync(_path, transferVM._client);
-                //await parser.EditSerializeClientasync(_path, transferVM._clientRecipient);
                 await dataProvider.UpdateClientAsync(transferVM._client);
                 await dataProvider.UpdateClientAsync(transferVM._clientRecipient);
                 _workSpaceVM = null;

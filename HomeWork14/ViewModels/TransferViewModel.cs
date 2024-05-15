@@ -52,34 +52,27 @@ namespace HomeWork15.ViewModels
 
         async Task OnTransferAsyncExecute(object p)
         {
-            //IParser parser = new Parser();
             IDataProvider dataProvider = new DataProvider.DataProvider();
 
-            //if (parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 0)
-            //{
-            //    _clientRecipient = await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
-            //}
-            //else if(parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 1)
-            //{
-            //    _clientRecipient = await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
-            //}
-            //else
-            //{
-            //    _clientRecipient = await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
-            //}
-
-            _clientRecipient = await dataProvider.GetClientAsync(int.Parse(_titleClient.AccountNumber));
-
-            _clientRecipient.BankAccount += _transferSum;
-            _client.BankAccount -= _transferSum;
-            OnSaving();
-            OnLog("{0} перевел(а) {1} {2} {3}", new[]
+            try
             {
+                _clientRecipient = await dataProvider.GetClientAsync(int.Parse(_titleClient.AccountNumber));
+
+                _clientRecipient.BankAccount += _transferSum;
+                _client.BankAccount -= _transferSum;
+                OnSaving();
+                OnLog("{0} перевел(а) {1} {2} {3}", new[]
+                {
                 _client.Name,
                 _clientRecipient.Name,
                 _transferSum.ToString(),
                 DateTime.Now.ToString()
-            });
+                });
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         bool CanTransferAsyncExecuded(object p)
