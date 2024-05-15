@@ -34,6 +34,8 @@ namespace HomeWork15.ViewModels
         readonly IParser parser;
 
         readonly Logger _logger;
+
+        readonly IDataProvider dataProvider;
         #endregion
 
         #region Статус
@@ -254,16 +256,7 @@ namespace HomeWork15.ViewModels
         /// Возвращает список клиентов выбранного отдела
         /// </summary>
         /// <returns></returns>
-        private async Task<Client> OnOpenSelectedClientAsync()
-        {
-            return _client_type switch
-            {
-                ClientTypes.Regular => await parser.DeserializeClientLinqAsync<Regular>(_path, int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                ClientTypes.VIP => await parser.DeserializeClientLinqAsync<VIP>(_path, int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                ClientTypes.Entity => await parser.DeserializeClientLinqAsync<Entity>(_path, int.Parse(_selectedTitleClient.AccountNumber)).ConfigureAwait(false),
-                _ => null,
-            };
-        }
+        private async Task<Client> OnOpenSelectedClientAsync() => await dataProvider.GetClientAsync(int.Parse(_selectedTitleClient.AccountNumber));
 
         #endregion
 
@@ -312,7 +305,7 @@ namespace HomeWork15.ViewModels
 
             EditClientViewModel editClientVM = (EditClientViewModel)_clientInfo;
             _selectedClient = editClientVM.SelectedClient;
-            await parser.EditSerializeClientasync(_path, _selectedClient);
+            await dataProvider.UpdateClientAsync(_selectedClient);
             OnLog("Данные клиента {0} были изменены {1}.", new[]
                     {
                         _selectedClient?.Name,
@@ -335,7 +328,8 @@ namespace HomeWork15.ViewModels
                 _selectedClient = addClientVM._client;
                 _selectedTitleClient.AccountNumber = _selectedClient.AccountNumber.ToString();
                 _selectedTitleClient.Name = _selectedClient.Name;
-                await parser.CreateSerializeClientAsync(_path, _selectedClient);
+                //await parser.CreateSerializeClientAsync(_path, _selectedClient);
+                await dataProvider.CreateClientAsync(_selectedClient);
                 _clientInfo = new ClientInfoViewModel(_selectedClient);
                 OnPropertyChanged("SelectedClient");
                 OnPropertyChanged("ClientInfo");
@@ -430,7 +424,8 @@ namespace HomeWork15.ViewModels
             {
                 _skip = 0;
             }
-            Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(_path, (int)ClientType, _skip, 10);
+            //Clients = await parser.DeserializeClientsLinqAsync<TitleClient>(_path, (int)ClientType, _skip, 10);
+            Clients = await dataProvider.GetTitleClientsAsync((int)ClientType, _skip, 10);
             OnPropertyChanged("ListRowSpan");
             OnPropertyChanged("AddClientsButtonVisibility");
             _skip += 10;
@@ -450,7 +445,7 @@ namespace HomeWork15.ViewModels
         {
             ProgressBarVisibility = Visibility.Visible;
             Status = statusPairs[ReadyStatus.Busy];
-            ObservableCollection<TitleClient> newTitleClient = await parser.DeserializeClientsLinqAsync<TitleClient>(_path, (int)ClientType, _skip, 10);
+            ObservableCollection<TitleClient> newTitleClient = await dataProvider.GetTitleClientsAsync((int)ClientType, _skip, 10);
             foreach (var item in newTitleClient)
             {
                 Clients.Add(item);
@@ -485,7 +480,8 @@ namespace HomeWork15.ViewModels
         public IAsyncCommand DeleteClient { get; }
         async Task OnDeleteSelectedClientAsyncExecuted(object p)
         {
-            await parser.DeleteSerializeClientAsync(_path, _selectedClient);
+            //await parser.DeleteSerializeClientAsync(_path, _selectedClient);
+            await dataProvider.DeleteClientAsync(_selectedClient);
             OnLog("Учетная запись клиента {0} была удалена {1}", new[]
             {
                 _selectedClient.Name,
@@ -587,6 +583,7 @@ namespace HomeWork15.ViewModels
             BuildDepositPlot = new LambdaCommandAsync(OnBuildDepositPlotExecuted, CanBuildDepositPlotExecute);
             CreateTransfer = new LambdaCommandAsync(OnCreateTransferExecuted, CanCreateTransferExecuted);
             parser = new Parser();
+            dataProvider = new DataProvider.DataProvider();
             _logger = new Logger();
             Log += _logger.FileLog;
         }

@@ -113,6 +113,7 @@ namespace HomeWork15.ViewModels
         public AddClientViewModel()
         {
             CreateClientAsync = new LambdaCommandAsync(OnCreateClientAsyncExecuted, CanCreateClientAsyncExecute);
+            _logger = new();
             Log += _logger.FileLog;
         }
     }

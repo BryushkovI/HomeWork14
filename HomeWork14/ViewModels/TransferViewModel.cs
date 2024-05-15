@@ -92,6 +92,7 @@ namespace HomeWork15.ViewModels
             Client = client;
             _clients = titleClients;
             TransferAsync = new LambdaCommandAsync(OnTransferAsyncExecute, CanTransferAsyncExecuded);
+            _logger = new();
             Log += _logger.FileLog;
         }
     }
