@@ -543,7 +543,7 @@ namespace HomeWork15.ViewModels
 
         async Task OnCreateTransferExecuted(object p)
         {
-            ObservableCollection<TitleClient> titleClients = await parser.DeserializeAllClientsAsync<TitleClient>(_path);
+            ObservableCollection<TitleClient> titleClients = await dataProvider.GetTitleClientsAsync(); //await parser.DeserializeAllClientsAsync<TitleClient>(_path);
             titleClients.Remove(titleClients.Single(e => e.AccountNumber == _selectedClient.AccountNumber.ToString()));
             _workSpaceVM = new TransferViewModel(_selectedClient, titleClients);
             OnPropertyChanged(nameof(WorkSpaceVM));
@@ -557,8 +557,10 @@ namespace HomeWork15.ViewModels
             Task.Run(async () =>
             {
                 TransferViewModel transferVM = (TransferViewModel)_workSpaceVM;
-                await parser.EditSerializeClientasync(_path, transferVM._client);
-                await parser.EditSerializeClientasync(_path, transferVM._clientRecipient);
+                //await parser.EditSerializeClientasync(_path, transferVM._client);
+                //await parser.EditSerializeClientasync(_path, transferVM._clientRecipient);
+                await dataProvider.UpdateClientAsync(transferVM._client);
+                await dataProvider.UpdateClientAsync(transferVM._clientRecipient);
                 _workSpaceVM = null;
                 _clientInfo = new ClientInfoViewModel(_selectedClient);
                 OnPropertyChanged("SelectedClient");

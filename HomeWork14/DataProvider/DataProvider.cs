@@ -30,7 +30,7 @@ namespace HomeWork15.DataProvider
         /// <param name="Skip">Пропустить</param>
         /// <param name="Take">Получить</param>
         /// <returns></returns>
-        public async Task<ObservableCollection<TitleClient>> GetTitleClientsAsync(int AccountType, int Skip = 0, int Take = int.MaxValue)
+        public async Task<ObservableCollection<TitleClient>> GetTitleClientsAsync(int AccountType = int.MaxValue, int Skip = 0, int Take = int.MaxValue)
         {
             
             ObservableCollection<TitleClient> clients = new();
@@ -40,10 +40,13 @@ namespace HomeWork15.DataProvider
                 using (SqlConnection connection = new(sqlConnectionStringBuilder.ConnectionString))
                 {
                     await connection.OpenAsync();
-                    string query = string.Format(@"SELECT id, Name FROM Clients WHERE AccountType = {0}
+                    string query = string.Format(@"SELECT id, Name FROM Clients {0}
                                                                             ORDER BY AccountType
                                                                             OFFSET {1} ROWS
-                                                                            FETCH NEXT {2} ROWS ONLY", AccountType, Skip, Take);
+                                                                            {2}",
+                                                                            AccountType == int.MaxValue ? "" : "WHERE AccountType = " + AccountType,
+                                                                            Skip,
+                                                                            Take == int.MaxValue ? "" : "FETCH NEXT " + Take + " ROWS ONLY");
                     SqlCommand command = new(query, connection);
                     SqlDataReader dataReader = await command.ExecuteReaderAsync();
                     while (await dataReader.ReadAsync())
@@ -243,7 +246,7 @@ namespace HomeWork15.DataProvider
             Credit,
             Deposit
         }
-        public Task<ObservableCollection<TitleClient>> GetTitleClientsAsync(int AccountType, int Skip, int Take);
+        public Task<ObservableCollection<TitleClient>> GetTitleClientsAsync(int AccountType = int.MaxValue, int Skip = 0, int Take = int.MaxValue);
 
         public Task<Client> GetClientAsync(int AccountNumber);
 

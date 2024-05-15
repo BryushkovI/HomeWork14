@@ -1,5 +1,6 @@
 ﻿using HomeWork15.Command;
 using HomeWork15.Command.Base;
+using HomeWork15.DataProvider;
 using HomeWork15.Models;
 using HomeWork15.Services;
 using System;
@@ -51,20 +52,24 @@ namespace HomeWork15.ViewModels
 
         async Task OnTransferAsyncExecute(object p)
         {
-            IParser parser = new Parser();
-            
-            if (parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 0)
-            {
-                _clientRecipient = await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
-            }
-            else if(parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 1)
-            {
-                _clientRecipient = await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
-            }
-            else
-            {
-                _clientRecipient = await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
-            }
+            //IParser parser = new Parser();
+            IDataProvider dataProvider = new DataProvider.DataProvider();
+
+            //if (parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 0)
+            //{
+            //    _clientRecipient = await parser.DeserializeClientLinqAsync<Regular>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
+            //}
+            //else if(parser.DeserializeClientLinqAsync<Client>(@"Clients.json", int.Parse(_titleClient.AccountNumber)).Result.AccountType == 1)
+            //{
+            //    _clientRecipient = await parser.DeserializeClientLinqAsync<VIP>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
+            //}
+            //else
+            //{
+            //    _clientRecipient = await parser.DeserializeClientLinqAsync<Entity>(@"Clients.json", int.Parse(_titleClient.AccountNumber));
+            //}
+
+            _clientRecipient = await dataProvider.GetClientAsync(int.Parse(_titleClient.AccountNumber));
+
             _clientRecipient.BankAccount += _transferSum;
             _client.BankAccount -= _transferSum;
             OnSaving();
